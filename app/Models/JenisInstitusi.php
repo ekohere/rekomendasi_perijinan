@@ -2,23 +2,57 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class JenisInstitusi
+ * @package App\Models
+ * @version June 17, 2017, 10:21 pm UTC
  */
 class JenisInstitusi extends Model
 {
-    protected $table = 'jenis_institusi';
+    use SoftDeletes;
 
-    public $timestamps = true;
+    public $table = 'jenis_institusi';
+    
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
 
-    protected $fillable = [
+
+    protected $dates = ['deleted_at'];
+
+
+    public $fillable = [
         'nama',
         'keterangan'
     ];
 
-    protected $guarded = [];
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'nama' => 'string',
+        'keterangan' => 'string'
+    ];
 
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
         
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function institusis()
+    {
+        return $this->hasMany(\App\Models\Institusi::class);
+    }
 }

@@ -2,22 +2,55 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class JenjangPendidikan
+ * @package App\Models
+ * @version June 17, 2017, 10:22 pm UTC
  */
 class JenjangPendidikan extends Model
 {
-    protected $table = 'jenjang_pendidikan';
+    use SoftDeletes;
 
-    public $timestamps = true;
+    public $table = 'jenjang_pendidikan';
+    
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
 
-    protected $fillable = [
+
+    protected $dates = ['deleted_at'];
+
+
+    public $fillable = [
         'nama'
     ];
 
-    protected $guarded = [];
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'nama' => 'string'
+    ];
 
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
         
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function biodata()
+    {
+        return $this->hasMany(\App\Models\Biodatum::class);
+    }
 }
