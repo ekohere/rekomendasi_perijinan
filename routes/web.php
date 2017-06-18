@@ -19,3 +19,23 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::resource('jenisInstitusis', 'JenisInstitusiController');
+
+Route::resource('jenjangPendidikans', 'JenjangPendidikanController');
+
+Route::resource('agamas', 'AgamaController');
+
+Route::resource('statusRekomendasis', 'StatusRekomendasiController');
+
+Route::resource('institusis', 'InstitusiController');
+
+Route::resource('rekomReklameHasStatusRekomendasis', 'RekomReklameHasStatusRekomendasiController');
+
+Route::resource('rekomendasiReklames', 'RekomendasiReklameController');
+
+Route::resource('rekomendasis', 'RekomendasiController');
+
+Route::resource('dataUsahas', 'DataUsahaController');
+
+Route::resource('biodatas', 'BiodataController');

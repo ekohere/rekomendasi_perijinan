@@ -16,7 +16,10 @@
         "phpunit/phpunit": "~5.7",
         "infyomlabs/laravel-generator": "5.4.x-dev",
         "laravelcollective/html": "^5.4.0",
-        "infyomlabs/adminlte-templates": "5.4.x-dev"
+        "infyomlabs/adminlte-templates": "5.4.x-dev",
+        "infyomlabs/swagger-generator": "dev-master",
+        "jlapp/swaggervel": "dev-master",
+        "doctrine/dbal": "~2.3"
     },
     "autoload": {
         "classmap": [
