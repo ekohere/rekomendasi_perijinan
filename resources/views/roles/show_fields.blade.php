@@ -22,6 +22,16 @@
     <p>{!! $role->description !!}</p>
 </div>
 
+<!-- Permission Field -->
+<div class="form-group">
+    <strong>Permissions:</strong>
+    @if(!empty($rolePermissions))
+        @foreach($rolePermissions as $v)
+            <label class="label label-success">{{ $v->display_name }}</label>
+        @endforeach
+    @endif
+</div>
+
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}

@@ -16,6 +16,17 @@
     {!! Form::text('description', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Permission Field -->
+<div class="form-group">
+    <strong>Permission:</strong>
+    <br/>
+    @foreach($permission as $value)
+        <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
+            {{ $value->display_name }}</label>
+        <br/>
+    @endforeach
+</div>
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
