@@ -10,6 +10,13 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\Agama;
+use App\Models\Alamat;
+use App\Models\Biodata;
+use App\Models\Kontak;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class BiodataController extends AppBaseController
 {
@@ -123,6 +130,48 @@ class BiodataController extends AppBaseController
         }
 
         $biodata = $this->biodataRepository->update($request->all(), $id);
+        $requestAlamatAsal=$request->get('alamat_asal');
+        $requestAlamatSekarang=$request->get('alamat_sekarang');
+
+        
+        try{
+            DB::beginTransaction();
+
+            $user=Auth::user();
+            $user->name=$request->get('name');
+            $user->save();
+
+            $biodatum = Biodata::findOrFail(Auth::user()->biodata->id);
+            $biodatum->update($requestData);
+
+            $path=null;
+            if( $request->hasFile('foto')) {
+                $ext=File::extension($request->file('foto')->getClientOriginalName());
+                $path = $request->foto->storeAs('images', $biodatum->id.'.'.$ext,'local_public');
+                chmod(public_path().'/'.$path, 0777);
+            }
+            if($path!=null){
+                $biodatum->foto=$path;
+                $biodatum->save();
+            }
+
+            Alamat::updateOrCreate(
+                ['biodata_id'=>Auth::user()->biodata->id,'status'=>'asal'],
+                $requestAlamatAsal
+            );
+
+            Alamat::updateOrCreate(
+                ['biodata_id'=>Auth::user()->biodata->id,'status'=>'sekarang'],
+                $requestAlamatSekarang
+            );
+
+            DB::commit();
+
+            Session::flash('flash_message', 'Biodata updated!');
+        }catch (Exception $e){
+            DB::rollback();
+            Session::flash('flash_message', 'Update Fail!');
+        }
 
         Flash::success('Biodata updated successfully.');
 

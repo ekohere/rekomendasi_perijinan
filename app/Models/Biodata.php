@@ -103,6 +103,14 @@ class Biodata extends Model
     {
         return $this->hasMany(\App\Models\Alamat::class);
     }
+    public function alamatAsal(){
+        return $this->alamats()->where('alamat.status','asal')->first();
+    }
+
+    public function alamatSekarang(){
+        return $this->alamats()->where('alamat.status','sekarang')->first();
+    }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
