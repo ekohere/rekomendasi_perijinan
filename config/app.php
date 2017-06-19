@@ -184,6 +184,8 @@ return [
         \InfyOm\Generator\InfyOmGeneratorServiceProvider::class,
         \InfyOm\AdminLTETemplates\AdminLTETemplatesServiceProvider::class,
 
+        //zizaco entrust
+        Zizaco\Entrust\EntrustServiceProvider::class,
     ],
 
     /*
@@ -237,6 +239,9 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
+
+        //zizaco entrust
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
     ],
 
 ];
