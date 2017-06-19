@@ -54,3 +54,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleController@destroy','middleware' => ['permission:role-delete']]);
 
 });
+
+Route::resource('users', 'UserController');

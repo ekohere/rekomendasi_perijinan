@@ -2,17 +2,22 @@
 
 namespace App;
 
-use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use EntrustUserTrait;
+    use Notifiable;
+
+    public static $rules = array(
+        'password' => 'required|min:6',
+    );
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
+
      */
     protected $fillable = [
         'name', 'email', 'password',
