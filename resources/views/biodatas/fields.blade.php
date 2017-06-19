@@ -1,86 +1,260 @@
 <!-- User Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('user_id', 'User Id:') !!}
-    {!! Form::number('user_id', null, ['class' => 'form-control']) !!}
+<div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
+    {!! Form::label('user_id', 'User_id', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('user_id',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
 
-<!-- Nik Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('nik', 'Nik:') !!}
-    {!! Form::text('nik', null, ['class' => 'form-control']) !!}
+<!-- nik field-->
+<div class="form-group {{ $errors->has('nik') ? 'has-error' : ''}}">
+    {!! Form::label('nik', 'Nik', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('nik',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! $errors->first('nik', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
+
 
 <!-- Npwp Pribadi Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('npwp_pribadi', 'Npwp Pribadi:') !!}
-    {!! Form::text('npwp_pribadi', null, ['class' => 'form-control']) !!}
+<div class="form-group {{ $errors->has('npwp_pribadi') ? 'has-error' : ''}}">
+    {!! Form::label('npwp_pribadi', 'Npwp Pribadi', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('npwp_pribadi',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! $errors->first('npwp_pribadi', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
 
 <!-- Scan Ktp Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('scan_ktp', 'Scan Ktp:') !!}
-    {!! Form::text('scan_ktp', null, ['class' => 'form-control']) !!}
+<div class="form-group {{ $errors->has('scan_ktp') ? 'has-error' : ''}}">
+    {!! Form::label('scan_ktp', 'Scan KTP', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('scan_ktp',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! $errors->first('scan_ktp', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
-
 <!-- Scan Npwp Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('scan_npwp', 'Scan Npwp:') !!}
-    {!! Form::text('scan_npwp', null, ['class' => 'form-control']) !!}
+<div class="form-group {{ $errors->has('scan_npwp') ? 'has-error' : ''}}">
+    {!! Form::label('scan_npwp', 'Scan Npwp', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('scan_npwp',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! $errors->first('scan_npwp', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
 
 <!-- Jenjang Pendidikan Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('jenjang_pendidikan_id', 'Jenjang Pendidikan Id:') !!}
-    {!! Form::number('jenjang_pendidikan_id', null, ['class' => 'form-control']) !!}
+<div class="form-group {{ $errors->has('jenjang_pendidikan_id') ? 'has-error' : ''}}">
+    {!! Form::label('jenjang_pendidikan_id', 'Jenjang Pendidikan id', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::number('jenjang_pendidikan_id',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! $errors->first('jenjang_pendidikan_id', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
 
 <!-- Tempat Lahir Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('tempat_lahir', 'Tempat Lahir:') !!}
-    {!! Form::text('tempat_lahir', null, ['class' => 'form-control']) !!}
+<div class="form-group {{ $errors->has('tempat_lahir') ? 'has-error' : ''}}">
+    {!! Form::label('tempat_lahir', 'Tempat lahir', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('tempat_lahir',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! $errors->first('tempat_lahir', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
 
+<script type="text/javascript">
+
+    $( function() {
+        $( "#tanggal_lahir" ).datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });
+    } );
+</script>
+
 <!-- Tanggal Lahir Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('tanggal_lahir', 'Tanggal Lahir:') !!}
-    {!! Form::date('tanggal_lahir', null, ['class' => 'form-control']) !!}
+<div class="form-group {{ $errors->has('tanggal_lahir') ? 'has-error' : ''}}">
+    {!! Form::label('tanggal_lahir', 'Tanggal Lahir', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::date('tanggal_lahir',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! $errors->first('tanggal_lahir', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
 
 <!-- Jenis Kelamin Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('jenis_kelamin', 'Jenis Kelamin:') !!}
-    {!! Form::text('jenis_kelamin', null, ['class' => 'form-control']) !!}
+<div class="form-group {{ $errors->has('jenis_kelamin') ? 'has-error' : ''}}">
+    {!! Form::label('jenis_kelamin', 'Jenis Kelamin', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('jenis_kelamin',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! $errors->first('jenis_kelamin', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
 
 <!-- Kewarganegaraan Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('kewarganegaraan', 'Kewarganegaraan:') !!}
-    {!! Form::text('kewarganegaraan', null, ['class' => 'form-control']) !!}
+<div class="form-group {{ $errors->has('kewarganegaraan') ? 'has-error' : ''}}">
+    {!! Form::label('kewarganegaraan', 'Kewarganegaraan', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('kewarganegaraan',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! $errors->first('kewarganegaraan', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
 
 <!-- Status Perkawinan Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('status_perkawinan', 'Status Perkawinan:') !!}
-    {!! Form::text('status_perkawinan', null, ['class' => 'form-control']) !!}
+<div class="form-group {{ $errors->has('status_perkawinan') ? 'has-error' : ''}}">
+    {!! Form::label('status_perkawainan', 'Status Perkawinan', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('status_perkawinan',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! $errors->first('status_perkawinan', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
 
 <!-- Agama Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('agama_id', 'Agama Id:') !!}
-    {!! Form::number('agama_id', null, ['class' => 'form-control']) !!}
+<div class="form-group {{ $errors->has('agama_id') ? 'has-error' : ''}}">
+    {!! Form::label('agama_id', 'Agama Id', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::number('agama_id',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! $errors->first('agama_id', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
 
 <!-- Website Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('website', 'Website:') !!}
-    {!! Form::text('website', null, ['class' => 'form-control']) !!}
+<div class="form-group {{ $errors->has('website') ? 'has-error' : ''}}">
+    {!! Form::label('website', 'Website', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('website',null, ['class' => 'form-control']) !!}
+        {!! $errors->first('website', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
 
 <!-- Foto Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('foto', 'Foto:') !!}
-    {!! Form::text('foto', null, ['class' => 'form-control']) !!}
+<div class="form-group {{ $errors->has('foto') ? 'has-error' : ''}}">
+    {!! Form::label('foto', 'Foto', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::file('foto',  ['class' => 'form-control']) !!}
+        <br \>
+        <img id="cropimage" src="{{isset($biodatum->foto)?file_exists( public_path() . '/' . $biodatum->foto)?asset($biodatum->foto):'':''}}" alt="your image"  width="200" height="267"  />
+        {{ Form::hidden('image', isset($biodatum->foto)?file_exists( public_path() . '/' . $biodatum->foto)?$biodatum->foto:'':'') }}
+
+        <script type="text/javascript">
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                    /*window.alert(reader.result);*/
+                        $('#cropimage')
+                                .attr('src', e.target.result)
+                                .width(200)
+                                .height(267);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#foto").change(function(){
+                readURL(this);
+            });
+
+        </script>
+
+        {{-- Untuk Croping image
+        {{ Form::hidden('x', '', array('id' => 'x')) }}
+        {{ Form::hidden('y', '', array('id' => 'y')) }}
+        {{ Form::hidden('w', '', array('id' => 'w')) }}
+        {{ Form::hidden('h', '', array('id' => 'h')) }}
+
+
+        <script type="text/javascript">
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('.jcrop-holder').replaceWith('');
+                        var jcrop_api= $.Jcrop('#cropimage');
+                        jcrop_api.setImage( e.target.result);
+                        jcrop_api.setOptions({
+                            aspectRatio: 3/4,
+                            boxWidth: 400,
+                            boxHeight: 300,
+                            allowResize: false,
+                            onChange : updateCoords,
+                            setSelect: [50, 0, 300,300],
+                        });
+                        //crop_reset( e.target.result);
+                        /*$('#cropimage').Jcrop({
+                            aspectRatio: 3/4,
+                            setSelect: [50, 0, 300,300],
+                            boxWidth: 400,
+                            boxHeight: 300,
+                            allowResize: false,
+                            onSelect : updateCoords,
+                        });*/
+                        //$('.jcrop-holder img').attr('src',  e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            function crop_reset(src)
+            {
+                //Reset coordinates of thumbnail preview container
+                $('#cropimage').data("coords.x", 0);
+                $('#cropimage').data("coords.y", 0);
+                $('#cropimage').data("coords.w", 0);
+                $('#cropimage').data("coords.h", 0);
+
+                //Reset src of jcrop img and copies bound to page specific full size and preview divs
+                $("#cropimage, .jcrop-holder img").attr("src", src);
+            }
+
+            $(function() {
+                if($('#cropimage').attr('src')!='') {
+                    $('#cropimage').Jcrop({
+                        aspectRatio: 3 / 4,
+                        boxWidth: 300,
+                        boxHeight: 400,
+                        allowResize: false,
+                        onChange: updateCoords,
+                        setSelect: [50, 0, 300, 300],
+                    });
+                }
+            });
+
+            function updateCoords(c) {
+                $('#x').val(c.x);
+                $('#y').val(c.y);
+                $('#w').val(c.w);
+                $('#h').val(c.h);
+            };
+
+            $("#foto").change(function(){
+                readURL(this);
+            });
+
+        </script>--}}
+
+        {!! $errors->first('foto', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
+
+ <div class="col-md-6">
+        <section class="panel panel-warning">
+            <header class="panel-heading">
+                <h2 class="panel-title">NIP</h2>
+            </header>
+            <div class="panel-body">
+                <div class="form-group {{ $errors->has('rt') ? 'has-error' : ''}}">
+                    {!! Form::label('nip', 'NIP', ['class' => 'col-md-4 control-label']) !!}
+                    <div class="col-md-6">
+                      {!! Form::text('nip', null, ['class' => 'form-control']) !!}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
 
     <div class="col-md-6">
         <section class="panel panel-warning">

@@ -101,6 +101,7 @@ class BiodataController extends AppBaseController
     public function edit($id)
     {
         $biodata = $this->biodataRepository->findWithoutFail($id);
+        //$biodatum = Biodata::findOrFail(Auth::user()->biodata->id);
 
         if (empty($biodata)) {
             Flash::error('Biodata not found');
@@ -108,7 +109,9 @@ class BiodataController extends AppBaseController
             return redirect(route('biodatas.index'));
         }
 
-        return view('biodatas.edit')->with('biodata', $biodata);
+        return view('biodatas.edit')
+           // ->with('biodatum', $biodatum)
+            ->with('biodata', $biodata);
     }
 
     /**
