@@ -12,47 +12,44 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 });
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::group(['middleware' => ['auth']], function () {
 
-Route::resource('jenisInstitusis', 'JenisInstitusiController');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('jenjangPendidikans', 'JenjangPendidikanController');
+    Route::resource('jenisInstitusis', 'JenisInstitusiController');
 
-Route::resource('agamas', 'AgamaController');
+    Route::resource('jenjangPendidikans', 'JenjangPendidikanController');
 
-Route::resource('statusRekomendasis', 'StatusRekomendasiController');
+    Route::resource('agamas', 'AgamaController');
 
-Route::resource('institusis', 'InstitusiController');
+    Route::resource('statusRekomendasis', 'StatusRekomendasiController');
 
-Route::resource('rekomReklameHasStatusRekomendasis', 'RekomReklameHasStatusRekomendasiController');
+    Route::resource('institusis', 'InstitusiController');
 
-Route::resource('rekomendasiReklames', 'RekomendasiReklameController');
+    Route::resource('rekomReklameHasStatusRekomendasis', 'RekomReklameHasStatusRekomendasiController');
 
-Route::resource('rekomendasis', 'RekomendasiController');
+    Route::resource('rekomendasiReklames', 'RekomendasiReklameController');
 
-Route::resource('dataUsahas', 'DataUsahaController');
+    Route::resource('rekomendasis', 'RekomendasiController');
 
-Route::resource('biodatas', 'BiodataController');
+    Route::resource('dataUsahas', 'DataUsahaController');
+
+    Route::resource('biodatas', 'BiodataController');
 
 //zizaco entrust
-Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', 'RoleController');
 
-    Route::get('/home', 'HomeController@index');
+    Route::resource('user_role', 'UserRoleController', ['except' => [
+        'create', 'store', 'show', 'destroy',
+    ]]);
 
-    Route::get('roles',['as'=>'roles.index','uses'=>'RoleController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
-    Route::get('roles/create',['as'=>'roles.create','uses'=>'RoleController@create','middleware' => ['permission:role-create']]);
-    Route::post('roles/create',['as'=>'roles.store','uses'=>'RoleController@store','middleware' => ['permission:role-create']]);
-    Route::get('roles/{id}',['as'=>'roles.show','uses'=>'RoleController@show']);
-    Route::get('roles/{id}/edit',['as'=>'roles.edit','uses'=>'RoleController@edit','middleware' => ['permission:role-edit']]);
-    Route::patch('roles/{id}',['as'=>'roles.update','uses'=>'RoleController@update','middleware' => ['permission:role-edit']]);
-    Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleController@destroy','middleware' => ['permission:role-delete']]);
+    Route::resource('permissions', 'PermissionController');
 
+    Route::resource('users', 'UserController');
 });
-
-Route::resource('users', 'UserController');
