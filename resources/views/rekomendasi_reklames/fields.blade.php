@@ -42,14 +42,14 @@
 
 <!-- Rekomendasi Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('rekomendasi_id', 'Rekomendasi Id:') !!}
-    {!! Form::number('rekomendasi_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('rekomendasi_id', 'Rekomendasi:') !!}
+    {!! Form::select('rekomendasi_id', $rekomendasi, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Data Usaha Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('data_usaha_id', 'Data Usaha Id:') !!}
-    {!! Form::number('data_usaha_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('data_usaha_id', 'Data Usaha:') !!}
+    {!! Form::select('data_usaha_id', $data_usaha, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

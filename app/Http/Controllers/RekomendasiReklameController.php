@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateRekomendasiReklameRequest;
 use App\Http\Requests\UpdateRekomendasiReklameRequest;
+use App\Models\DataUsaha;
+use App\Models\Rekomendasi;
 use App\Repositories\RekomendasiReklameRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -43,7 +45,10 @@ class RekomendasiReklameController extends AppBaseController
      */
     public function create()
     {
-        return view('rekomendasi_reklames.create');
+        $rekomendasi = Rekomendasi::pluck('id','nama');
+        $data_usaha = DataUsaha::pluck('id','nama');
+
+        return view('rekomendasi_reklames.create', compact('rekomendasi', 'data_usaha'));
     }
 
     /**
@@ -93,6 +98,9 @@ class RekomendasiReklameController extends AppBaseController
      */
     public function edit($id)
     {
+        $rekomendasi = Rekomendasi::pluck('id','nama');
+        $data_usaha = DataUsaha::pluck('id','nama');
+
         $rekomendasiReklame = $this->rekomendasiReklameRepository->findWithoutFail($id);
 
         if (empty($rekomendasiReklame)) {
@@ -101,7 +109,7 @@ class RekomendasiReklameController extends AppBaseController
             return redirect(route('rekomendasiReklames.index'));
         }
 
-        return view('rekomendasi_reklames.edit')->with('rekomendasiReklame', $rekomendasiReklame);
+        return view('rekomendasi_reklames.edit', compact('rekomendasiReklame', 'rekomendasi', 'data_usaha'));
     }
 
     /**
