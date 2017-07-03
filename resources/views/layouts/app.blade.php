@@ -26,7 +26,7 @@
 
             <!-- Logo -->
             <a href="#" class="logo">
-                <b>InfyOm</b>
+                <b>Rekomendasi</b>
             </a>
 
             <!-- Header Navbar -->

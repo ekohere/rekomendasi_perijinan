@@ -1,28 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="panel panel-warning">
-        <header class="panel-heading">
-            <h2 class="panel-title">{{isset($title)?$title:''}}</h2>
-        </header>
-        <div class="panel-body">
-
-                        @if ($errors->any())
-                            <ul class="alert alert-danger">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
-
-                        {!! Form::open(['url' => '/roles', 'class' => 'form-horizontal', 'files' => true]) !!}
-
-                        @include ('roles.form')
-
-                        {!! Form::close() !!}
-
-                    </div>
+    <section class="content-header">
+        <h1>
+            Roles
+        </h1>
     </section>
+    <div class="content">
+        @include('adminlte-templates::common.errors')
+        <div class="box box-primary">
+
+            <div class="box-body">
+                <div class="row">
+                    {!! Form::open(['route' => 'roles.store']) !!}
+
+                    @include('roles.fields')
+
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('specific_page_vendor_top')
