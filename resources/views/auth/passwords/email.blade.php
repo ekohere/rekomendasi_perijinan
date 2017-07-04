@@ -39,7 +39,7 @@
 
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Enter Email to reset password</p>
+        <p class="login-box-msg">Masukkan Email anda untuk reset password</p>
 
         @if (session('status'))
             <div class="alert alert-success">
@@ -63,7 +63,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary pull-right">
-                        <i class="fa fa-btn fa-envelope"></i> Send Password Reset Link
+                        <i class="fa fa-btn fa-envelope"></i> Kirim link reset password ke email
                     </button>
                 </div>
             </div>

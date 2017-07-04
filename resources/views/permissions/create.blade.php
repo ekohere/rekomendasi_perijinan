@@ -1,25 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="panel panel-warning">
-        <header class="panel-heading">
-            <h2 class="panel-title">{{isset($title)?$title:''}}</h2>
-        </header>
-        <div class="panel-body">
-
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-                    <strong>Data Belum Lengkap Atau Sesuai. </strong> Lengkapi data yang diminta
-                </div>
-            @endif
-
-                        {!! Form::open(['url' => '/permissions', 'class' => 'form-horizontal', 'files' => true]) !!}
-
-                        @include ('permissions.form')
-
-                        {!! Form::close() !!}
-
-        </div>
+    <section class="content-header">
+        <h1>
+            Permissions
+        </h1>
     </section>
+    <div class="content">
+        @include('adminlte-templates::common.errors')
+        <div class="box box-primary">
+
+            <div class="box-body">
+                <div class="row">
+                    {!! Form::open(['route' => 'permissions.store']) !!}
+
+                    @include('permissions.fields')
+
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

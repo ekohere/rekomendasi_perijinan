@@ -22,6 +22,7 @@
 
     <!-- iCheck -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/square/_all.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,7 +40,7 @@
 
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">Masuk ke dalam aplikasi</p>
 
         <form method="post" action="{{ url('/login') }}">
             {!! csrf_field() !!}
@@ -62,13 +63,12 @@
                     <strong>{{ $errors->first('password') }}</strong>
                 </span>
                 @endif
-
             </div>
             <div class="row">
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            <input type="checkbox" name="remember"> Remember Me
+                            <input type="checkbox" name="remember"> Ingat Saya
                         </label>
                     </div>
                 </div>
@@ -80,8 +80,8 @@
             </div>
         </form>
 
-        <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
-        <a href="{{ url('/register') }}" class="text-center">Register a new membership</a>
+        <a href="{{ url('/password/reset') }}">Lupa Password</a><br>
+        <a href="{{ url('/register') }}" class="text-center">Daftar Pengguna Baru</a>
 
     </div>
     <!-- /.login-box-body -->

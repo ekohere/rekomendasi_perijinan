@@ -39,7 +39,7 @@
 
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Reset your password</p>
+        <p class="login-box-msg">Reset Password Aplikasi</p>
 
         <form method="post" action="{{ url('/password/reset') }}">
             {!! csrf_field() !!}
