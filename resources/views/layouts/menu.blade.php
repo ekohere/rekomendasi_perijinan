@@ -7,15 +7,15 @@
     </a>
     <ul class="treeview-menu">
         <li class="{{ Request::is('jenisInstitusis*') ? 'active' : '' }}">
-            <a href="{!! route('jenisInstitusis.index') !!}"><i class="fa fa-th"></i><span>Jenis Institusi</span></a>
+            <a href="{!! route('jenisInstitusis.index') !!}"><i class="fa fa-th"></i><span>Jenis OPD</span></a>
         </li>
 
         <li class="{{ Request::is('institusis*') ? 'active' : '' }}">
-            <a href="{!! route('institusis.index') !!}"><i class="fa fa-university"></i><span>Institusis</span></a>
+            <a href="{!! route('institusis.index') !!}"><i class="fa fa-university"></i><span>OPD</span></a>
         </li>
 
         <li class="{{ Request::is('rekomendasis*') ? 'active' : '' }}">
-            <a href="{!! route('rekomendasis.index') !!}"><i class="fa fa-check-square-o"></i><span>Rekomendasis</span></a>
+            <a href="{!! route('rekomendasis.index') !!}"><i class="fa fa-check-square-o"></i><span>Rekomendasi</span></a>
         </li>
 
         <li class="{{ Request::is('jenjangPendidikans*') ? 'active' : '' }}">
@@ -30,7 +30,7 @@
 
 <li class="{{ Request::is('statusRekomendasis*') ? 'active' : '' }} treeview">
     <a href="#">
-        <i class="fa fa-gears"></i> <span>Setting Institusi</span>
+        <i class="fa fa-gears"></i> <span>Setting OPD</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>

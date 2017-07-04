@@ -21,11 +21,7 @@
             <td>
                 <a href="{{ url('/roles/' . $item->id) }}" class="btn btn-success btn-xs" title="View role"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                 <a href="{{ url('/roles/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit role"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-                {!! Form::open([
-                    'method'=>'DELETE',
-                    'url' => ['/roles', $item->id],
-                    'style' => 'display:inline'
-                ]) !!}
+                {!! Form::open(['route' => ['roles.destroy', $item->id], 'method' => 'delete','style' => 'display:inline']) !!}
                 {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete role" />', array(
                         'type' => 'submit',
                         'class' => 'btn btn-danger btn-xs',

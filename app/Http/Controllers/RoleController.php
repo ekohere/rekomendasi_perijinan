@@ -157,7 +157,8 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        Role::destroy($id);
+        Role::find($id)->delete();
+        //Role::destroy($id);
 
         Session::flash('flash_message', 'Role deleted!');
 
