@@ -1,9 +1,9 @@
 <table class="table table-responsive" id="rekomendasis-table">
     <thead>
         <th>Nama</th>
-        <th>Institusi Id</th>
+        <th>Institusi</th>
         <th>Url</th>
-        <th>Users Id</th>
+        <th>Users</th>
         <th colspan="3">Action</th>
     </thead>
     <tbody>

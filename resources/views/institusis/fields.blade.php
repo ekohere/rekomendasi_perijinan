@@ -24,19 +24,19 @@
 
 <!-- Jenis Institusi Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('jenis_institusi_id', 'Jenis Institusi Id:') !!}
-    {!! Form::number('jenis_institusi_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('jenis_institusi_id', 'Jenis Institusi:') !!}
+    {!! Form::select('jenis_institusi_id', $jenis_institusis, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Parent Institusi Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('parent_institusi_id', 'Parent Institusi Id:') !!}
+    {!! Form::label('parent_institusi_id', 'Parent Institusi:') !!}
     {!! Form::number('parent_institusi_id', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Pimpinan Institusi Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('pimpinan_institusi_id', 'Pimpinan Institusi Id:') !!}
+    {!! Form::label('pimpinan_institusi_id', 'Pimpinan Institusi:') !!}
     {!! Form::number('pimpinan_institusi_id', null, ['class' => 'form-control']) !!}
 </div>
 

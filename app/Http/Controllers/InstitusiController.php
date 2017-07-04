@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-
+use App\Models\JenisInstitusi;
 class InstitusiController extends AppBaseController
 {
     /** @var  InstitusiRepository */
@@ -43,7 +43,8 @@ class InstitusiController extends AppBaseController
      */
     public function create()
     {
-        return view('institusis.create');
+        $jenis_institusis=JenisInstitusi::pluck('nama','id');
+        return view('institusis.create',compact('jenis_institusis'));
     }
 
     /**

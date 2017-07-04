@@ -11,11 +11,11 @@
         </li>
 
         <li class="{{ Request::is('institusis*') ? 'active' : '' }}">
-            <a href="{!! route('institusis.index') !!}"><i class="fa fa-university"></i><span>Institusis</span></a>
+            <a href="{!! route('institusis.index') !!}"><i class="fa fa-university"></i><span>Institusi</span></a>
         </li>
 
         <li class="{{ Request::is('rekomendasis*') ? 'active' : '' }}">
-            <a href="{!! route('rekomendasis.index') !!}"><i class="fa fa-check-square-o"></i><span>Rekomendasis</span></a>
+            <a href="{!! route('rekomendasis.index') !!}"><i class="fa fa-check-square-o"></i><span>Rekomendasi</span></a>
         </li>
 
         <li class="{{ Request::is('jenjangPendidikans*') ? 'active' : '' }}">

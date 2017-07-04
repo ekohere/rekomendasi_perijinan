@@ -12,13 +12,13 @@
 
 <!-- Parent Status Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('parent_status_id', 'Parent Status Id:') !!}
+    {!! Form::label('parent_status_id', 'Parent Status:') !!}
     {!! Form::number('parent_status_id', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Institusi Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('institusi_id', 'Institusi Id:') !!}
+    {!! Form::label('institusi_id', 'Institusi:') !!}
     {!! Form::number('institusi_id', null, ['class' => 'form-control']) !!}
 </div>
 
