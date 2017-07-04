@@ -11,7 +11,7 @@
         </li>
 
         <li class="{{ Request::is('institusis*') ? 'active' : '' }}">
-            <a href="{!! route('institusis.index') !!}"><i class="fa fa-university"></i><span>Institusis</span></a>
+            <a href="{!! route('institusis.index') !!}"><i class="fa fa-university"></i><span>OPD</span></a>
         </li>
 
         <li class="{{ Request::is('rekomendasis*') ? 'active' : '' }}">
