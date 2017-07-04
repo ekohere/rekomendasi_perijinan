@@ -2,8 +2,8 @@
     <thead>
         <th>Nama</th>
         <th>Keterangan</th>
-        <th>Parent Status Id</th>
-        <th>Institusi Id</th>
+        <th>Parent Status</th>
+        <th>Institusi</th>
         <th colspan="3">Action</th>
     </thead>
     <tbody>

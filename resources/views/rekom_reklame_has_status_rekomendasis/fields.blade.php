@@ -1,18 +1,18 @@
 <!-- Rekomendasi Reklame Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('rekomendasi_reklame_id', 'Rekomendasi Reklame Id:') !!}
+    {!! Form::label('rekomendasi_reklame_id', 'Rekomendasi Reklame:') !!}
     {!! Form::number('rekomendasi_reklame_id', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Status Rekomendasi Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('status_rekomendasi_id', 'Status Rekomendasi Id:') !!}
+    {!! Form::label('status_rekomendasi_id', 'Status Rekomendasi:') !!}
     {!! Form::number('status_rekomendasi_id', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Users Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('users_id', 'Users Id:') !!}
+    {!! Form::label('users_id', 'Users:') !!}
     {!! Form::number('users_id', null, ['class' => 'form-control']) !!}
 </div>
 

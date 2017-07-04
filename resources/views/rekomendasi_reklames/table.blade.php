@@ -7,8 +7,8 @@
         <th>Lama Pemasangan To</th>
         <th>Lokasi Pemasangan</th>
         <th>Scan Desain Reklame</th>
-        <th>Rekomendasi Id</th>
-        <th>Data Usaha Id</th>
+        <th>Rekomendasi</th>
+        <th>Data Usaha</th>
         <th colspan="3">Action</th>
     </thead>
     <tbody>
