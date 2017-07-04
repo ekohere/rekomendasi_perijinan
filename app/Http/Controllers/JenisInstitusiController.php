@@ -31,7 +31,7 @@ class JenisInstitusiController extends AppBaseController
     {
         $this->jenisInstitusiRepository->pushCriteria(new RequestCriteria($request));
         $jenisInstitusis = $this->jenisInstitusiRepository->all();
-
+        
         return view('jenis_institusis.index')
             ->with('jenisInstitusis', $jenisInstitusis);
     }

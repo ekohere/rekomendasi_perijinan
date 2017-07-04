@@ -11,7 +11,11 @@
         </li>
 
         <li class="{{ Request::is('institusis*') ? 'active' : '' }}">
-            <a href="{!! route('institusis.index') !!}"><i class="fa fa-university"></i><span>Institusis</span></a>
+<<<<<<< HEAD
+            <a href="{!! route('institusis.index') !!}"><i class="fa fa-university"></i><span>OPD</span></a>
+=======
+            <a href="{!! route('institusis.index') !!}"><i class="fa fa-university"></i><span>Institusi</span></a>
+>>>>>>> 750ec94dc00ff9d3846f1c12bd9b80ed9fb5de2a
         </li>
 
         <li class="{{ Request::is('rekomendasis*') ? 'active' : '' }}">

@@ -4,9 +4,9 @@
         <th>Nama</th>
         <th>Kontak</th>
         <th>Email</th>
-        <th>Jenis Institusi Id</th>
-        <th>Parent Institusi Id</th>
-        <th>Pimpinan Institusi Id</th>
+        <th>Jenis Institusi</th>
+        <th>Parent Institusi</th>
+        <th>Pimpinan Institusi</th>
         <th colspan="3">Action</th>
     </thead>
     <tbody>
