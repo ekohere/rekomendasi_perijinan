@@ -21,8 +21,8 @@
             <td>{!! $rekomendasiReklame->lama_pemasangan_to !!}</td>
             <td>{!! $rekomendasiReklame->lokasi_pemasangan !!}</td>
             <td>{!! $rekomendasiReklame->scan_desain_reklame !!}</td>
-            <td>{!! $rekomendasiReklame->rekomendasi_id !!}</td>
-            <td>{!! $rekomendasiReklame->data_usaha_id !!}</td>
+            <td>{!! $rekomendasiReklame->rekomendasi->nama !!}</td>
+            <td>{!! $rekomendasiReklame->dataUsaha->nama !!}</td>
             <td>
                 {!! Form::open(['route' => ['rekomendasiReklames.destroy', $rekomendasiReklame->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

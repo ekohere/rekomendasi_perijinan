@@ -29,10 +29,11 @@
                 <th>Update Terakhir</th>
                 </thead>
                 <tbody>
-                @foreach($rekomendasis as $rekomendasi)
+                @foreach($rekomendasi_reklames as $rekomendasi_reklame)
                     <tr>
-                        <td>{!! $rekomendasi->nama !!}</td>
-                        <td>{!! $rekomendasi->institusi->nama !!}</td>
+                        <td>{!! $rekomendasi_reklame->rekomendasi->nama !!}</td>
+                        <td>{!! $rekomendasi_reklame->rekomendasi->institusi->nama !!}</td>
+                        <td>{!! $rekomendasi_reklame->lastStatusRekomendasi()->statusRekomendasi->nama or ''!!}</td>
                     </tr>
                 @endforeach
                 </tbody>

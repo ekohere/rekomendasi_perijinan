@@ -85,4 +85,9 @@ class RekomendasiReklame extends Model
     {
         return $this->hasMany(\App\Models\RekomReklameHasStatusRekomendasi::class);
     }
+
+    public function lastStatusRekomendasi()
+    {
+        return $this->rekomReklameHasStatusRekomendasis()->orderBy('created_at','desc')->first();
+    }
 }

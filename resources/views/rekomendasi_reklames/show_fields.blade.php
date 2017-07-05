@@ -49,12 +49,12 @@
 <!-- Rekomendasi Id Field -->
 <div class="form-group">
     {!! Form::label('rekomendasi_id', 'Rekomendasi Id:') !!}
-    <p>{!! $rekomendasiReklame->rekomendasi_id !!}</p>
+    <p>{!! $rekomendasiReklame->rekomendasi->nama !!}</p>
 </div>
 
 <!-- Data Usaha Id Field -->
 <div class="form-group">
     {!! Form::label('data_usaha_id', 'Data Usaha Id:') !!}
-    <p>{!! $rekomendasiReklame->data_usaha_id !!}</p>
+    <p>{!! $rekomendasiReklame->dataUsaha->nama !!}</p>
 </div>
 

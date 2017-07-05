@@ -10,9 +10,9 @@
     @foreach($rekomendasis as $rekomendasi)
         <tr>
             <td>{!! $rekomendasi->nama !!}</td>
-            <td>{!! $rekomendasi->institusi_id !!}</td>
+            <td>{!! $rekomendasi->institusi->nama !!}</td>
             <td>{!! $rekomendasi->url !!}</td>
-            <td>{!! $rekomendasi->users_id !!}</td>
+            <td>{!! $rekomendasi->user->name !!}</td>
             <td>
                 {!! Form::open(['route' => ['rekomendasis.destroy', $rekomendasi->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

@@ -6,10 +6,13 @@ use App\Http\Requests\CreateRekomendasiReklameRequest;
 use App\Http\Requests\UpdateRekomendasiReklameRequest;
 use App\Models\DataUsaha;
 use App\Models\Rekomendasi;
+use App\Models\RekomReklameHasStatusRekomendasi;
 use App\Repositories\RekomendasiReklameRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -45,8 +48,8 @@ class RekomendasiReklameController extends AppBaseController
      */
     public function create()
     {
-        $rekomendasi = Rekomendasi::pluck('id','nama');
-        $data_usaha = DataUsaha::pluck('id','nama');
+        $rekomendasi = Rekomendasi::pluck('nama','id');
+        $data_usaha = DataUsaha::pluck('nama','id');
 
         return view('rekomendasi_reklames.create', compact('rekomendasi', 'data_usaha'));
     }
@@ -62,10 +65,20 @@ class RekomendasiReklameController extends AppBaseController
     {
         $input = $request->all();
 
-        $rekomendasiReklame = $this->rekomendasiReklameRepository->create($input);
+        try{
+            DB::beginTransaction();
+            $rekomendasiReklame = $this->rekomendasiReklameRepository->create($input);
+            RekomReklameHasStatusRekomendasi::create([
+                'rekomendasi_reklame_id'=>$rekomendasiReklame->id,
+                'status_rekomendasi_id'=>'1',
+                'users_id'=>Auth::id()]);
+            DB::commit();
+            Flash::success('Rekomendasi Reklame saved successfully.');
+        }catch (Exception $e){
+            DB::rollback();
 
-        Flash::success('Rekomendasi Reklame saved successfully.');
-
+            Flash::error('Rekomendasi Reklame Gagal '.$e->getMessage());
+        }
         return redirect(route('rekomendasiReklames.index'));
     }
 
@@ -98,8 +111,8 @@ class RekomendasiReklameController extends AppBaseController
      */
     public function edit($id)
     {
-        $rekomendasi = Rekomendasi::pluck('id','nama');
-        $data_usaha = DataUsaha::pluck('id','nama');
+        $rekomendasi = Rekomendasi::pluck('nama','id');
+        $data_usaha = DataUsaha::pluck('nama','id');
 
         $rekomendasiReklame = $this->rekomendasiReklameRepository->findWithoutFail($id);
 

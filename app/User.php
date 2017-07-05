@@ -37,4 +37,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(\App\Models\Biodata::class);
     }
+
+    public function rekomendasis()
+    {
+        return $this->hasMany(\App\Models\Rekomendasi::class);
+    }
 }

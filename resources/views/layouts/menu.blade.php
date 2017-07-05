@@ -59,7 +59,7 @@
     </ul>
 </li>
 
-<li class="{{  Request::is('roles*')||Request::is('permissions*')||Request::is('user_role*')||Request::is('users*') ? 'active' : '' }} treeview">
+<li class="{{  Request::is('roles*')||Request::is('permissions*')||Request::is('user_role*')||Request::is('users*')||Request::is('pegawais*') ? 'active' : '' }} treeview">
     <a href="#">
         <i class="fa fa-cog"></i> <span>Pengaturan Role & User</span>
             <span class="pull-right-container">
@@ -70,7 +70,9 @@
         <li class="{{ Request::is('users*') ? 'active' : '' }}">
             <a href="{!! route('users.index') !!}"><i class="fa fa-users"></i><span>Users</span></a>
         </li>
-
+        <li class="{{ Request::is('pegawais*') ? 'active' : '' }}">
+            <a href="{!! route('pegawais.index') !!}"><i class="fa fa-edit"></i><span>Pegawais</span></a>
+        </li>
         <li class="{{ Request::is('roles*') ? 'active' : '' }}">
             <a href="{!! route('roles.index') !!}"><i class="fa fa-sun-o"></i><span>Roles</span></a>
         </li>
@@ -106,4 +108,6 @@
 <li class="{{ Request::is('biodatas*') ? 'active' : '' }}">
     <a href="{!! route('biodatas.index') !!}"><i class="fa fa-server"></i><span>Biodata</span></a>
 </li>
+
+
 

@@ -79,7 +79,15 @@ class Institusi extends Model
      **/
     public function pegawais()
     {
-        return $this->hasMany(\App\Models\Pegawai::class);
+        return $this->hasMany(\App\Models\Pegawai::class,'pimpinan_institusi_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function pimpinan_institusi()
+    {
+        return $this->hasOne(\App\Models\Pegawai::class,'pimpinan_institusi_id');
     }
 
     /**
