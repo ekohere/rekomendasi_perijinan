@@ -104,7 +104,7 @@ class UserRoleController extends Controller
         
         $requestData = $request->all();
         
-        $user_role = User::findOrFail($id);
+        $user = User::findOrFail($id);
 
         $requestRoles=[];
         if(isset($request->roles)) {
@@ -117,8 +117,8 @@ class UserRoleController extends Controller
         try{
             DB::beginTransaction();
 
-            $user_role->roles()->sync([]);
-            $user_role->attachRoles($requestRoles);
+            $user->roles()->sync([]);
+            $user->attachRoles($requestRoles);
 
             DB::commit();
             Session::flash('flash_message', 'User-Role berhasil ditambah!');

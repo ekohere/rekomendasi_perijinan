@@ -4,9 +4,9 @@
         <th>Nama</th>
         <th>Kontak</th>
         <th>Email</th>
-        <th>Jenis Institusi</th>
-        <th>Parent Institusi</th>
-        <th>Pimpinan Institusi</th>
+        <th>Jenis OPD</th>
+        <th>OPD Induk</th>
+        <th>Pimpinan OPD</th>
         <th colspan="3">Action</th>
     </thead>
     <tbody>
@@ -16,7 +16,7 @@
             <td>{!! $institusi->nama !!}</td>
             <td>{!! $institusi->kontak !!}</td>
             <td>{!! $institusi->email !!}</td>
-            <td>{!! $institusi->jenis_institusi_id !!}</td>
+            <td>{!! $institusi->jenisInstitusi->nama !!}</td>
             <td>{!! $institusi->parent_institusi_id !!}</td>
             <td>{!! $institusi->pimpinan_institusi_id !!}</td>
             <td>

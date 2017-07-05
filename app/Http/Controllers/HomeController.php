@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rekomendasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $rekomendasis=Rekomendasi::whereHas('rekomendasiReklames',function($query){
+            $query->whereHas('dataUsaha',function($query){
+                $query->where('user_id',Auth::id());
+            });
+        });
+        return view('home',compact('rekomendasis'));
     }
 }

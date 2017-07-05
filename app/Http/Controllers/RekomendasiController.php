@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateRekomendasiRequest;
 use App\Http\Requests\UpdateRekomendasiRequest;
+use App\Models\Institusi;
 use App\Repositories\RekomendasiRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -43,7 +44,8 @@ class RekomendasiController extends AppBaseController
      */
     public function create()
     {
-        return view('rekomendasis.create');
+        $institusis=Institusi::pluck('nama','id');
+        return view('rekomendasis.create',compact('institusis'));
     }
 
     /**

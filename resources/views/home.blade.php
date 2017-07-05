@@ -2,25 +2,38 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-
-
-    </div>
-
     <br>
-
-  <div class="col-md-2">
-    <div class="thumbnail">
-      <a href="/assets/images/150.jpg">
-        <img src="/assets/images/150.jpg" alt="Lights" style="width:100%">
-        <div class="caption">
-          <p align="center">Pengajuan Rekomendasi Reklame</p>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="thumbnail">
+                <a href="/assets/images/150.jpg">
+                    <img src="/assets/images/150.jpg" alt="Lights" style="width:100%">
+                    <div class="caption">
+                        <p align="center">Pengajuan Rekomendasi Reklame</p>
+                    </div>
+                </a>
+            </div>
         </div>
-      </a>
     </div>
-  </div>
 
-
+    <div class="box box-primary">
+        <div class="box-body">
+            <table class="table table-responsive" id="rekomendasis-table">
+                <thead>
+                <th>Nama</th>
+                <th>Institusi</th>
+                </thead>
+                <tbody>
+                @foreach($rekomendasis as $rekomendasi)
+                    <tr>
+                        <td>{!! $rekomendasi->nama !!}</td>
+                        <td>{!! $rekomendasi->institusi->nama !!}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 </div>
 @endsection

@@ -7,7 +7,7 @@
 <!-- Institusi Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('institusi_id', 'Institusi:') !!}
-    {!! Form::number('institusi_id', null, ['class' => 'form-control']) !!}
+    {!! Form::select('institusi_id', $institusis,null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Url Field -->
@@ -17,10 +17,7 @@
 </div>
 
 <!-- Users Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('users_id', 'Users:') !!}
-    {!! Form::number('users_id', null, ['class' => 'form-control']) !!}
-</div>
+    {!! Form::hidden('users_id', Auth::id(), ['class' => 'form-control']) !!}
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

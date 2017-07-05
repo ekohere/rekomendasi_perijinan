@@ -1,3 +1,6 @@
+<li class="{{ Request::is('home') ? 'active' : '' }}">
+    <a href="{!! route('home') !!}"><i class="fa fa-home"></i><span>Home</span></a>
+</li>
 <li class="{{ Request::is('jenisInstitusis*')||Request::is('jenjangPendidikans*')||Request::is('agamas*')||Request::is('rekomendasis*')||Request::is('institusis*') ? 'active' : '' }} treeview">
     <a href="#">
         <i class="fa fa-cubes"></i> <span>Admin Master Data</span>
