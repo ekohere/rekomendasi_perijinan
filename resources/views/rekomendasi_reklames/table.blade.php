@@ -3,8 +3,8 @@
         <th>Jenis Reklame</th>
         <th>Teks Reklame</th>
         <th>Ukuran Reklame</th>
-        <th>Lama Pemasangan From</th>
-        <th>Lama Pemasangan To</th>
+        <th>Lama Pemasangan Dari</th>
+        <th>Lama Pemasangan Sampai</th>
         <th>Lokasi Pemasangan</th>
         <th>Scan Desain Reklame</th>
         <th>Rekomendasi</th>

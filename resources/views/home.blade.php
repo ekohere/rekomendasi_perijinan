@@ -17,11 +17,16 @@
     </div>
 
     <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Rekomendasi Yang Telah Diajukan</h3>
+        </div>
         <div class="box-body">
             <table class="table table-responsive" id="rekomendasis-table">
                 <thead>
                 <th>Nama</th>
                 <th>Institusi</th>
+                <th>Status</th>
+                <th>Update Terakhir</th>
                 </thead>
                 <tbody>
                 @foreach($rekomendasis as $rekomendasi)

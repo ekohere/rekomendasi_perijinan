@@ -24,13 +24,13 @@
 
 <!-- Lama Pemasangan From Field -->
 <div class="form-group">
-    {!! Form::label('lama_pemasangan_from', 'Lama Pemasangan From:') !!}
+    {!! Form::label('lama_pemasangan_from', 'Lama Pemasangan Dari:') !!}
     <p>{!! $rekomendasiReklame->lama_pemasangan_from !!}</p>
 </div>
 
 <!-- Lama Pemasangan To Field -->
 <div class="form-group">
-    {!! Form::label('lama_pemasangan_to', 'Lama Pemasangan To:') !!}
+    {!! Form::label('lama_pemasangan_to', 'Lama Pemasangan Sampai:') !!}
     <p>{!! $rekomendasiReklame->lama_pemasangan_to !!}</p>
 </div>
 

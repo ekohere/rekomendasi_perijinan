@@ -1,6 +1,5 @@
 <table class="table table-responsive" id="dataUsahas-table">
     <thead>
-        <th>User Id</th>
         <th>Nama</th>
         <th>Jenis</th>
         <th>Kontak</th>
@@ -16,7 +15,6 @@
     <tbody>
     @foreach($dataUsahas as $dataUsaha)
         <tr>
-            <td>{!! $dataUsaha->user_id !!}</td>
             <td>{!! $dataUsaha->nama !!}</td>
             <td>{!! $dataUsaha->jenis !!}</td>
             <td>{!! $dataUsaha->kontak !!}</td>
