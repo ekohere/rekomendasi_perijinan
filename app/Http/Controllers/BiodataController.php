@@ -52,6 +52,7 @@ class BiodataController extends AppBaseController
      */
     public function create()
     {
+        
         return view('biodatas.create');
     }
 
@@ -68,33 +69,51 @@ class BiodataController extends AppBaseController
 
         $biodata = $this->biodataRepository->create($input);
 
-        $requestData = $request->all();
-
-       try{
+         $requestData = $request->all();
+    
+        
+        $requestAlamatAsal=$request->get('alamat_asal');
+        $requestAlamatSekarang=$request->get('alamat_sekarang');
+        try{
             DB::beginTransaction();
 
+           
             $biodatum=Biodata::create($requestData);
 
             $path=null;
 
             if( $request->hasFile('foto')) {
                 $ext=File::extension($request->file('foto')->getClientOriginalName());
-                $path = $request->foto->storeAs('images', $biodatum->id.'.'.$ext,'local_public');
+                $filename=$biodatum->id.'.'.$ext;
+                $path = $request->foto->storeAs('images', $filename,'local_public');
+                chmod(public_path().'/'.$path, 0777);
             }
             if($path!=null){
                 $biodatum->foto=$path;
                 $biodatum->save();
             }
 
+           
+
+            Alamat::updateOrCreate(
+                ['biodata_id'=>$biodatum->id,'status'=>'asal'],
+                $requestAlamatAsal
+            );
+
+            Alamat::updateOrCreate(
+                ['biodata_id'=>$biodatum->id,'status'=>'sekarang'],
+                $requestAlamatSekarang
+            );
 
             DB::commit();
 
-            Session::flash('flash_message', 'Buku added!');
-            }catch(Exception $e){
+            Session::flash('flash_message', 'Biodata added!');
+        }catch(Exception $e){
             DB::rollback();
         }
 
-        Flash::success('Biodata saved successfully.');
+
+       
 
         return redirect(route('biodatas.index'));
     }
@@ -150,35 +169,65 @@ class BiodataController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, Request $request)
+     public function update($id, UpdateDataUsahaRequest $request)
     {
-        
+        $dataUsaha = $this->dataUsahaRepository->findWithoutFail($id);
+
+        if (empty($dataUsaha)) {
+            Flash::error('Data Usaha not found');
+
+            return redirect(route('dataUsahas.index'));
+        }
+
+        $dataUsaha = $this->dataUsahaRepository->update($request->all(), $id);
         $requestData = $request->all();
+       
         
+        $requestAlamatAsal=$request->get('alamat_asal');
+        $requestAlamatSekarang=$request->get('alamat_sekarang');
+
         try{
             DB::beginTransaction();
 
-           $biodata = Buku::where('id',$id)->firstOrFail();
-            $biodata->update($requestData);
+            /*return $requestData;*/
+
+            
+
+            $biodatum = Biodata::findOrFail(Auth::user()->biodata->id);
+            $biodatum->update($requestData);
 
             $path=null;
-
             if( $request->hasFile('foto')) {
                 $ext=File::extension($request->file('foto')->getClientOriginalName());
-                $path = $request->foto->storeAs('scan_buku', $biodata->id.'.'.$ext,'local_public');
+                $path = $request->foto->storeAs('images', $biodatum->id.'.'.$ext,'local_public');
+                chmod(public_path().'/'.$path, 0777);
             }
             if($path!=null){
-                $biodata->foto=$path;
-                $biodata->save();
+                $biodatum->foto=$path;
+                $biodatum->save();
             }
 
+         
+            Alamat::updateOrCreate(
+                ['biodata_id'=>Auth::user()->biodata->id,'status'=>'asal'],
+                $requestAlamatAsal
+            );
 
+            Alamat::updateOrCreate(
+                ['biodata_id'=>Auth::user()->biodata->id,'status'=>'sekarang'],
+                $requestAlamatSekarang
+            );
+ 
             DB::commit();
 
-            Session::flash('flash_message', 'Buku added!');
-            }catch(Exception $e){
+            Session::flash('flash_message', 'Biodata updated!');
+        }catch (Exception $e){
             DB::rollback();
+            Session::flash('flash_message', 'Update Fail!');
         }
+
+
+
         Flash::success('Biodata updated successfully.');
 
         return redirect(route('biodatas.index'));
