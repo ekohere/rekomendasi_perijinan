@@ -6,10 +6,13 @@ use App\Http\Requests\CreateRekomendasiReklameRequest;
 use App\Http\Requests\UpdateRekomendasiReklameRequest;
 use App\Models\DataUsaha;
 use App\Models\Rekomendasi;
+use App\Models\RekomReklameHasStatusRekomendasi;
 use App\Repositories\RekomendasiReklameRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -45,8 +48,8 @@ class RekomendasiReklameController extends AppBaseController
      */
     public function create()
     {
-        $rekomendasi = Rekomendasi::pluck('id','nama');
-        $data_usaha = DataUsaha::pluck('id','nama');
+        $rekomendasi = Rekomendasi::pluck('nama','id');
+        $data_usaha = DataUsaha::pluck('nama','id');
 
         return view('rekomendasi_reklames.create', compact('rekomendasi', 'data_usaha'));
     }
@@ -62,10 +65,21 @@ class RekomendasiReklameController extends AppBaseController
     {
         $input = $request->all();
 
-        $rekomendasiReklame = $this->rekomendasiReklameRepository->create($input);
+        try{
+            DB::beginTransaction();
+            $rekomendasiReklame = $this->rekomendasiReklameRepository->create($input);
+            RekomReklameHasStatusRekomendasi::create([
+                'rekomendasi_reklame_id'=>$rekomendasiReklame->id,
+                'status_rekomendasi_id'=>'1',
+                'users_id'=>Auth::id()]);
+            DB::commit();
+            Flash::success('Rekomendasi Reklame saved successfully.');
+        }catch (Exception $e){
+            DB::rollback();
 
-        Flash::success('Rekomendasi Reklame saved successfully.');
-
+            Flash::error('Rekomendasi Reklame Gagal '.$e->getMessage());
+        }
+        return redirect(route('home'));
         return redirect(route('rekomendasiReklames.index'));
     }
 
@@ -98,8 +112,8 @@ class RekomendasiReklameController extends AppBaseController
      */
     public function edit($id)
     {
-        $rekomendasi = Rekomendasi::pluck('id','nama');
-        $data_usaha = DataUsaha::pluck('id','nama');
+        $rekomendasi = Rekomendasi::pluck('nama','id');
+        $data_usaha = DataUsaha::pluck('nama','id');
 
         $rekomendasiReklame = $this->rekomendasiReklameRepository->findWithoutFail($id);
 
@@ -126,7 +140,6 @@ class RekomendasiReklameController extends AppBaseController
 
         if (empty($rekomendasiReklame)) {
             Flash::error('Rekomendasi Reklame not found');
-
             return redirect(route('rekomendasiReklames.index'));
         }
 
@@ -159,5 +172,86 @@ class RekomendasiReklameController extends AppBaseController
         Flash::success('Rekomendasi Reklame deleted successfully.');
 
         return redirect(route('rekomendasiReklames.index'));
+    }
+
+    //Perubahan Status Rekomendasi Reklame
+    public function verifikasi($id)
+    {
+        $rekomendasiReklame = $this->rekomendasiReklameRepository->findWithoutFail($id);
+
+        if (empty($rekomendasiReklame)) {
+            Flash::error('Rekomendasi Reklame not found');
+            return redirect(route('rekomendasiReklames.index'));
+        }
+
+        RekomReklameHasStatusRekomendasi::create([
+            'rekomendasi_reklame_id'=>$rekomendasiReklame->id,
+            'status_rekomendasi_id'=>2,
+            'users_id'=>Auth::id()
+        ]);
+
+        Flash::success('Rekomendasi Sedang Diverifikasi');
+
+        return redirect(route('home'));
+    }
+
+    public function verifikasi_valid($id)
+    {
+        $rekomendasiReklame = $this->rekomendasiReklameRepository->findWithoutFail($id);
+
+        if (empty($rekomendasiReklame)) {
+            Flash::error('Rekomendasi Reklame not found');
+            return redirect(route('rekomendasiReklames.index'));
+        }
+
+        RekomReklameHasStatusRekomendasi::create([
+            'rekomendasi_reklame_id'=>$rekomendasiReklame->id,
+            'status_rekomendasi_id'=>3,
+            'users_id'=>Auth::id()
+        ]);
+
+        Flash::success('Rekomendasi Telah Diverifikasi Valid');
+
+        return redirect(route('home'));
+    }
+
+    public function disetujui($id)
+    {
+        $rekomendasiReklame = $this->rekomendasiReklameRepository->findWithoutFail($id);
+
+        if (empty($rekomendasiReklame)) {
+            Flash::error('Rekomendasi Reklame not found');
+            return redirect(route('rekomendasiReklames.index'));
+        }
+
+        RekomReklameHasStatusRekomendasi::create([
+            'rekomendasi_reklame_id'=>$rekomendasiReklame->id,
+            'status_rekomendasi_id'=>4,
+            'users_id'=>Auth::id()
+        ]);
+
+        Flash::success('Rekomendasi Telah Disetujui');
+
+        return redirect(route('home'));
+    }
+
+    public function tolak($id)
+    {
+        $rekomendasiReklame = $this->rekomendasiReklameRepository->findWithoutFail($id);
+
+        if (empty($rekomendasiReklame)) {
+            Flash::error('Rekomendasi Reklame not found');
+            return redirect(route('rekomendasiReklames.index'));
+        }
+
+        RekomReklameHasStatusRekomendasi::create([
+            'rekomendasi_reklame_id'=>$rekomendasiReklame->id,
+            'status_rekomendasi_id'=>5,
+            'users_id'=>Auth::id()
+        ]);
+
+        Flash::success('Rekomendasi Ditolak');
+
+        return redirect(route('home'));
     }
 }

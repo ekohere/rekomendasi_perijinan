@@ -1,48 +1,44 @@
 <!-- Id Field -->
 <div class="form-group">
     {!! Form::label('id', 'Id:') !!}
-    <p>{!! $rekomendasi->id !!}</p>
+    <p>{!! $pegawai->id !!}</p>
 </div>
 
-<!-- Nama Field -->
+<!-- Nip Field -->
 <div class="form-group">
-    {!! Form::label('nama', 'Nama:') !!}
-    <p>{!! $rekomendasi->nama !!}</p>
+    {!! Form::label('nip', 'Nip:') !!}
+    <p>{!! $pegawai->nip !!}</p>
 </div>
 
 <!-- Institusi Id Field -->
 <div class="form-group">
     {!! Form::label('institusi_id', 'Institusi Id:') !!}
-    <p>{!! $rekomendasi->institusi->nama !!}</p>
-</div>
-
-<!-- Url Field -->
-<div class="form-group">
-    {!! Form::label('url', 'Url:') !!}
-    <p>{!! $rekomendasi->url !!}</p>
+    <p>{!! $pegawai->institusi->nama !!}</p>
 </div>
 
 <!-- Users Id Field -->
 <div class="form-group">
     {!! Form::label('users_id', 'Users Id:') !!}
-    <p>{!! $rekomendasi->user->name !!}</p>
+    <p>{!! $pegawai->user->name !!}</p>
 </div>
 
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}
-    <p>{!! $rekomendasi->created_at !!}</p>
+    <p>{!! $pegawai->created_at !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
     {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $rekomendasi->updated_at !!}</p>
+    <p>{!! $pegawai->updated_at !!}</p>
 </div>
 
 <!-- Deleted At Field -->
 <div class="form-group">
     {!! Form::label('deleted_at', 'Deleted At:') !!}
-    <p>{!! $rekomendasi->deleted_at !!}</p>
+    <p>{!! $pegawai->deleted_at !!}</p>
 </div>
+
+
 

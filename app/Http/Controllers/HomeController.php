@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rekomendasi;
+use App\Models\RekomendasiReklame;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Zizaco\Entrust\Entrust;
 
 class HomeController extends Controller
 {
@@ -25,11 +27,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $rekomendasis=Rekomendasi::whereHas('rekomendasiReklames',function($query){
-            $query->whereHas('dataUsaha',function($query){
+        /*if(Auth::user()->hasRole('warga')){*/
+            $rekomendasi_reklames=RekomendasiReklame::whereHas('dataUsaha',function($query){
                 $query->where('user_id',Auth::id());
-            });
-        });
-        return view('home',compact('rekomendasis'));
+            })->get();
+        /*}*/
+
+        if(Auth::user()->hasRole(['tim_teknis_opd','pimpinan_opd','administrator'])) {
+            $rekomendasi_reklames = RekomendasiReklame::get();
+        }
+
+        return view('home',compact('rekomendasi_reklames'));
     }
 }

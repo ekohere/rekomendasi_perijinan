@@ -6,15 +6,15 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Rekomendasi
+ * Class Pegawai
  * @package App\Models
- * @version June 17, 2017, 10:32 pm UTC
+ * @version July 5, 2017, 1:30 pm UTC
  */
-class Rekomendasi extends Model
+class Pegawai extends Model
 {
     use SoftDeletes;
 
-    public $table = 'rekomendasi';
+    public $table = 'pegawai';
     
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -24,9 +24,8 @@ class Rekomendasi extends Model
 
 
     public $fillable = [
-        'nama',
+        'nip',
         'institusi_id',
-        'url',
         'users_id'
     ];
 
@@ -37,9 +36,8 @@ class Rekomendasi extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'nama' => 'string',
+        'nip' => 'string',
         'institusi_id' => 'integer',
-        'url' => 'string',
         'users_id' => 'integer'
     ];
 
@@ -68,11 +66,9 @@ class Rekomendasi extends Model
         return $this->belongsTo(\App\User::class,'users_id');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function rekomendasiReklames()
+/*
+    public function institusis()
     {
-        return $this->hasMany(\App\Models\RekomendasiReklame::class);
-    }
+        return $this->hasMany(\App\Models\Institusi::class);
+    }*/
 }

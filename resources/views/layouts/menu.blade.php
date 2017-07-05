@@ -1,6 +1,8 @@
 <li class="{{ Request::is('home') ? 'active' : '' }}">
     <a href="{!! route('home') !!}"><i class="fa fa-home"></i><span>Home</span></a>
 </li>
+
+@role((['administrator']))
 <li class="{{ Request::is('jenisInstitusis*')||Request::is('jenjangPendidikans*')||Request::is('agamas*')||Request::is('rekomendasis*')||Request::is('institusis*') ? 'active' : '' }} treeview">
     <a href="#">
         <i class="fa fa-cubes"></i> <span>Admin Master Data</span>
@@ -30,7 +32,9 @@
         </li>
     </ul>
 </li>
+@endrole
 
+@role((['administrator']))
 <li class="{{ Request::is('statusRekomendasis*') ? 'active' : '' }} treeview">
     <a href="#">
         <i class="fa fa-gears"></i> <span>Setting OPD</span>
@@ -44,7 +48,9 @@
         </li>
     </ul>
 </li>
+@endrole
 
+@role((''))
 <li class="{{  Request::is('rekomendasiReklames*')? 'active' : '' }} treeview">
     <a href="#">
         <i class="fa fa-newspaper-o"></i> <span>Rekomendasi</span>
@@ -58,8 +64,10 @@
         </li>
     </ul>
 </li>
+@endrole
 
-<li class="{{  Request::is('roles*')||Request::is('permissions*')||Request::is('user_role*')||Request::is('users*') ? 'active' : '' }} treeview">
+@role(('administrator'))
+<li class="{{  Request::is('roles*')||Request::is('permissions*')||Request::is('user_role*')||Request::is('users*')||Request::is('pegawais*') ? 'active' : '' }} treeview">
     <a href="#">
         <i class="fa fa-cog"></i> <span>Pengaturan Role & User</span>
             <span class="pull-right-container">
@@ -70,7 +78,9 @@
         <li class="{{ Request::is('users*') ? 'active' : '' }}">
             <a href="{!! route('users.index') !!}"><i class="fa fa-users"></i><span>Users</span></a>
         </li>
-
+        <li class="{{ Request::is('pegawais*') ? 'active' : '' }}">
+            <a href="{!! route('pegawais.index') !!}"><i class="fa fa-edit"></i><span>Pegawais</span></a>
+        </li>
         <li class="{{ Request::is('roles*') ? 'active' : '' }}">
             <a href="{!! route('roles.index') !!}"><i class="fa fa-sun-o"></i><span>Roles</span></a>
         </li>
@@ -85,6 +95,7 @@
     </ul>
 </li>
 
+
 <li class="{{  Request::is('rekomReklameHasStatusRekomendasis*')? 'active' : '' }} treeview">
     <a href="#">
         <i class="fa fa-pie-chart"></i> <span>Laporan Status</span>
@@ -98,12 +109,17 @@
         </li>
     </ul>
 </li>
+@endrole
 
+@role(('warga'))
 <li class="{{ Request::is('dataUsahas*') ? 'active' : '' }}">
     <a href="{!! route('dataUsahas.index') !!}"><i class="fa fa-shopping-bag"></i><span>Data Usaha</span></a>
 </li>
+@endrole
 
 <li class="{{ Request::is('biodatas*') ? 'active' : '' }}">
     <a href="{!! route('biodatas.index') !!}"><i class="fa fa-server"></i><span>Biodata</span></a>
 </li>
+
+
 
