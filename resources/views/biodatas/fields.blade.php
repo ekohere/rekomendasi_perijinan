@@ -109,7 +109,7 @@
 <div class="form-group {{ $errors->has('agama_id') ? 'has-error' : ''}}">
     {!! Form::label('agama_id', 'Agama Id', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::number('agama_id',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! Form::select('agama_id', $agamas ,null, ['class' => 'form-control','required'=>'required']) !!}
         {!! $errors->first('agama_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
