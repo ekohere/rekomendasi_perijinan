@@ -15,8 +15,10 @@ use App\Models\Alamat;
 use App\Models\Biodata;
 use App\Models\Kontak;
 use Illuminate\Support\Facades\Auth;
+use Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class BiodataController extends AppBaseController
 {
@@ -65,6 +67,32 @@ class BiodataController extends AppBaseController
         $input = $request->all();
 
         $biodata = $this->biodataRepository->create($input);
+
+        $requestData = $request->all();
+
+       try{
+            DB::beginTransaction();
+
+            $biodatum=Biodata::create($requestData);
+
+            $path=null;
+
+            if( $request->hasFile('foto')) {
+                $ext=File::extension($request->file('foto')->getClientOriginalName());
+                $path = $request->foto->storeAs('images', $biodatum->id.'.'.$ext,'local_public');
+            }
+            if($path!=null){
+                $biodatum->foto=$path;
+                $biodatum->save();
+            }
+
+
+            DB::commit();
+
+            Session::flash('flash_message', 'Buku added!');
+            }catch(Exception $e){
+            DB::rollback();
+        }
 
         Flash::success('Biodata saved successfully.');
 
@@ -122,60 +150,35 @@ class BiodataController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateBiodataRequest $request)
+    public function update($id, Request $request)
     {
-        $biodata = $this->biodataRepository->findWithoutFail($id);
-
-        if (empty($biodata)) {
-            Flash::error('Biodata not found');
-
-            return redirect(route('biodatas.index'));
-        }
-
-        $biodata = $this->biodataRepository->update($request->all(), $id);
-        $requestAlamatAsal=$request->get('alamat_asal');
-        $requestAlamatSekarang=$request->get('alamat_sekarang');
-
+        
+        $requestData = $request->all();
         
         try{
             DB::beginTransaction();
 
-            $user=Auth::user();
-            $user->name=$request->get('name');
-            $user->save();
-
-            $biodatum = Biodata::findOrFail(Auth::user()->biodata->id);
-            $biodatum->update($requestData);
+           $biodata = Buku::where('id',$id)->firstOrFail();
+            $biodata->update($requestData);
 
             $path=null;
+
             if( $request->hasFile('foto')) {
                 $ext=File::extension($request->file('foto')->getClientOriginalName());
-                $path = $request->foto->storeAs('images', $biodatum->id.'.'.$ext,'local_public');
-                chmod(public_path().'/'.$path, 0777);
+                $path = $request->foto->storeAs('scan_buku', $biodata->id.'.'.$ext,'local_public');
             }
             if($path!=null){
-                $biodatum->foto=$path;
-                $biodatum->save();
+                $biodata->foto=$path;
+                $biodata->save();
             }
 
-            Alamat::updateOrCreate(
-                ['biodata_id'=>Auth::user()->biodata->id,'status'=>'asal'],
-                $requestAlamatAsal
-            );
-
-            Alamat::updateOrCreate(
-                ['biodata_id'=>Auth::user()->biodata->id,'status'=>'sekarang'],
-                $requestAlamatSekarang
-            );
 
             DB::commit();
 
-            Session::flash('flash_message', 'Biodata updated!');
-        }catch (Exception $e){
+            Session::flash('flash_message', 'Buku added!');
+            }catch(Exception $e){
             DB::rollback();
-            Session::flash('flash_message', 'Update Fail!');
         }
-
         Flash::success('Biodata updated successfully.');
 
         return redirect(route('biodatas.index'));

@@ -1,11 +1,7 @@
 <!-- User Id Field -->
-<div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
-    {!! Form::label('user_id', 'User_id', ['class' => 'col-md-4 control-label']) !!}
-    <div class="col-md-6">
-        {!! Form::text('user_id',null, ['class' => 'form-control','required'=>'required']) !!}
-        {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
-    </div>
-</div>
+
+        {!! Form::hidden('user_id',Auth::id(), ['class' => 'form-control','required'=>'required']) !!}
+        
 
 <!-- nik field-->
 <div class="form-group {{ $errors->has('nik') ? 'has-error' : ''}}">
@@ -15,6 +11,7 @@
         {!! $errors->first('nik', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+
 
 
 <!-- Npwp Pribadi Field -->
@@ -127,275 +124,42 @@
 
 <!-- Foto Field -->
 <div class="form-group {{ $errors->has('foto') ? 'has-error' : ''}}">
-    {!! Form::label('foto', 'Foto', ['class' => 'col-md-4 control-label']) !!}
+    {!! Form::label('foto', 'File Scan Buku', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::file('foto',  ['class' => 'form-control']) !!}
+        {!! Form::file('foto', null, ['class' => 'form-control']) !!}
         <br \>
-        <img id="cropimage" src="{{isset($biodatum->foto)?file_exists( public_path() . '/' . $biodatum->foto)?asset($biodatum->foto):'':''}}" alt="your image"  width="200" height="267"  />
-        {{ Form::hidden('image', isset($biodatum->foto)?file_exists( public_path() . '/' . $biodatum->foto)?$biodatum->foto:'':'') }}
+        <div id="image-holder"> </div>
 
+       
         <script type="text/javascript">
+            $("#foto").on('change', function () {
 
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
+                if (typeof (FileReader) != "undefined") {
 
-                    reader.onload = function (e) {
-                    /*window.alert(reader.result);*/
-                        $('#cropimage')
-                                .attr('src', e.target.result)
-                                .width(200)
-                                .height(267);
-                    };
+                    var image_holder = $("#image-holder");
+                    image_holder.empty();
 
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-
-            $("#foto").change(function(){
-                readURL(this);
-            });
-
-        </script>
-
-        {{-- Untuk Croping image
-        {{ Form::hidden('x', '', array('id' => 'x')) }}
-        {{ Form::hidden('y', '', array('id' => 'y')) }}
-        {{ Form::hidden('w', '', array('id' => 'w')) }}
-        {{ Form::hidden('h', '', array('id' => 'h')) }}
-
-
-        <script type="text/javascript">
-            function readURL(input) {
-                if (input.files && input.files[0]) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
-                        $('.jcrop-holder').replaceWith('');
-                        var jcrop_api= $.Jcrop('#cropimage');
-                        jcrop_api.setImage( e.target.result);
-                        jcrop_api.setOptions({
-                            aspectRatio: 3/4,
-                            boxWidth: 400,
-                            boxHeight: 300,
-                            allowResize: false,
-                            onChange : updateCoords,
-                            setSelect: [50, 0, 300,300],
-                        });
-                        //crop_reset( e.target.result);
-                        /*$('#cropimage').Jcrop({
-                            aspectRatio: 3/4,
-                            setSelect: [50, 0, 300,300],
-                            boxWidth: 400,
-                            boxHeight: 300,
-                            allowResize: false,
-                            onSelect : updateCoords,
-                        });*/
-                        //$('.jcrop-holder img').attr('src',  e.target.result);
+                        $("<img />", {
+                            "src": e.target.result,
+                            "class": "thumb-image",
+                            "width":300,
+                        }).appendTo(image_holder);
+ 
                     }
-                    reader.readAsDataURL(input.files[0]);
+                    image_holder.show();
+                    reader.readAsDataURL($(this)[0].files[0]);
+                } else {
+                    alert("This browser does not support FileReader.");
                 }
-            }
 
-            function crop_reset(src)
-            {
-                //Reset coordinates of thumbnail preview container
-                $('#cropimage').data("coords.x", 0);
-                $('#cropimage').data("coords.y", 0);
-                $('#cropimage').data("coords.w", 0);
-                $('#cropimage').data("coords.h", 0);
-
-                //Reset src of jcrop img and copies bound to page specific full size and preview divs
-                $("#cropimage, .jcrop-holder img").attr("src", src);
-            }
-
-            $(function() {
-                if($('#cropimage').attr('src')!='') {
-                    $('#cropimage').Jcrop({
-                        aspectRatio: 3 / 4,
-                        boxWidth: 300,
-                        boxHeight: 400,
-                        allowResize: false,
-                        onChange: updateCoords,
-                        setSelect: [50, 0, 300, 300],
-                    });
-                }
             });
-
-            function updateCoords(c) {
-                $('#x').val(c.x);
-                $('#y').val(c.y);
-                $('#w').val(c.w);
-                $('#h').val(c.h);
-            };
-
-            $("#foto").change(function(){
-                readURL(this);
-            });
-
-        </script>--}}
+        </script>
 
         {!! $errors->first('foto', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
-
- <div class="col-md-6">
-        <section class="panel panel-warning">
-            <header class="panel-heading">
-                <h2 class="panel-title">NIP</h2>
-            </header>
-            <div class="panel-body">
-                <div class="form-group {{ $errors->has('rt') ? 'has-error' : ''}}">
-                    {!! Form::label('nip', 'NIP', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                      {!! Form::text('nip', null, ['class' => 'form-control']) !!}
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
-
-
-    <div class="col-md-6">
-        <section class="panel panel-warning">
-            <header class="panel-heading">
-                <h2 class="panel-title">Alamat Asal</h2>
-            </header>
-            <div class="panel-body">
-                <div class="form-group {{ $errors->has('rt') ? 'has-error' : ''}}">
-                    {!! Form::label('rt', 'Rt', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                        {!! Form::number('alamat_asal[rt]', isset($biodatum)?$biodatum->alamatAsal()->rt:'', ['id'=>'alamat_asal_rt','class' => 'form-control']) !!}
-                        {!! $errors->first('rt', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-                <div class="form-group {{ $errors->has('rw') ? 'has-error' : ''}}">
-                    {!! Form::label('rw', 'Rw', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                        {!! Form::number('alamat_asal[rw]', isset($biodatum)?$biodatum->alamatAsal()->rw:'', ['id'=>'alamat_asal_rw','class' => 'form-control']) !!}
-                        {!! $errors->first('rw', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-                <div class="form-group {{ $errors->has('nomor') ? 'has-error' : ''}}">
-                    {!! Form::label('nomor', 'Nomor', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                        {!! Form::number('alamat_asal[nomor]', isset($biodatum)?$biodatum->alamatAsal()->nomor:'', ['id'=>'alamat_asal_nomor','class' => 'form-control']) !!}
-                        {!! $errors->first('nomor', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-                <div class="form-group {{ $errors->has('jalan') ? 'has-error' : ''}}">
-                    {!! Form::label('jalan', 'Jalan', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                        {!! Form::text('alamat_asal[jalan]',  isset($biodatum)?$biodatum->alamatAsal()->jalan:'', ['id'=>'alamat_asal_jalan','class' => 'form-control']) !!}
-                        {!! $errors->first('jalan', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-                <div class="form-group {{ $errors->has('kelurahan') ? 'has-error' : ''}}">
-                    {!! Form::label('kelurahan', 'Kelurahan', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                        {!! Form::text('alamat_asal[kelurahan]',  isset($biodatum)?$biodatum->alamatAsal()->kelurahan:'', ['id'=>'alamat_asal_kelurahan','class' => 'form-control']) !!}
-                        {!! $errors->first('kelurahan', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-                <div class="form-group {{ $errors->has('kecamatan') ? 'has-error' : ''}}">
-                    {!! Form::label('kecamatan', 'Kecamatan', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                        {!! Form::text('alamat_asal[kecamatan]', isset($biodatum)?$biodatum->alamatAsal()->kecamatan:'', ['id'=>'alamat_asal_kecamatan','class' => 'form-control']) !!}
-                        {!! $errors->first('kecamatan', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-                <div class="form-group {{ $errors->has('kabupaten') ? 'has-error' : ''}}">
-                    {!! Form::label('kabupaten', 'Kota / Kabupaten', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                        {!! Form::text('alamat_asal[kabupaten]',  isset($biodatum)?$biodatum->alamatAsal()->kabupaten:'', ['id'=>'alamat_asal_kabupaten','required'=>'required','class' => 'form-control']) !!}
-                        {!! $errors->first('kabupaten', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-                <div class="form-group {{ $errors->has('provinsi') ? 'has-error' : ''}}">
-                    {!! Form::label('provinsi', 'Provinsi', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                        {!! Form::text('alamat_asal[provinsi]',  isset($biodatum)?$biodatum->alamatAsal()->provinsi:'', ['id'=>'alamat_asal_provinsi','required'=>'required','class' => 'form-control']) !!}
-                        {!! $errors->first('provinsi', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-                <div class="form-group {{ $errors->has('provinsi') ? 'has-error' : ''}}">
-                    {!! Form::label('duplicate', 'Alamat Asal & Sekarang Sama', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6 switch switch-sm switch-primary">
-                        <input type="checkbox" name="switch" data-plugin-ios-switch id="alamat_sama" />
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
- 
-    <div class="col-md-6">
-        <section class="panel panel-warning">
-            <header class="panel-heading">
-                <h2 class="panel-title">Alamat Sekarang</h2>
-            </header>
-            <div class="panel-body">
-                <div class="form-group {{ $errors->has('rt') ? 'has-error' : ''}}">
-                    {!! Form::label('rt', 'Rt', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                        {!! Form::number('alamat_sekarang[rt]',  isset($biodatum)?$biodatum->alamatSekarang()->rt:'', ['id'=>'alamat_sekarang_rt','class' => 'form-control']) !!}
-                        {!! $errors->first('rt', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-                <div class="form-group {{ $errors->has('rw') ? 'has-error' : ''}}">
-                    {!! Form::label('rw', 'Rw', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                        {!! Form::number('alamat_sekarang[rw]',  isset($biodatum)?$biodatum->alamatSekarang()->rw:'', ['id'=>'alamat_sekarang_rw','class' => 'form-control']) !!}
-                        {!! $errors->first('rw', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-                <div class="form-group {{ $errors->has('nomor') ? 'has-error' : ''}}">
-                    {!! Form::label('nomor', 'Nomor', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                        {!! Form::number('alamat_sekarang[nomor]', isset($biodatum)?$biodatum->alamatSekarang()->nomor:'', ['id'=>'alamat_sekarang_nomor','class' => 'form-control']) !!}
-                        {!! $errors->first('nomor', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-                <div class="form-group {{ $errors->has('jalan') ? 'has-error' : ''}}">
-                    {!! Form::label('jalan', 'Jalan', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                        {!! Form::text('alamat_sekarang[jalan]', isset($biodatum)?$biodatum->alamatSekarang()->jalan:'', ['id'=>'alamat_sekarang_jalan','class' => 'form-control']) !!}
-                        {!! $errors->first('jalan', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-                <div class="form-group {{ $errors->has('kelurahan') ? 'has-error' : ''}}">
-                    {!! Form::label('kelurahan', 'Kelurahan', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                        {!! Form::text('alamat_sekarang[kelurahan]', isset($biodatum)?$biodatum->alamatSekarang()->kelurahan:'', ['id'=>'alamat_sekarang_kelurahan','class' => 'form-control']) !!}
-                        {!! $errors->first('kelurahan', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-                <div class="form-group {{ $errors->has('kecamatan') ? 'has-error' : ''}}">
-                    {!! Form::label('kecamatan', 'Kecamatan', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                        {!! Form::text('alamat_sekarang[kecamatan]', isset($biodatum)?$biodatum->alamatSekarang()->kecamatan:'', ['id'=>'alamat_sekarang_kecamatan','class' => 'form-control']) !!}
-                        {!! $errors->first('kecamatan', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-                <div class="form-group {{ $errors->has('kabupaten') ? 'has-error' : ''}}">
-                    {!! Form::label('kabupaten', 'Kota / Kabupaten', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                        {!! Form::text('alamat_sekarang[kabupaten]',isset($biodatum)?$biodatum->alamatSekarang()->kabupaten:'', ['id'=>'alamat_sekarang_kabupaten','required'=>'required','class' => 'form-control']) !!}
-                        {!! $errors->first('kabupaten', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-                <div class="form-group {{ $errors->has('provinsi') ? 'has-error' : ''}}">
-                    {!! Form::label('provinsi', 'Provinsi', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                        {!! Form::text('alamat_sekarang[provinsi]',isset($biodatum)?$biodatum->alamatSekarang()->provinsi:'', ['id'=>'alamat_sekarang_provinsi','required'=>'required','class' => 'form-control']) !!}
-                        {!! $errors->first('provinsi', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
-
-
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
