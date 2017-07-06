@@ -26,9 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $rekomendasi_reklames=RekomendasiReklame::whereHas('dataUsaha',function($query){
-            $query->where('user_id',Auth::id());
-        })->get();
+        if(Entrust::hasRole('warga')){
+            $rekomendasi_reklames=RekomendasiReklame::whereHas('dataUsaha',function($query){
+                $query->where('user_id',Auth::id());
+            })->get();
+        }
+
+        if(Entrust::hasRole(['tim_teknis_opd','pimpinan_opd','administrator'])) {
+            $rekomendasi_reklames = RekomendasiReklame::get();
+        }
 
         return view('home',compact('rekomendasi_reklames'));
     }
