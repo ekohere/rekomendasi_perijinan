@@ -111,7 +111,7 @@
 </li>
 @endrole
 
-@role('warga')
+@role(('warga'))
 <li class="{{ Request::is('dataUsahas*') ? 'active' : '' }}">
     <a href="{!! route('dataUsahas.index') !!}"><i class="fa fa-shopping-bag"></i><span>Data Usaha</span></a>
 </li>
