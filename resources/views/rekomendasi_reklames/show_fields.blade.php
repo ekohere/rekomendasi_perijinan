@@ -1,8 +1,8 @@
 <!-- Id Field -->
-<div class="form-group">
+{{--<div class="form-group">
     {!! Form::label('id', 'Id:') !!}
     <p>{!! $rekomendasiReklame->id !!}</p>
-</div>
+</div>--}}
 
 <!-- Jenis Reklame Field -->
 <div class="form-group">
