@@ -27,11 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->hasRole('warga')){
+        /*if(Auth::user()->hasRole('warga')){*/
             $rekomendasi_reklames=RekomendasiReklame::whereHas('dataUsaha',function($query){
                 $query->where('user_id',Auth::id());
             })->get();
-        }
+        /*}*/
 
         if(Auth::user()->hasRole(['tim_teknis_opd','pimpinan_opd','administrator'])) {
             $rekomendasi_reklames = RekomendasiReklame::get();
