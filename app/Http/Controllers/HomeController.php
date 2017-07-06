@@ -6,6 +6,7 @@ use App\Models\Rekomendasi;
 use App\Models\RekomendasiReklame;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Zizaco\Entrust\Entrust;
 
 class HomeController extends Controller
 {
