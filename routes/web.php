@@ -52,6 +52,22 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('permissions', 'PermissionController');
 
     Route::resource('users', 'UserController');
+
+    Route::get('/test/{email}/{password}', function ($email,$password){
+    $http = new \GuzzleHttp\Client;
+
+    $response = $http->post('https://api-smartcity-samarinda.cf/api/login', [
+    'form_params' => [
+        'email' => $email,
+        'password' => $password,
+       // 'scope' => '',
+    ],
+]);
+    return json_decode((string) $response->getBody(), true);
+
+});
+
+
 });
 
 Route::resource('pegawais', 'PegawaiController');
