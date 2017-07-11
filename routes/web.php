@@ -60,21 +60,22 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('rekomendasi/disetujui/{id}','RekomendasiReklameController@disetujui');
     Route::get('rekomendasi/tolak/{id}','RekomendasiReklameController@tolak');
 
-    Route::get('/test/{email}/{password}', function ($email,$password){
+
+
+});
+
+Route::get('/test/{email}/{password}', function ($email,$password){
     $http = new \GuzzleHttp\Client;
 
     $response = $http->post('https://api-smartcity-samarinda.cf/api/login', [
-    'form_params' => [
-        'email' => $email,
-        'password' => $password,
-       // 'scope' => '',
-    ],
-]);
+        'form_params' => [
+            'email' => 'eko.ilkom@gmail.com',
+            'password' => 'eko020689',
+            // 'scope' => '',
+        ],
+        'verify' => false,
+    ]);
     return json_decode((string) $response->getBody(), true);
 
 });
-
-});
-
-
 
