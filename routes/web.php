@@ -52,11 +52,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('permissions', 'PermissionController');
 
     Route::resource('users', 'UserController');
+
+    Route::resource('pegawais', 'PegawaiController');
+
+    Route::get('rekomendasi/verifikasi/{id}','RekomendasiReklameController@verifikasi');
+    Route::get('rekomendasi/verifikasi_valid/{id}','RekomendasiReklameController@verifikasi_valid');
+    Route::get('rekomendasi/disetujui/{id}','RekomendasiReklameController@disetujui');
+    Route::get('rekomendasi/tolak/{id}','RekomendasiReklameController@tolak');
 });
 
-Route::resource('pegawais', 'PegawaiController');
 
-Route::get('rekomendasi/verifikasi/{id}','RekomendasiReklameController@verifikasi');
-Route::get('rekomendasi/verifikasi_valid/{id}','RekomendasiReklameController@verifikasi_valid');
-Route::get('rekomendasi/disetujui/{id}','RekomendasiReklameController@disetujui');
-Route::get('rekomendasi/tolak/{id}','RekomendasiReklameController@tolak');
+
