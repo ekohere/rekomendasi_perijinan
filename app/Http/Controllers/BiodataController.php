@@ -15,8 +15,10 @@ use App\Models\Alamat;
 use App\Models\Biodata;
 use App\Models\Kontak;
 use Illuminate\Support\Facades\Auth;
+use Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class BiodataController extends AppBaseController
 {
@@ -38,9 +40,11 @@ class BiodataController extends AppBaseController
     {
         $this->biodataRepository->pushCriteria(new RequestCriteria($request));
         $biodatas = $this->biodataRepository->all();
+        $agamas =Agama::pluck('nama','id');
 
         return view('biodatas.index')
-            ->with('biodatas', $biodatas);
+            ->with('biodatas', $biodatas)
+            ->with('agamas', $agamas);;
     }
 
     /**
@@ -50,7 +54,8 @@ class BiodataController extends AppBaseController
      */
     public function create()
     {
-        return view('biodatas.create');
+        $agamas =Agama::pluck('nama','id');
+        return view('biodatas.create',compact('agamas'));
     }
 
     /**
@@ -66,7 +71,51 @@ class BiodataController extends AppBaseController
 
         $biodata = $this->biodataRepository->create($input);
 
-        Flash::success('Biodata saved successfully.');
+         $requestData = $request->all();
+    
+        
+        $requestAlamatAsal=$request->get('alamat_asal');
+        $requestAlamatSekarang=$request->get('alamat_sekarang');
+        try{
+            DB::beginTransaction();
+
+           
+            $biodatum=Biodata::create($requestData);
+
+            $path=null;
+
+            if( $request->hasFile('foto')) {
+                $ext=File::extension($request->file('foto')->getClientOriginalName());
+                $filename=$biodatum->id.'.'.$ext;
+                $path = $request->foto->storeAs('images', $filename,'local_public');
+                chmod(public_path().'/'.$path, 0777);
+            }
+            if($path!=null){
+                $biodatum->foto=$path;
+                $biodatum->save();
+            }
+
+           
+
+            Alamat::updateOrCreate(
+                ['biodata_id'=>$biodatum->id,'status'=>'asal'],
+                $requestAlamatAsal
+            );
+
+            Alamat::updateOrCreate(
+                ['biodata_id'=>$biodatum->id,'status'=>'sekarang'],
+                $requestAlamatSekarang
+            );
+
+            DB::commit();
+
+            Session::flash('flash_message', 'Biodata added!');
+        }catch(Exception $e){
+            DB::rollback();
+        }
+
+
+       
 
         return redirect(route('biodatas.index'));
     }
@@ -122,27 +171,29 @@ class BiodataController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateBiodataRequest $request)
+     public function update($id, UpdateDataUsahaRequest $request)
     {
-        $biodata = $this->biodataRepository->findWithoutFail($id);
+        $dataUsaha = $this->dataUsahaRepository->findWithoutFail($id);
 
-        if (empty($biodata)) {
-            Flash::error('Biodata not found');
+        if (empty($dataUsaha)) {
+            Flash::error('Data Usaha not found');
 
-            return redirect(route('biodatas.index'));
+            return redirect(route('dataUsahas.index'));
         }
 
-        $biodata = $this->biodataRepository->update($request->all(), $id);
+        $dataUsaha = $this->dataUsahaRepository->update($request->all(), $id);
+        $requestData = $request->all();
+       
+        
         $requestAlamatAsal=$request->get('alamat_asal');
         $requestAlamatSekarang=$request->get('alamat_sekarang');
 
-        
         try{
             DB::beginTransaction();
 
-            $user=Auth::user();
-            $user->name=$request->get('name');
-            $user->save();
+            /*return $requestData;*/
+
+            
 
             $biodatum = Biodata::findOrFail(Auth::user()->biodata->id);
             $biodatum->update($requestData);
@@ -158,6 +209,7 @@ class BiodataController extends AppBaseController
                 $biodatum->save();
             }
 
+         
             Alamat::updateOrCreate(
                 ['biodata_id'=>Auth::user()->biodata->id,'status'=>'asal'],
                 $requestAlamatAsal
@@ -167,7 +219,7 @@ class BiodataController extends AppBaseController
                 ['biodata_id'=>Auth::user()->biodata->id,'status'=>'sekarang'],
                 $requestAlamatSekarang
             );
-
+ 
             DB::commit();
 
             Session::flash('flash_message', 'Biodata updated!');
@@ -175,6 +227,8 @@ class BiodataController extends AppBaseController
             DB::rollback();
             Session::flash('flash_message', 'Update Fail!');
         }
+
+
 
         Flash::success('Biodata updated successfully.');
 

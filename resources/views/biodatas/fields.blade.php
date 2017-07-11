@@ -1,11 +1,24 @@
+{{-- Croping Image
+<link rel="stylesheet" href="{{ asset('jcrop/css/jquery.Jcrop.min.css') }}" />
+<script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+<script src="{{ asset('jcrop/js/jquery.Jcrop.min.js') }}"></script>--}}
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel panel-primary">
+            <header class="panel-heading">
+                <h2 class="panel-title">Ubah Biodata</h2>
+            </header>
+
+
 <!-- User Id Field -->
-<div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
-    {!! Form::label('user_id', 'User_id', ['class' => 'col-md-4 control-label']) !!}
-    <div class="col-md-6">
-        {!! Form::text('user_id',null, ['class' => 'form-control','required'=>'required']) !!}
-        {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
-    </div>
-</div>
+<br>
+{!! Form::hidden('user_id',Auth::id(), ['class' => 'form-control','required'=>'required']) !!}
+        
 
 <!-- nik field-->
 <div class="form-group {{ $errors->has('nik') ? 'has-error' : ''}}">
@@ -17,29 +30,13 @@
 </div>
 
 
+
 <!-- Npwp Pribadi Field -->
 <div class="form-group {{ $errors->has('npwp_pribadi') ? 'has-error' : ''}}">
     {!! Form::label('npwp_pribadi', 'Npwp Pribadi', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::text('npwp_pribadi',null, ['class' => 'form-control','required'=>'required']) !!}
         {!! $errors->first('npwp_pribadi', '<p class="help-block">:message</p>') !!}
-    </div>
-</div>
-
-<!-- Scan Ktp Field -->
-<div class="form-group {{ $errors->has('scan_ktp') ? 'has-error' : ''}}">
-    {!! Form::label('scan_ktp', 'Scan KTP', ['class' => 'col-md-4 control-label']) !!}
-    <div class="col-md-6">
-        {!! Form::text('scan_ktp',null, ['class' => 'form-control','required'=>'required']) !!}
-        {!! $errors->first('scan_ktp', '<p class="help-block">:message</p>') !!}
-    </div>
-</div>
-<!-- Scan Npwp Field -->
-<div class="form-group {{ $errors->has('scan_npwp') ? 'has-error' : ''}}">
-    {!! Form::label('scan_npwp', 'Scan Npwp', ['class' => 'col-md-4 control-label']) !!}
-    <div class="col-md-6">
-        {!! Form::text('scan_npwp',null, ['class' => 'form-control','required'=>'required']) !!}
-        {!! $errors->first('scan_npwp', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 
@@ -81,10 +78,12 @@
 </div>
 
 <!-- Jenis Kelamin Field -->
+
+
 <div class="form-group {{ $errors->has('jenis_kelamin') ? 'has-error' : ''}}">
     {!! Form::label('jenis_kelamin', 'Jenis Kelamin', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('jenis_kelamin',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! Form::select('jenis_kelamin', ['laki-laki'=>'laki-laki', 'perempuan'=>'perempuan'], null, ['class' => 'form-control']) !!}
         {!! $errors->first('jenis_kelamin', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -93,11 +92,10 @@
 <div class="form-group {{ $errors->has('kewarganegaraan') ? 'has-error' : ''}}">
     {!! Form::label('kewarganegaraan', 'Kewarganegaraan', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('kewarganegaraan',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! Form::select('kewarganegaraan', ['WNI'=>'WNI','WNA'=> 'WNA'], null, ['class' => 'form-control']) !!}
         {!! $errors->first('kewarganegaraan', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
-
 <!-- Status Perkawinan Field -->
 <div class="form-group {{ $errors->has('status_perkawinan') ? 'has-error' : ''}}">
     {!! Form::label('status_perkawainan', 'Status Perkawinan', ['class' => 'col-md-4 control-label']) !!}
@@ -111,10 +109,11 @@
 <div class="form-group {{ $errors->has('agama_id') ? 'has-error' : ''}}">
     {!! Form::label('agama_id', 'Agama Id', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::number('agama_id',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! Form::select('agama_id', $agamas ,null, ['class' => 'form-control','required'=>'required']) !!}
         {!! $errors->first('agama_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+
 
 <!-- Website Field -->
 <div class="form-group {{ $errors->has('website') ? 'has-error' : ''}}">
@@ -124,6 +123,24 @@
         {!! $errors->first('website', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+
+<!-- Scan Ktp Field -->
+<div class="form-group {{ $errors->has('scan_ktp') ? 'has-error' : ''}}">
+    {!! Form::label('scan_ktp', 'Scan KTP', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::file('scan_ktp',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! $errors->first('scan_ktp', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+<!-- Scan Npwp Field -->
+<div class="form-group {{ $errors->has('scan_npwp') ? 'has-error' : ''}}">
+    {!! Form::label('scan_npwp', 'Scan Npwp', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::file('scan_npwp',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! $errors->first('scan_npwp', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
 
 <!-- Foto Field -->
 <div class="form-group {{ $errors->has('foto') ? 'has-error' : ''}}">
@@ -238,26 +255,13 @@
     </div>
 </div>
 
- <div class="col-md-6">
-        <section class="panel panel-warning">
-            <header class="panel-heading">
-                <h2 class="panel-title">NIP</h2>
-            </header>
-            <div class="panel-body">
-                <div class="form-group {{ $errors->has('rt') ? 'has-error' : ''}}">
-                    {!! Form::label('nip', 'NIP', ['class' => 'col-md-4 control-label']) !!}
-                    <div class="col-md-6">
-                      {!! Form::text('nip', null, ['class' => 'form-control']) !!}
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
 
 
+
+
+<div class="row">
     <div class="col-md-6">
-        <section class="panel panel-warning">
+        <section class="panel-primary">
             <header class="panel-heading">
                 <h2 class="panel-title">Alamat Asal</h2>
             </header>
@@ -329,7 +333,7 @@
     </div>
  
     <div class="col-md-6">
-        <section class="panel panel-warning">
+        <section class="panel-primary">
             <header class="panel-heading">
                 <h2 class="panel-title">Alamat Sekarang</h2>
             </header>
@@ -392,17 +396,19 @@
                 </div>
             </div>
         </section>
+
+    </div>
+    <!-- Submit Field -->
+    <div class="form-group">
+    <div class="col-md-offset-4 col-md-4">
+        {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Create', ['class' => 'btn btn-primary']) !!}
     </div>
 </div>
-
-
-<!-- Submit Field -->
-<div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('biodatas.index') !!}" class="btn btn-default">Cancel</a>
+    
 </div>
-
-
+</section>
+    </div>
+</div>
 
         <script type="text/javascript">
             $("#alamat_sama").change(function() {
