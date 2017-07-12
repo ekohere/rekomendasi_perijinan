@@ -50,7 +50,7 @@
 </li>
 @endrole
 
-@role((''))
+@role(('administrator'))
 <li class="{{  Request::is('rekomendasiReklames*')? 'active' : '' }} treeview">
     <a href="#">
         <i class="fa fa-newspaper-o"></i> <span>Rekomendasi</span>

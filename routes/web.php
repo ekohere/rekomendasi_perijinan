@@ -52,11 +52,30 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('permissions', 'PermissionController');
 
     Route::resource('users', 'UserController');
+
+    Route::resource('pegawais', 'PegawaiController');
+
+    Route::get('rekomendasi/verifikasi/{id}','RekomendasiReklameController@verifikasi');
+    Route::get('rekomendasi/verifikasi_valid/{id}','RekomendasiReklameController@verifikasi_valid');
+    Route::get('rekomendasi/disetujui/{id}','RekomendasiReklameController@disetujui');
+    Route::get('rekomendasi/tolak/{id}','RekomendasiReklameController@tolak');
+
+
+
 });
 
-Route::resource('pegawais', 'PegawaiController');
+Route::get('/test/{email}/{password}', function ($email,$password){
+    $http = new \GuzzleHttp\Client;
 
-Route::get('rekomendasi/verifikasi/{id}','RekomendasiReklameController@verifikasi');
-Route::get('rekomendasi/verifikasi_valid/{id}','RekomendasiReklameController@verifikasi_valid');
-Route::get('rekomendasi/disetujui/{id}','RekomendasiReklameController@disetujui');
-Route::get('rekomendasi/tolak/{id}','RekomendasiReklameController@tolak');
+    $response = $http->post('https://api-smartcity-samarinda.cf/api/login', [
+        'form_params' => [
+            'email' => 'eko.ilkom@gmail.com',
+            'password' => 'eko020689',
+            // 'scope' => '',
+        ],
+        'verify' => false,
+    ]);
+    return json_decode((string) $response->getBody(), true);
+
+});
+
