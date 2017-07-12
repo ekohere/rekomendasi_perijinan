@@ -1,11 +1,11 @@
 {{-- Croping Image
 <link rel="stylesheet" href="{{ asset('jcrop/css/jquery.Jcrop.min.css') }}" />
 <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
-<script src="{{ asset('jcrop/js/jquery.Jcrop.min.js') }}"></script>--}}
-
+<script src="{{ asset('jcrop/js/jquery.Jcrop.min.js') }}"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+--}}
 
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 
 <div class="row">
     <div class="col-md-12">
@@ -44,8 +44,8 @@
 <div class="form-group {{ $errors->has('jenjang_pendidikan_id') ? 'has-error' : ''}}">
     {!! Form::label('jenjang_pendidikan_id', 'Jenjang Pendidikan id', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::number('jenjang_pendidikan_id',null, ['class' => 'form-control','required'=>'required']) !!}
-        {!! $errors->first('jenjang_pendidikan_id', '<p class="help-block">:message</p>') !!}
+        {!! Form::select('jenjang_pendidikan_id', $jenjangPendidikan, null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! $errors->first('jenjang_pendidikan_id', $jenjangPendidikan, '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 
@@ -72,7 +72,7 @@
 <div class="form-group {{ $errors->has('tanggal_lahir') ? 'has-error' : ''}}">
     {!! Form::label('tanggal_lahir', 'Tanggal Lahir', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::date('tanggal_lahir',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! Form::date('tanggal_lahir',\Carbon\Carbon::parse($biodatas->tanggal_lahir), ['class' => 'form-control','required'=>'required']) !!}
         {!! $errors->first('tanggal_lahir', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -129,6 +129,27 @@
     {!! Form::label('scan_ktp', 'Scan KTP', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::file('scan_ktp',null, ['class' => 'form-control','required'=>'required']) !!}
+
+        <br \>
+        <img id="cropktp" src="{{isset($biodatas->scan_ktp)?file_exists( public_path() . '/' . $biodatas->scan_ktp)?asset($biodatas->scan_ktp):'':''}}" alt="your image"  width="200" height="267"  />
+        {{ Form::hidden('scan_ktp', isset($biodatas->scan_ktp)?file_exists( public_path() . '/' . $biodatas->scan_ktp)?$biodatas->scan_ktp:'':'') }}
+
+        <script type="text/javascript">
+            function readKTP(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#cropktp').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#scan_ktp").change(function(){
+                readKTP(this);
+            });
+        </script>
+
         {!! $errors->first('scan_ktp', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -137,6 +158,27 @@
     {!! Form::label('scan_npwp', 'Scan Npwp', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::file('scan_npwp',null, ['class' => 'form-control','required'=>'required']) !!}
+
+        <br \>
+        <img id="cropnpwp" src="{{isset($biodatas->scan_npwp)?file_exists( public_path() . '/' . $biodatas->scan_npwp)?asset($biodatas->scan_npwp):'':''}}" alt="your image"  width="200" height="267"  />
+        {{ Form::hidden('scan_npwp', isset($biodatas->scan_npwp)?file_exists( public_path() . '/' . $biodatas->scan_npwp)?$biodatas->scan_npwp:'':'') }}
+
+        <script type="text/javascript">
+            function readNPWP(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#cropnpwp').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#scan_npwp").change(function(){
+                readNPWP(this);
+            });
+        </script>
+
         {!! $errors->first('scan_npwp', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -148,33 +190,24 @@
     <div class="col-md-6">
         {!! Form::file('foto',  ['class' => 'form-control']) !!}
         <br \>
-        <img id="cropimage" src="{{isset($biodatum->foto)?file_exists( public_path() . '/' . $biodatum->foto)?asset($biodatum->foto):'':''}}" alt="your image"  width="200" height="267"  />
-        {{ Form::hidden('image', isset($biodatum->foto)?file_exists( public_path() . '/' . $biodatum->foto)?$biodatum->foto:'':'') }}
+        <img id="cropfoto" src="{{isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):'':''}}" alt="your image"  width="200" height="267"  />
+        {{ Form::hidden('foto', isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?$biodatas->foto:'':'') }}
 
         <script type="text/javascript">
-
-            function readURL(input) {
+            function readFoto(input) {
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
 
                     reader.onload = function (e) {
-                    /*window.alert(reader.result);*/
-                        $('#cropimage')
-                                .attr('src', e.target.result)
-                                .width(200)
-                                .height(267);
-                    };
-
+                        $('#cropfoto').attr('src', e.target.result);
+                    }
                     reader.readAsDataURL(input.files[0]);
                 }
             }
-
             $("#foto").change(function(){
-                readURL(this);
+                readFoto(this);
             });
-
         </script>
-
         {{-- Untuk Croping image
         {{ Form::hidden('x', '', array('id' => 'x')) }}
         {{ Form::hidden('y', '', array('id' => 'y')) }}

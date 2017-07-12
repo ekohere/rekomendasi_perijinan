@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateBiodataRequest;
 use App\Http\Requests\UpdateBiodataRequest;
+use App\Models\JenjangPendidikan;
 use App\Repositories\BiodataRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -38,13 +39,15 @@ class BiodataController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $this->biodataRepository->pushCriteria(new RequestCriteria($request));
-        $biodatas = $this->biodataRepository->all();
+        $this->biodataRepository
+            ->pushCriteria(new RequestCriteria($request));
+        $biodatas = Biodata::where('user_id', Auth::id())
+            ->first();
         $agamas =Agama::pluck('nama','id');
+        $jenjangPendidikan = JenjangPendidikan::pluck('nama','id');
 
-        return view('biodatas.index')
-            ->with('biodatas', $biodatas)
-            ->with('agamas', $agamas);;
+        return view('biodatas.index',
+            compact('biodatas','agamas','jenjangPendidikan'));
     }
 
     /**
@@ -55,7 +58,9 @@ class BiodataController extends AppBaseController
     public function create()
     {
         $agamas =Agama::pluck('nama','id');
-        return view('biodatas.create',compact('agamas'));
+        $jenjangPendidikan = JenjangPendidikan::pluck('nama','id');
+        return view('biodatas.create',
+            compact('agamas', 'jenjangPendidikan'));
     }
 
     /**
@@ -67,35 +72,62 @@ class BiodataController extends AppBaseController
      */
     public function store(CreateBiodataRequest $request)
     {
-        $input = $request->all();
-
-        $biodata = $this->biodataRepository->create($input);
-
-         $requestData = $request->all();
-    
-        
+        $requestData = $request->all();
+        $dataBiodata = $request->only([
+            'user_id',
+            'nik',
+            'npwp_pribadi',
+            'scan_ktp',
+            'scan_npwp',
+            'jenjang_pendidikan_id',
+            'tempat_lahir',
+            'tanggal_lahir',
+            'jenis_kelamin',
+            'kewarganegaraan',
+            'status_perkawinan',
+            'agama_id',
+            'website',
+            'foto'
+        ]);
         $requestAlamatAsal=$request->get('alamat_asal');
         $requestAlamatSekarang=$request->get('alamat_sekarang');
         try{
             DB::beginTransaction();
 
-           
-            $biodatum=Biodata::create($requestData);
-
+            $biodatum = Biodata::updateOrCreate(['user_id'=> Auth::id()],
+                $dataBiodata);
             $path=null;
 
             if( $request->hasFile('foto')) {
                 $ext=File::extension($request->file('foto')->getClientOriginalName());
-                $filename=$biodatum->id.'.'.$ext;
-                $path = $request->foto->storeAs('images', $filename,'local_public');
+                $filename='foto'.$biodatum->id.'.'.$ext;
+                $path = $request->foto->storeAs('foto', $filename,'local_public');
                 chmod(public_path().'/'.$path, 0777);
             }
             if($path!=null){
                 $biodatum->foto=$path;
                 $biodatum->save();
             }
-
-           
+            if( $request->hasFile('scan_npwp')) {
+                $ext=File::extension($request->file('scan_npwp')->getClientOriginalName());
+                $filename='npwp'.$biodatum->id.'.'.$ext;
+                $path = $request->scan_npwp->storeAs('scan_npwp', $filename,'local_public');
+                chmod(public_path().'/'.$path, 0777);
+            }
+            if($path!=null){
+                $biodatum->scan_npwp=$path;
+                $biodatum->save();
+            }
+            if( $request->hasFile('scan_ktp')) {
+                $ext=File::extension($request->file('scan_ktp')->getClientOriginalName());
+                $filename='ktp'.$biodatum->id.'.'.$ext;
+                $path = $request->scan_ktp->storeAs('scan_ktp', $filename,'local_public');
+                chmod(public_path().'/'.$path, 0777);
+            }
+            if($path!=null){
+                $biodatum->scan_ktp=$path;
+                $biodatum->save();
+            }
 
             Alamat::updateOrCreate(
                 ['biodata_id'=>$biodatum->id,'status'=>'asal'],
@@ -113,9 +145,6 @@ class BiodataController extends AppBaseController
         }catch(Exception $e){
             DB::rollback();
         }
-
-
-       
 
         return redirect(route('biodatas.index'));
     }
@@ -183,52 +212,80 @@ class BiodataController extends AppBaseController
 
         $dataUsaha = $this->dataUsahaRepository->update($request->all(), $id);
         $requestData = $request->all();
-       
-        
+
+
+        $dataBiodata = $request->only([
+            'user_id',
+            'nik',
+            'npwp_pribadi',
+            'scan_ktp',
+            'scan_npwp',
+            'jenjang_pendidikan_id',
+            'tempat_lahir',
+            'tanggal_lahir',
+            'jenis_kelamin',
+            'kewarganegaraan',
+            'status_perkawinan',
+            'agama_id',
+            'website',
+            'foto'
+        ]);
         $requestAlamatAsal=$request->get('alamat_asal');
         $requestAlamatSekarang=$request->get('alamat_sekarang');
-
         try{
             DB::beginTransaction();
 
-            /*return $requestData;*/
-
-            
-
-            $biodatum = Biodata::findOrFail(Auth::user()->biodata->id);
-            $biodatum->update($requestData);
-
+            $biodatum = Biodata::updateOrCreate(['user_id'=> Auth::id()],
+                $dataBiodata);
             $path=null;
+
             if( $request->hasFile('foto')) {
                 $ext=File::extension($request->file('foto')->getClientOriginalName());
-                $path = $request->foto->storeAs('images', $biodatum->id.'.'.$ext,'local_public');
+                $filename=$biodatum->id.'.'.$ext;
+                $path = $request->foto->storeAs('foto', $filename,'local_public');
                 chmod(public_path().'/'.$path, 0777);
             }
             if($path!=null){
                 $biodatum->foto=$path;
                 $biodatum->save();
             }
+            if( $request->hasFile('scan_npwp')) {
+                $ext=File::extension($request->file('scan_npwp')->getClientOriginalName());
+                $filename=$biodatum->id.'.'.$ext;
+                $path = $request->scan_npwp->storeAs('scan_npwp', $filename,'local_public');
+                chmod(public_path().'/'.$path, 0777);
+            }
+            if($path!=null){
+                $biodatum->scan_npwp=$path;
+                $biodatum->save();
+            }
+            if( $request->hasFile('scan_ktp')) {
+                $ext=File::extension($request->file('scan_ktp')->getClientOriginalName());
+                $filename=$biodatum->id.'.'.$ext;
+                $path = $request->scan_ktp->storeAs('scan_ktp', $filename,'local_public');
+                chmod(public_path().'/'.$path, 0777);
+            }
+            if($path!=null){
+                $biodatum->scan_ktp=$path;
+                $biodatum->save();
+            }
 
-         
             Alamat::updateOrCreate(
-                ['biodata_id'=>Auth::user()->biodata->id,'status'=>'asal'],
+                ['biodata_id'=>$biodatum->id,'status'=>'asal'],
                 $requestAlamatAsal
             );
 
             Alamat::updateOrCreate(
-                ['biodata_id'=>Auth::user()->biodata->id,'status'=>'sekarang'],
+                ['biodata_id'=>$biodatum->id,'status'=>'sekarang'],
                 $requestAlamatSekarang
             );
- 
+
             DB::commit();
 
-            Session::flash('flash_message', 'Biodata updated!');
-        }catch (Exception $e){
+            Session::flash('flash_message', 'Biodata added!');
+        }catch(Exception $e){
             DB::rollback();
-            Session::flash('flash_message', 'Update Fail!');
         }
-
-
 
         Flash::success('Biodata updated successfully.');
 

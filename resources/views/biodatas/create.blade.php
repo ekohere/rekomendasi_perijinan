@@ -9,7 +9,7 @@
     <div class="content">
         @include('adminlte-templates::common.errors')
        
-                    {!! Form::open(['route' => 'biodatas.store','class' => 'form-horizontal', 'files' => true]) !!}
+                    {!! Form::model($biodatas,['route' => 'biodatas.store','class' => 'form-horizontal', 'files' => true]) !!}
 
                         @include('biodatas.fields')
 
