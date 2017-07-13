@@ -82,7 +82,7 @@ class RegisterController extends Controller
             $response = $http->post('https://api-smartcity-samarinda.cf/api/login', [
                 'form_params' => [
                     'email' => 'eko.ilkom@gmail.com',
-                    'password' => 'eko020689',
+                    'password' => 'ghTyl237Px',
                 ],
                 'verify' => false,
             ]);
