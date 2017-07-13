@@ -131,7 +131,7 @@
         {!! Form::file('scan_ktp',null, ['class' => 'form-control','required'=>'required']) !!}
 
         <br \>
-        <img id="cropktp" src="{{isset($biodatas->scan_ktp)?file_exists( public_path() . '/' . $biodatas->scan_ktp)?asset($biodatas->scan_ktp):'':''}}" alt="your image"  width="200" height="267"  />
+        <img id="cropktp" src="{{isset($biodatas->scan_ktp)?file_exists( public_path() . '/' . $biodatas->scan_ktp)?asset($biodatas->scan_ktp):'https://dl.dropboxusercontent.com/content_link/4fxQVq4Tddm8tHHH7AdX7VHOGahEu9UEExzCVxwnIdcdvOV8Wu0IL6znf4zcVmF6/file':''}}" alt="your image"  width="337" height="213"  />
         {{ Form::hidden('scan_ktp', isset($biodatas->scan_ktp)?file_exists( public_path() . '/' . $biodatas->scan_ktp)?$biodatas->scan_ktp:'':'') }}
 
         <script type="text/javascript">
@@ -160,7 +160,7 @@
         {!! Form::file('scan_npwp',null, ['class' => 'form-control','required'=>'required']) !!}
 
         <br \>
-        <img id="cropnpwp" src="{{isset($biodatas->scan_npwp)?file_exists( public_path() . '/' . $biodatas->scan_npwp)?asset($biodatas->scan_npwp):'':''}}" alt="your image"  width="200" height="267"  />
+        <img id="cropnpwp" src="{{isset($biodatas->scan_npwp)?file_exists( public_path() . '/' . $biodatas->scan_npwp)?asset($biodatas->scan_npwp):'https://dl.dropboxusercontent.com/content_link/4fxQVq4Tddm8tHHH7AdX7VHOGahEu9UEExzCVxwnIdcdvOV8Wu0IL6znf4zcVmF6/file':''}}" alt="your image"  width="337" height="213"  />
         {{ Form::hidden('scan_npwp', isset($biodatas->scan_npwp)?file_exists( public_path() . '/' . $biodatas->scan_npwp)?$biodatas->scan_npwp:'':'') }}
 
         <script type="text/javascript">
@@ -190,7 +190,7 @@
     <div class="col-md-6">
         {!! Form::file('foto',  ['class' => 'form-control']) !!}
         <br \>
-        <img id="cropfoto" src="{{isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):'':''}}" alt="your image"  width="200" height="267"  />
+        <img id="cropfoto" src="{{isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):'https://dl.dropboxusercontent.com/content_link/fnGBO1xYEPyu3dcojMYQkYLcwKWojJ6VTcLmuq3GEVMw75CHn1KpyeuCOItALXAF/file':''}}" alt="your image"  width="200" height="267"  />
         {{ Form::hidden('foto', isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?$biodatas->foto:'':'') }}
 
         <script type="text/javascript">

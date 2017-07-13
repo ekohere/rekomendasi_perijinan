@@ -96,36 +96,38 @@ class BiodataController extends AppBaseController
 
             $biodatum = Biodata::updateOrCreate(['user_id'=> Auth::id()],
                 $dataBiodata);
-            $path=null;
+            $path1=null;
+            $path2=null;
+            $path3=null;
 
             if( $request->hasFile('foto')) {
                 $ext=File::extension($request->file('foto')->getClientOriginalName());
                 $filename='foto'.$biodatum->id.'.'.$ext;
-                $path = $request->foto->storeAs('foto', $filename,'local_public');
-                chmod(public_path().'/'.$path, 0777);
+                $path1 = $request->foto->storeAs('foto', $filename,'local_public');
+                chmod(public_path().'/'.$path1, 0777);
             }
-            if($path!=null){
-                $biodatum->foto=$path;
+            if($path1!=null){
+                $biodatum->foto=$path1;
                 $biodatum->save();
             }
             if( $request->hasFile('scan_npwp')) {
                 $ext=File::extension($request->file('scan_npwp')->getClientOriginalName());
                 $filename='npwp'.$biodatum->id.'.'.$ext;
-                $path = $request->scan_npwp->storeAs('scan_npwp', $filename,'local_public');
-                chmod(public_path().'/'.$path, 0777);
+                $path2 = $request->scan_npwp->storeAs('scan_npwp', $filename,'local_public');
+                chmod(public_path().'/'.$path2, 0777);
             }
-            if($path!=null){
-                $biodatum->scan_npwp=$path;
+            if($path2!=null){
+                $biodatum->scan_npwp=$path2;
                 $biodatum->save();
             }
             if( $request->hasFile('scan_ktp')) {
                 $ext=File::extension($request->file('scan_ktp')->getClientOriginalName());
                 $filename='ktp'.$biodatum->id.'.'.$ext;
-                $path = $request->scan_ktp->storeAs('scan_ktp', $filename,'local_public');
-                chmod(public_path().'/'.$path, 0777);
+                $path3 = $request->scan_ktp->storeAs('scan_ktp', $filename,'local_public');
+                chmod(public_path().'/'.$path3, 0777);
             }
-            if($path!=null){
-                $biodatum->scan_ktp=$path;
+            if($path3!=null){
+                $biodatum->scan_ktp=$path3;
                 $biodatum->save();
             }
 
@@ -237,36 +239,38 @@ class BiodataController extends AppBaseController
 
             $biodatum = Biodata::updateOrCreate(['user_id'=> Auth::id()],
                 $dataBiodata);
-            $path=null;
+            $path1=null;
+            $path2=null;
+            $path3=null;
 
             if( $request->hasFile('foto')) {
                 $ext=File::extension($request->file('foto')->getClientOriginalName());
                 $filename=$biodatum->id.'.'.$ext;
-                $path = $request->foto->storeAs('foto', $filename,'local_public');
-                chmod(public_path().'/'.$path, 0777);
+                $path1 = $request->foto->storeAs('foto', $filename,'local_public');
+                chmod(public_path().'/'.$path1, 0777);
             }
-            if($path!=null){
-                $biodatum->foto=$path;
+            if($path1!=null){
+                $biodatum->foto=$path1;
                 $biodatum->save();
             }
             if( $request->hasFile('scan_npwp')) {
                 $ext=File::extension($request->file('scan_npwp')->getClientOriginalName());
                 $filename=$biodatum->id.'.'.$ext;
-                $path = $request->scan_npwp->storeAs('scan_npwp', $filename,'local_public');
-                chmod(public_path().'/'.$path, 0777);
+                $path2 = $request->scan_npwp->storeAs('scan_npwp', $filename,'local_public');
+                chmod(public_path().'/'.$path2, 0777);
             }
-            if($path!=null){
-                $biodatum->scan_npwp=$path;
+            if($path2!=null){
+                $biodatum->scan_npwp=$path2;
                 $biodatum->save();
             }
             if( $request->hasFile('scan_ktp')) {
                 $ext=File::extension($request->file('scan_ktp')->getClientOriginalName());
                 $filename=$biodatum->id.'.'.$ext;
-                $path = $request->scan_ktp->storeAs('scan_ktp', $filename,'local_public');
-                chmod(public_path().'/'.$path, 0777);
+                $path3 = $request->scan_ktp->storeAs('scan_ktp', $filename,'local_public');
+                chmod(public_path().'/'.$path3, 0777);
             }
-            if($path!=null){
-                $biodatum->scan_ktp=$path;
+            if($path3!=null){
+                $biodatum->scan_ktp=$path3;
                 $biodatum->save();
             }
 

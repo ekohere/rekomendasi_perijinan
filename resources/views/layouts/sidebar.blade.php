@@ -6,7 +6,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg" class="img-circle"
+                <img src="{{ isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):'https://dl.dropboxusercontent.com/content_link/UwiUrXrcadccT9sg3HrwYFEA4y1g2A1lof89TZSCBE7tfT8n788xwh9r4ron67tG/file':'' }} " class="img-circle"
                      alt="User Image"/>
             </div>
             <div class="pull-left info">

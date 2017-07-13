@@ -51,7 +51,7 @@
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                <img src="{{ isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):'https://dl.dropboxusercontent.com/content_link/UwiUrXrcadccT9sg3HrwYFEA4y1g2A1lof89TZSCBE7tfT8n788xwh9r4ron67tG/file':'' }}"
                                      class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">{!! Auth::user()->name !!}</span>
@@ -59,7 +59,7 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                    <img src="{{ isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):'https://dl.dropboxusercontent.com/content_link/UwiUrXrcadccT9sg3HrwYFEA4y1g2A1lof89TZSCBE7tfT8n788xwh9r4ron67tG/file':'' }}"
                                          class="img-circle" alt="User Image"/>
                                     <p>
                                         {!! Auth::user()->name !!}
