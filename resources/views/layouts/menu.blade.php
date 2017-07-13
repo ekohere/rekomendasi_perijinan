@@ -2,6 +2,16 @@
     <a href="{!! route('home') !!}"><i class="fa fa-home"></i><span>Home</span></a>
 </li>
 
+<li class="{{ Request::is('biodatas*') ? 'active' : '' }}">
+    <a href="{!! route('biodatas.index') !!}"><i class="fa fa-server"></i><span>Biodata</span></a>
+</li>
+
+@role(('warga'))
+<li class="{{ Request::is('dataUsahas*') ? 'active' : '' }}">
+    <a href="{!! route('dataUsahas.index') !!}"><i class="fa fa-shopping-bag"></i><span>Data Usaha</span></a>
+</li>
+@endrole
+
 @role((['administrator']))
 <li class="{{ Request::is('jenisInstitusis*')||Request::is('jenjangPendidikans*')||Request::is('agamas*')||Request::is('rekomendasis*')||Request::is('institusis*') ? 'active' : '' }} treeview">
     <a href="#">
@@ -110,16 +120,6 @@
     </ul>
 </li>
 @endrole
-
-@role(('warga'))
-<li class="{{ Request::is('dataUsahas*') ? 'active' : '' }}">
-    <a href="{!! route('dataUsahas.index') !!}"><i class="fa fa-shopping-bag"></i><span>Data Usaha</span></a>
-</li>
-@endrole
-
-<li class="{{ Request::is('biodatas*') ? 'active' : '' }}">
-    <a href="{!! route('biodatas.index') !!}"><i class="fa fa-server"></i><span>Biodata</span></a>
-</li>
 
 
 

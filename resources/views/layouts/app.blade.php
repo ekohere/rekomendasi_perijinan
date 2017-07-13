@@ -51,7 +51,7 @@
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="{{ isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):'https://dl.dropboxusercontent.com/content_link/MeAO2WKzFCYDW1NcbfzVccBBqTtVvxPUya41cRueW1uMNktpQir7QG2hl61V0sm2/file':'https://dl.dropboxusercontent.com/content_link/MeAO2WKzFCYDW1NcbfzVccBBqTtVvxPUya41cRueW1uMNktpQir7QG2hl61V0sm2/file' }}"
+                                <img src="{{ isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):asset('assets/images/no-image.png'):asset('assets/images/no-image.png')}}"
                                      class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">{!! Auth::user()->name !!}</span>
@@ -59,7 +59,7 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="{{ isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):'https://dl.dropboxusercontent.com/content_link/MeAO2WKzFCYDW1NcbfzVccBBqTtVvxPUya41cRueW1uMNktpQir7QG2hl61V0sm2/file':'https://dl.dropboxusercontent.com/content_link/MeAO2WKzFCYDW1NcbfzVccBBqTtVvxPUya41cRueW1uMNktpQir7QG2hl61V0sm2/file' }}"
+                                    <img src="{{ isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):asset('assets/images/no-image.png'):asset('assets/images/no-image.png') }}"
                                          class="img-circle" alt="User Image"/>
                                     <p>
                                         {!! Auth::user()->name !!}
