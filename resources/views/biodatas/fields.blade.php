@@ -35,7 +35,7 @@
 <div class="form-group {{ $errors->has('npwp_pribadi') ? 'has-error' : ''}}">
     {!! Form::label('npwp_pribadi', 'Npwp Pribadi', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('npwp_pribadi',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! Form::text('npwp_pribadi',null, ['class' => 'form-control']) !!}
         {!! $errors->first('npwp_pribadi', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -44,7 +44,7 @@
 <div class="form-group {{ $errors->has('jenjang_pendidikan_id') ? 'has-error' : ''}}">
     {!! Form::label('jenjang_pendidikan_id', 'Jenjang Pendidikan', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::select('jenjang_pendidikan_id', $jenjangPendidikan, null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! Form::select('jenjang_pendidikan_id', $jenjangPendidikan, null, ['class' => 'form-control']) !!}
         {!! $errors->first('jenjang_pendidikan_id', $jenjangPendidikan, '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -72,7 +72,7 @@
 <div class="form-group {{ $errors->has('tanggal_lahir') ? 'has-error' : ''}}">
     {!! Form::label('tanggal_lahir', 'Tanggal Lahir', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::date('tanggal_lahir',\Carbon\Carbon::parse($biodatas->tanggal_lahir), ['class' => 'form-control','required'=>'required']) !!}
+        {!! Form::date('tanggal_lahir',isset($biodatas->tanggal_lahir)?\Carbon\Carbon::parse($biodatas->tanggal_lahir):null, ['class' => 'form-control','required'=>'required']) !!}
         {!! $errors->first('tanggal_lahir', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -83,7 +83,7 @@
 <div class="form-group {{ $errors->has('jenis_kelamin') ? 'has-error' : ''}}">
     {!! Form::label('jenis_kelamin', 'Jenis Kelamin', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::select('jenis_kelamin', ['laki-laki'=>'laki-laki', 'perempuan'=>'perempuan'], null, ['class' => 'form-control']) !!}
+        {!! Form::select('jenis_kelamin', ['laki-laki'=>'laki-laki', 'perempuan'=>'perempuan'], null, ['class' => 'form-control','required'=>'required']) !!}
         {!! $errors->first('jenis_kelamin', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -100,7 +100,7 @@
 <div class="form-group {{ $errors->has('status_perkawinan') ? 'has-error' : ''}}">
     {!! Form::label('status_perkawainan', 'Status Perkawinan', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('status_perkawinan',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! Form::text('status_perkawinan',null, ['class' => 'form-control']) !!}
         {!! $errors->first('status_perkawinan', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -109,7 +109,7 @@
 <div class="form-group {{ $errors->has('agama_id') ? 'has-error' : ''}}">
     {!! Form::label('agama_id', 'Agama', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::select('agama_id', $agamas ,null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! Form::select('agama_id', $agamas ,null, ['class' => 'form-control']) !!}
         {!! $errors->first('agama_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -128,10 +128,14 @@
 <div class="form-group {{ $errors->has('scan_ktp') ? 'has-error' : ''}}">
     {!! Form::label('scan_ktp', 'Scan KTP', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::file('scan_ktp',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! Form::file('scan_ktp',null, ['class' => 'form-control']) !!}
 
         <br \>
+<<<<<<< HEAD
         <img id="cropktp" src="{{isset($biodatas->scan_ktp)?file_exists( public_path() . '/' . $biodatas->scan_ktp)?asset($biodatas->scan_ktp):'/image/nickname.png':'/image/nickname.png'}}" alt="your image"  width="337" height="213"  />
+=======
+        <img id="cropktp" src="{{isset($biodatas->scan_ktp)?file_exists( public_path() . '/' . $biodatas->scan_ktp)?asset($biodatas->scan_ktp):asset('assets/images/no-image.png'):asset('assets/images/no-image.png')}}" alt="your image"  width="337" height="213"  />
+>>>>>>> 5aa5b0949b763d55c889c6dad079a787ac60c65c
         {{ Form::hidden('scan_ktp', isset($biodatas->scan_ktp)?file_exists( public_path() . '/' . $biodatas->scan_ktp)?$biodatas->scan_ktp:'':'') }}
 
         <script type="text/javascript">
@@ -157,10 +161,14 @@
 <div class="form-group {{ $errors->has('scan_npwp') ? 'has-error' : ''}}">
     {!! Form::label('scan_npwp', 'Scan Npwp', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::file('scan_npwp',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! Form::file('scan_npwp',null, ['class' => 'form-control']) !!}
 
         <br \>
+<<<<<<< HEAD
         <img id="cropnpwp" src="{{isset($biodatas->scan_npwp)?file_exists( public_path() . '/' . $biodatas->scan_npwp)?asset($biodatas->scan_npwp):'/image/nickname.png':'/image/nickname.png'}}" alt="your image"  width="337" height="213"  />
+=======
+        <img id="cropnpwp" src="{{isset($biodatas->scan_npwp)?file_exists( public_path() . '/' . $biodatas->scan_npwp)?asset($biodatas->scan_npwp):asset('assets/images/no-image.png'):asset('assets/images/no-image.png')}}" alt="your image"  width="337" height="213"  />
+>>>>>>> 5aa5b0949b763d55c889c6dad079a787ac60c65c
         {{ Form::hidden('scan_npwp', isset($biodatas->scan_npwp)?file_exists( public_path() . '/' . $biodatas->scan_npwp)?$biodatas->scan_npwp:'':'') }}
 
         <script type="text/javascript">
@@ -190,7 +198,11 @@
     <div class="col-md-6">
         {!! Form::file('foto',  ['class' => 'form-control']) !!}
         <br \>
+<<<<<<< HEAD
         <img id="cropfoto" src="{{isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):'/image/foto.png':'/image/foto.png'}}" alt="your image"  width="200" height="267"  />
+=======
+        <img id="cropfoto" src="{{isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):asset('assets/images/no-image.png'):asset('assets/images/no-image.png')}}" alt="your image"  width="200" height="267"  />
+>>>>>>> 5aa5b0949b763d55c889c6dad079a787ac60c65c
         {{ Form::hidden('foto', isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?$biodatas->foto:'':'') }}
 
         <script type="text/javascript">
@@ -344,14 +356,14 @@
                 <div class="form-group {{ $errors->has('kabupaten') ? 'has-error' : ''}}">
                     {!! Form::label('kabupaten', 'Kota / Kabupaten', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::text('alamat_asal[kabupaten]',  isset($biodatum)?$biodatum->alamatAsal()->kabupaten:'', ['id'=>'alamat_asal_kabupaten','required'=>'required','class' => 'form-control']) !!}
+                        {!! Form::text('alamat_asal[kabupaten]',  isset($biodatum)?$biodatum->alamatAsal()->kabupaten:'', ['id'=>'alamat_asal_kabupaten','class' => 'form-control']) !!}
                         {!! $errors->first('kabupaten', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('provinsi') ? 'has-error' : ''}}">
                     {!! Form::label('provinsi', 'Provinsi', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::text('alamat_asal[provinsi]',  isset($biodatum)?$biodatum->alamatAsal()->provinsi:'', ['id'=>'alamat_asal_provinsi','required'=>'required','class' => 'form-control']) !!}
+                        {!! Form::text('alamat_asal[provinsi]',  isset($biodatum)?$biodatum->alamatAsal()->provinsi:'', ['id'=>'alamat_asal_provinsi','class' => 'form-control']) !!}
                         {!! $errors->first('provinsi', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
@@ -416,14 +428,14 @@
                 <div class="form-group {{ $errors->has('kabupaten') ? 'has-error' : ''}}">
                     {!! Form::label('kabupaten', 'Kota / Kabupaten', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::text('alamat_sekarang[kabupaten]',isset($biodatum)?$biodatum->alamatSekarang()->kabupaten:'', ['id'=>'alamat_sekarang_kabupaten','required'=>'required','class' => 'form-control']) !!}
+                        {!! Form::text('alamat_sekarang[kabupaten]',isset($biodatum)?$biodatum->alamatSekarang()->kabupaten:'', ['id'=>'alamat_sekarang_kabupaten','class' => 'form-control']) !!}
                         {!! $errors->first('kabupaten', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('provinsi') ? 'has-error' : ''}}">
                     {!! Form::label('provinsi', 'Provinsi', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::text('alamat_sekarang[provinsi]',isset($biodatum)?$biodatum->alamatSekarang()->provinsi:'', ['id'=>'alamat_sekarang_provinsi','required'=>'required','class' => 'form-control']) !!}
+                        {!! Form::text('alamat_sekarang[provinsi]',isset($biodatum)?$biodatum->alamatSekarang()->provinsi:'', ['id'=>'alamat_sekarang_provinsi','class' => 'form-control']) !!}
                         {!! $errors->first('provinsi', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>

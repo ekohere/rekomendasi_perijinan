@@ -51,7 +51,11 @@
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
+<<<<<<< HEAD
                                 <img src="{{ isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):'/image/profil.jpg':'/image/profil.jpg' }}"
+=======
+                                <img src="{{ isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):asset('assets/images/no-image.png'):asset('assets/images/no-image.png')}}"
+>>>>>>> 5aa5b0949b763d55c889c6dad079a787ac60c65c
                                      class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">{!! Auth::user()->name !!}</span>
@@ -59,7 +63,11 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
+<<<<<<< HEAD
                                     <img src="{{ isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):'/image/profil.jpg':'/image/profil.jpg' }}"
+=======
+                                    <img src="{{ isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):asset('assets/images/no-image.png'):asset('assets/images/no-image.png') }}"
+>>>>>>> 5aa5b0949b763d55c889c6dad079a787ac60c65c
                                          class="img-circle" alt="User Image"/>
                                     <p>
                                         {!! Auth::user()->name !!}
