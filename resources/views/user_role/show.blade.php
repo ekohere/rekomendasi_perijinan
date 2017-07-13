@@ -29,7 +29,7 @@
                                     <tr>
                                         <th class="text-right">ID</th><td>{{ $user_role->id }}</td>
                                     </tr>
-                                    <tr><th class="text-right"> User Id </th><td> {{ $user_role->user_id }} </td></tr>
+                                    <tr><th class="text-right"> User </th><td> {{ $user_role->user_id }} </td></tr>
                                 </tbody>
                             </table>
                         </div>

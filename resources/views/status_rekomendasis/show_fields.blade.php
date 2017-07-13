@@ -36,13 +36,13 @@
 
 <!-- Parent Status Id Field -->
 <div class="form-group">
-    {!! Form::label('parent_status_id', 'Parent Status Id:') !!}
+    {!! Form::label('parent_status_id', 'Parent Status:') !!}
     <p>{!! $statusRekomendasi->parent_status_id !!}</p>
 </div>
 
 <!-- Institusi Id Field -->
 <div class="form-group">
-    {!! Form::label('institusi_id', 'Institusi Id:') !!}
+    {!! Form::label('institusi_id', 'Institusi:') !!}
     <p>{!! $statusRekomendasi->institusi_id !!}</p>
 </div>
 

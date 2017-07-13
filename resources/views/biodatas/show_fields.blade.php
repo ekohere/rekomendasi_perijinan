@@ -6,7 +6,7 @@
 
 <!-- User Id Field -->
 <div class="form-group">
-    {!! Form::label('user_id', 'User Id:') !!}
+    {!! Form::label('user_id', 'User:') !!}
     <p>{!! $biodata->user_id !!}</p>
 </div>
 
@@ -36,7 +36,7 @@
 
 <!-- Jenjang Pendidikan Id Field -->
 <div class="form-group">
-    {!! Form::label('jenjang_pendidikan_id', 'Jenjang Pendidikan Id:') !!}
+    {!! Form::label('jenjang_pendidikan_id', 'Jenjang Pendidikan:') !!}
     <p>{!! $biodata->jenjang_pendidikan_id !!}</p>
 </div>
 
@@ -72,7 +72,7 @@
 
 <!-- Agama Id Field -->
 <div class="form-group">
-    {!! Form::label('agama_id', 'Agama Id:') !!}
+    {!! Form::label('agama_id', 'Agama:') !!}
     <p>{!! $biodata->agama_id !!}</p>
 </div>
 

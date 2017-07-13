@@ -1,17 +1,17 @@
 <table class="table table-responsive" id="biodatas-table">
     <thead>
-        <th>User Id</th>
+        <th>User</th>
         <th>Nik</th>
         <th>Npwp Pribadi</th>
         <th>Scan Ktp</th>
         <th>Scan Npwp</th>
-        <th>Jenjang Pendidikan Id</th>
+        <th>Jenjang Pendidikan</th>
         <th>Tempat Lahir</th>
         <th>Tanggal Lahir</th>
         <th>Jenis Kelamin</th>
         <th>Kewarganegaraan</th>
         <th>Status Perkawinan</th>
-        <th>Agama Id</th>
+        <th>Agama</th>
         <th>Website</th>
         <th>Foto</th>
         <th colspan="3">Action</th>

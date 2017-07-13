@@ -30,19 +30,19 @@
 
 <!-- Jenis Institusi Id Field -->
 <div class="form-group">
-    {!! Form::label('jenis_institusi_id', 'Jenis Institusi Id:') !!}
+    {!! Form::label('jenis_institusi_id', 'Jenis Institusi:') !!}
     <p>{!! $institusi->jenis_institusi_id !!}</p>
 </div>
 
 <!-- Parent Institusi Id Field -->
 <div class="form-group">
-    {!! Form::label('parent_institusi_id', 'Parent Institusi Id:') !!}
+    {!! Form::label('parent_institusi_id', 'Parent Institusi:') !!}
     <p>{!! $institusi->parent_institusi_id !!}</p>
 </div>
 
 <!-- Pimpinan Institusi Id Field -->
 <div class="form-group">
-    {!! Form::label('pimpinan_institusi_id', 'Pimpinan Institusi Id:') !!}
+    {!! Form::label('pimpinan_institusi_id', 'Pimpinan Institusi:') !!}
     <p>{!! $institusi->pimpinan_institusi_id !!}</p>
 </div>
 

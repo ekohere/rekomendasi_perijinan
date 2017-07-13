@@ -6,19 +6,19 @@
 
 <!-- Rekomendasi Reklame Id Field -->
 <div class="form-group">
-    {!! Form::label('rekomendasi_reklame_id', 'Rekomendasi Reklame Id:') !!}
+    {!! Form::label('rekomendasi_reklame_id', 'Rekomendasi Reklame:') !!}
     <p>{!! $rekomReklameHasStatusRekomendasi->rekomendasi_reklame_id !!}</p>
 </div>
 
 <!-- Status Rekomendasi Id Field -->
 <div class="form-group">
-    {!! Form::label('status_rekomendasi_id', 'Status Rekomendasi Id:') !!}
+    {!! Form::label('status_rekomendasi_id', 'Status Rekomendasi:') !!}
     <p>{!! $rekomReklameHasStatusRekomendasi->status_rekomendasi_id !!}</p>
 </div>
 
 <!-- Users Id Field -->
 <div class="form-group">
-    {!! Form::label('users_id', 'Users Id:') !!}
+    {!! Form::label('users_id', 'Users:') !!}
     <p>{!! $rekomReklameHasStatusRekomendasi->users_id !!}</p>
 </div>
 
