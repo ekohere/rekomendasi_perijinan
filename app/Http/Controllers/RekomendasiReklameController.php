@@ -6,6 +6,7 @@ use App\Http\Requests\CreateRekomendasiReklameRequest;
 use App\Http\Requests\UpdateRekomendasiReklameRequest;
 use App\Models\DataUsaha;
 use App\Models\Rekomendasi;
+use App\Models\RekomendasiReklame;
 use App\Models\RekomReklameHasStatusRekomendasi;
 use App\Repositories\RekomendasiReklameRepository;
 use App\Http\Controllers\AppBaseController;
@@ -46,12 +47,14 @@ class RekomendasiReklameController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $rekomendasi = Rekomendasi::pluck('nama','id');
         $data_usaha = DataUsaha::pluck('nama','id');
+        $this->rekomendasiReklameRepository->pushCriteria(new RequestCriteria($request));
+        $rekomendasiReklames = $this->rekomendasiReklameRepository->paginate(10);
 
-        return view('rekomendasi_reklames.create', compact('rekomendasi', 'data_usaha'));
+        return view('rekomendasi_reklames.create', compact('rekomendasi', 'data_usaha', 'rekomendasiReklames'));
     }
 
     /**
