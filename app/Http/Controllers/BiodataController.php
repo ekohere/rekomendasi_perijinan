@@ -39,8 +39,8 @@ class BiodataController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $this->biodataRepository
-            ->pushCriteria(new RequestCriteria($request));
+        /*$this->biodataRepository
+            ->pushCriteria(new RequestCriteria($request));*/
         $biodatas = Biodata::where('user_id', Auth::id())
             ->first();
         $agamas =Agama::pluck('nama','id');
@@ -73,6 +73,7 @@ class BiodataController extends AppBaseController
     public function store(CreateBiodataRequest $request)
     {
         $requestData = $request->all();
+
         $dataBiodata = $request->only([
             'user_id',
             'nik',
@@ -91,6 +92,7 @@ class BiodataController extends AppBaseController
         ]);
         $requestAlamatAsal=$request->get('alamat_asal');
         $requestAlamatSekarang=$request->get('alamat_sekarang');
+
         try{
             DB::beginTransaction();
 

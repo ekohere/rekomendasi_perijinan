@@ -1,8 +1,8 @@
 <table class="table table-responsive" id="rekomReklameHasStatusRekomendasis-table">
     <thead>
-        <th>Rekomendasi Reklame Id</th>
-        <th>Status Rekomendasi Id</th>
-        <th>Users Id</th>
+        <th>Rekomendasi Reklame</th>
+        <th>Status Rekomendasi</th>
+        <th>Users</th>
         <th>Keterangan</th>
         <th colspan="3">Action</th>
     </thead>

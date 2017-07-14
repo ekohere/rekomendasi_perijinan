@@ -79,3 +79,9 @@ Route::get('/test/{email}/{password}', function ($email,$password){
 
 });
 
+
+Route::get('pdf', 'CetakController@pdf');
+
+Route::get('/pdf1', function () {
+    return view('cetakrekomendasi');
+});

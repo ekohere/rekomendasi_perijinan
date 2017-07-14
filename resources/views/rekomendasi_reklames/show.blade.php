@@ -14,22 +14,22 @@
 
                 @role(('tim_teknis_opd'))
                 @if($rekomendasiReklame->lastStatusRekomendasi()->statusRekomendasi->id===1)
-                <a href="{!! url('rekomendasi/verifikasi',$rekomendasiReklame->id) !!}" class="btn btn-primary">Proses Verifikasi</a>
+                <a href="{!! url('rekomendasi/verifikasi',$rekomendasiReklame->id) !!}" class="btn btn-primary" onclick="return confirm('Apakah Rekomendasi Ini Akan Diverifikasi?')">Proses Verifikasi</a>
                     @endif
                     @endrole
 
                 @role(('tim_teknis_opd'))
                 @if($rekomendasiReklame->lastStatusRekomendasi()->statusRekomendasi->id===2)
-                <a href="{!! url('rekomendasi/verifikasi_valid',$rekomendasiReklame->id) !!}" class="btn btn-primary">Verifikasi Valid</a>
+                <a href="{!! url('rekomendasi/verifikasi_valid',$rekomendasiReklame->id) !!}" class="btn btn-primary" onclick="return confirm('Apakah Rekomendasi Ini Valid?')">Verifikasi Valid</a>
                     @endif
                     @endrole
 
                 @role(('pimpinan_opd'))
-                <a href="{!! url('rekomendasi/disetujui',$rekomendasiReklame->id) !!}" class="btn btn-primary">Disetujuan</a>
+                <a href="{!! url('rekomendasi/disetujui',$rekomendasiReklame->id) !!}" class="btn btn-primary" onclick="return confirm('Apakah Rekomendasi Ini Disetujui?')">Disetujui</a>
                 @endrole
 
                 @role(('tim_teknis_opd'))
-                <a href="{!! url('rekomendasi/tolak',$rekomendasiReklame->id) !!}" class="btn btn-danger">Ditolak</a>
+                <a href="{!! url('rekomendasi/tolak',$rekomendasiReklame->id) !!}" class="btn btn-danger" onclick="return confirm('Apakah Rekomendasi Ini Akan Diverifikasi?')">Ditolak</a>
                 @endrole
 
                 </div>
