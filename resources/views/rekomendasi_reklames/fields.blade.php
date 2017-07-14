@@ -18,13 +18,13 @@
 
 <!-- Lama Pemasangan From Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('lama_pemasangan_from', 'Lama Pemasangan From:') !!}
+    {!! Form::label('lama_pemasangan_from', 'Tanggal Mulai Pemasangan:') !!}
     {!! Form::date('lama_pemasangan_from', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Lama Pemasangan To Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('lama_pemasangan_to', 'Lama Pemasangan To:') !!}
+    {!! Form::label('lama_pemasangan_to', 'Tanggal Akhir Pemasangan:') !!}
     {!! Form::date('lama_pemasangan_to', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -41,10 +41,10 @@
 </div>
 
 <!-- Rekomendasi Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('rekomendasi_id', 'Rekomendasi:') !!}
-    {!! Form::select('rekomendasi_id', $rekomendasi, null, ['class' => 'form-control']) !!}
-</div>
+{{--<div class="form-group col-sm-6">
+    {!! Form::label('rekomendasi_id', 'Rekomendasi:') !!}--}}
+    {!! Form::hidden('rekomendasi_id', $rekomendasi, null, ['class' => 'form-control']) !!}
+{{--</div>--}}
 
 <!-- Data Usaha Id Field -->
 <div class="form-group col-sm-6">

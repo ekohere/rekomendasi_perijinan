@@ -3,6 +3,7 @@
     <th>Status</th>
     <th>Update Terakhir</th>
     <th>User</th>
+    <th>Keterangan</th>
     </thead>
     <tbody>
     @foreach($rekomendasiReklame->rekomReklameHasStatusRekomendasis as $status)
@@ -10,6 +11,7 @@
             <td>{!! $status->statusRekomendasi->nama !!}</td>
             <td>{!! \Carbon\Carbon::parse($status->created_at)->format('d/M/Y H:i:s') !!}</td>
             <td>{!! $status->user->name or ''!!}</td>
+            <td>{!! $status->keterangan or ''!!}</td>
         </tr>
     @endforeach
     </tbody>
