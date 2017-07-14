@@ -91,7 +91,6 @@
 <p>Menunjuk surat permohonan atas nama Sdr, Junjun Kurnia Nomor : 011/CSJ-CGCS/V/2017 tanggal 2 Mei 2017, perihal permohonan rekomendasi izin reklame tidak tetap.</p>
 
 <table id="table" border="0" cellpadding="0" cellspacing="0">
-
     <tr>
         <b>Memberikan Rekomendasi Kepada :</b>
     </tr>
@@ -99,25 +98,25 @@
         <td width="5%">1. </td>
         <td>Jenis Reklame</td>
         <td>:</td>
-        <td></td>
+        <td>{{}}</td>
     </tr>
     <tr>
         <td>2. </td>
         <td>Nama Penangung Jawab</td>
         <td>:</td>
-        <td>sad</td>
+        <td>{{}}</td>
     </tr>
     <tr>
         <td>3. </td>
         <td>Alamat</td>
         <td>:</td>
-        <td>{{$user->biodata1()->alamats()}}</td>
+        <td>{{}}</td>
     </tr>
     <tr>
         <td>4. </td>
         <td>Telp/Hp</td>
         <td>:</td>
-        <td>asd</td>
+        <td>{{}}</td>
     </tr>  
 </table>
 <br>
@@ -129,37 +128,37 @@
         <td>1. </td>
         <td>Jenis Reklame</td>
         <td>:</td>
-        <td>asd</td>
+        <td>{{}}</td>
     </tr>
     <tr>
         <td>2. </td>
         <td>Ukuran & Jumlah</td>
         <td>:</td>
-        <td>asd</td>
+        <td>{{}}</td>
     </tr>
     <tr>
         <td>3. </td>
         <td>Teks Reklame</td>
         <td>:</td>
-        <td>asd</td>
+        <td>{{}}</td>
     </tr>
     <tr>
         <td>4. </td>
         <td>Tempat Pemasangan</td>
         <td>:</td>
-        <td>asd</td>
+        <td>{{}}</td>
     </tr>
     <tr>
         <td>5. </td>
         <td>Lama Pemasangan</td>
         <td>:</td>
-        <td>asdasd</td>
+        <td>{{}}</td>
     </tr>
     <tr>
         <td>6. </td>
         <td>Rekomendasi ini berlaku</td>
         <td>:</td>
-        <td>asdasd</td>
+        <td>{{}}</td>
     </tr>
 </table>
 <br>

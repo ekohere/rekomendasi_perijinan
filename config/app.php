@@ -186,6 +186,9 @@ return [
 
         //zizaco entrust
         Zizaco\Entrust\EntrustServiceProvider::class,
+        //DOMPDF
+        Barryvdh\DomPDF\ServiceProvider::class,
+
     ],
 
     /*
@@ -243,6 +246,7 @@ return [
         //zizaco entrust
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 
+       'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

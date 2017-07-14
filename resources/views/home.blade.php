@@ -10,7 +10,7 @@
         <div class="col-md-2">
             <div class="thumbnail">
                 <a href="{{route('rekomendasiReklames.create')}}">
-                    <img src="/assets/images/150.jpg" alt="Lights" style="width:100%">
+                    <img src="/assets/images/diskominfo.png" alt="Lights" style="width:100%">
                     <div class="caption">
                         <p align="center">Pengajuan Rekomendasi Reklame</p>
                     </div>
