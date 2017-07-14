@@ -6,11 +6,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-<<<<<<< HEAD
-                <img src="{{ isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):'/image/profil.jpg':'/image/profil.jpg' }} " class="img-circle"
-=======
                 <img src="{{ isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):asset('assets/images/no-image.png'):asset('assets/images/no-image.png') }} " class="img-circle"
->>>>>>> 5aa5b0949b763d55c889c6dad079a787ac60c65c
                      alt="User Image"/>
             </div>
             <div class="pull-left info">
