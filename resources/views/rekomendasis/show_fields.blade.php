@@ -12,7 +12,7 @@
 
 <!-- Institusi Id Field -->
 <div class="form-group">
-    {!! Form::label('institusi_id', 'Institusi Id:') !!}
+    {!! Form::label('institusi_id', 'Institusi:') !!}
     <p>{!! $rekomendasi->institusi->nama !!}</p>
 </div>
 
@@ -24,7 +24,7 @@
 
 <!-- Users Id Field -->
 <div class="form-group">
-    {!! Form::label('users_id', 'Users Id:') !!}
+    {!! Form::label('users_id', 'Users:') !!}
     <p>{!! $rekomendasi->user->name !!}</p>
 </div>
 
