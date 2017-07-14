@@ -2359,7 +2359,7 @@
                 "permission",
                 "roles"
             ],
-            "time": "2016-12-29T06:25:06+00:00"
+            "time": "2016-12-29 06:25:06"
         }
     ],
     "packages-dev": [
@@ -3096,7 +3096,7 @@
                 "swagger",
                 "templates"
             ],
-            "time": "2016-02-14T10:41:03+00:00"
+            "time": "2016-02-14 10:41:03"
         },
         {
             "name": "jlapp/swaggervel",
@@ -3141,7 +3141,7 @@
                 "laravel",
                 "swagger"
             ],
-            "time": "2016-01-25T15:38:17+00:00"
+            "time": "2016-01-25 15:38:17"
         },
         {
             "name": "laracasts/flash",

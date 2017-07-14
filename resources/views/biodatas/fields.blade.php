@@ -100,7 +100,7 @@
 <div class="form-group {{ $errors->has('status_perkawinan') ? 'has-error' : ''}}">
     {!! Form::label('status_perkawainan', 'Status Perkawinan', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('status_perkawinan',null, ['class' => 'form-control']) !!}
+        {!! Form::select('status_perkawinan', ['Belum Menikah'=>'Belum Menikah', 'Menikah'=>'Menikah'],null, ['class' => 'form-control']) !!}
         {!! $errors->first('status_perkawinan', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -303,56 +303,56 @@
                 <div class="form-group {{ $errors->has('rt') ? 'has-error' : ''}}">
                     {!! Form::label('rt', 'Rt', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::number('alamat_asal[rt]', isset($biodatas)?$biodatas->alamatAsal()->rt:'', ['id'=>'alamat_asal_rt','class' => 'form-control']) !!}
+                        {!! Form::number('alamat_asal[rt]', isset($biodatas->alamatAsal()->rt)?$biodatas->alamatAsal()->rt:'', ['id'=>'alamat_asal_rt','class' => 'form-control']) !!}
                         {!! $errors->first('rt', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('rw') ? 'has-error' : ''}}">
                     {!! Form::label('rw', 'Rw', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::number('alamat_asal[rw]', isset($biodatas)?$biodatas->alamatAsal()->rw:'', ['id'=>'alamat_asal_rw','class' => 'form-control']) !!}
+                        {!! Form::number('alamat_asal[rw]', isset($biodatas->alamatAsal()->rw)?$biodatas->alamatAsal()->rw:'', ['id'=>'alamat_asal_rw','class' => 'form-control']) !!}
                         {!! $errors->first('rw', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('nomor') ? 'has-error' : ''}}">
                     {!! Form::label('nomor', 'Nomor', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::number('alamat_asal[nomor]', isset($biodatas)?$biodatas->alamatAsal()->nomor:'', ['id'=>'alamat_asal_nomor','class' => 'form-control']) !!}
+                        {!! Form::number('alamat_asal[nomor]', isset($biodatas->alamatAsal()->nomor)?$biodatas->alamatAsal()->nomor:'', ['id'=>'alamat_asal_nomor','class' => 'form-control']) !!}
                         {!! $errors->first('nomor', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('jalan') ? 'has-error' : ''}}">
                     {!! Form::label('jalan', 'Jalan', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::text('alamat_asal[jalan]',  isset($biodatas)?$biodatas->alamatAsal()->jalan:'', ['id'=>'alamat_asal_jalan','class' => 'form-control']) !!}
+                        {!! Form::text('alamat_asal[jalan]',  isset($biodatas->alamatAsal()->jalan)?$biodatas->alamatAsal()->jalan:'', ['id'=>'alamat_asal_jalan','class' => 'form-control']) !!}
                         {!! $errors->first('jalan', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('kelurahan') ? 'has-error' : ''}}">
                     {!! Form::label('kelurahan', 'Kelurahan', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::text('alamat_asal[kelurahan]',  isset($biodatas)?$biodatas->alamatAsal()->kelurahan:'', ['id'=>'alamat_asal_kelurahan','class' => 'form-control']) !!}
+                        {!! Form::text('alamat_asal[kelurahan]',  isset($biodatas->alamatAsal()->kelurahan)?$biodatas->alamatAsal()->kelurahan:'', ['id'=>'alamat_asal_kelurahan','class' => 'form-control']) !!}
                         {!! $errors->first('kelurahan', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('kecamatan') ? 'has-error' : ''}}">
                     {!! Form::label('kecamatan', 'Kecamatan', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::text('alamat_asal[kecamatan]', isset($biodatas)?$biodatas->alamatAsal()->kecamatan:'', ['id'=>'alamat_asal_kecamatan','class' => 'form-control']) !!}
+                        {!! Form::text('alamat_asal[kecamatan]', isset($biodatas->alamatAsal()->kecamatan)?$biodatas->alamatAsal()->kecamatan:'', ['id'=>'alamat_asal_kecamatan','class' => 'form-control']) !!}
                         {!! $errors->first('kecamatan', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('kabupaten') ? 'has-error' : ''}}">
                     {!! Form::label('kabupaten', 'Kota / Kabupaten', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::text('alamat_asal[kabupaten]',  isset($biodatas)?$biodatas->alamatAsal()->kabupaten:'', ['id'=>'alamat_asal_kabupaten','class' => 'form-control']) !!}
+                        {!! Form::text('alamat_asal[kabupaten]',  isset($biodatas->alamatAsal()->kabupaten)?$biodatas->alamatAsal()->kabupaten:'', ['id'=>'alamat_asal_kabupaten','class' => 'form-control']) !!}
                         {!! $errors->first('kabupaten', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('provinsi') ? 'has-error' : ''}}">
                     {!! Form::label('provinsi', 'Provinsi', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::text('alamat_asal[provinsi]',  isset($biodatas)?$biodatas->alamatAsal()->provinsi:'', ['id'=>'alamat_asal_provinsi','class' => 'form-control']) !!}
+                        {!! Form::text('alamat_asal[provinsi]',  isset($biodatas->alamatAsal()->provinsi)?$biodatas->alamatAsal()->provinsi:'', ['id'=>'alamat_asal_provinsi','class' => 'form-control']) !!}
                         {!! $errors->first('provinsi', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
@@ -375,56 +375,56 @@
                 <div class="form-group {{ $errors->has('rt') ? 'has-error' : ''}}">
                     {!! Form::label('rt', 'Rt', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::number('alamat_sekarang[rt]',  isset($biodatas)?$biodatas->alamatSekarang()->rt:'', ['id'=>'alamat_sekarang_rt','class' => 'form-control']) !!}
+                        {!! Form::number('alamat_sekarang[rt]',  isset($biodatas->alamatSekarang()->rt)?$biodatas->alamatSekarang()->rt:'', ['id'=>'alamat_sekarang_rt','class' => 'form-control']) !!}
                         {!! $errors->first('rt', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('rw') ? 'has-error' : ''}}">
                     {!! Form::label('rw', 'Rw', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::number('alamat_sekarang[rw]',  isset($biodatas)?$biodatas->alamatSekarang()->rw:'', ['id'=>'alamat_sekarang_rw','class' => 'form-control']) !!}
+                        {!! Form::number('alamat_sekarang[rw]',  isset($biodatas->alamatSekarang()->rw)?$biodatas->alamatSekarang()->rw:'', ['id'=>'alamat_sekarang_rw','class' => 'form-control']) !!}
                         {!! $errors->first('rw', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('nomor') ? 'has-error' : ''}}">
                     {!! Form::label('nomor', 'Nomor', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::number('alamat_sekarang[nomor]', isset($biodatas)?$biodatas->alamatSekarang()->nomor:'', ['id'=>'alamat_sekarang_nomor','class' => 'form-control']) !!}
+                        {!! Form::number('alamat_sekarang[nomor]', isset($biodatas->alamatSekarang()->nomor)?$biodatas->alamatSekarang()->nomor:'', ['id'=>'alamat_sekarang_nomor','class' => 'form-control']) !!}
                         {!! $errors->first('nomor', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('jalan') ? 'has-error' : ''}}">
                     {!! Form::label('jalan', 'Jalan', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::text('alamat_sekarang[jalan]', isset($biodatas)?$biodatas->alamatSekarang()->jalan:'', ['id'=>'alamat_sekarang_jalan','class' => 'form-control']) !!}
+                        {!! Form::text('alamat_sekarang[jalan]', isset($biodatas->alamatSekarang()->jalan)?$biodatas->alamatSekarang()->jalan:'', ['id'=>'alamat_sekarang_jalan','class' => 'form-control']) !!}
                         {!! $errors->first('jalan', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('kelurahan') ? 'has-error' : ''}}">
                     {!! Form::label('kelurahan', 'Kelurahan', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::text('alamat_sekarang[kelurahan]', isset($biodatas)?$biodatas->alamatSekarang()->kelurahan:'', ['id'=>'alamat_sekarang_kelurahan','class' => 'form-control']) !!}
+                        {!! Form::text('alamat_sekarang[kelurahan]', isset($biodatas->alamatSekarang()->kelurahan)?$biodatas->alamatSekarang()->kelurahan:'', ['id'=>'alamat_sekarang_kelurahan','class' => 'form-control']) !!}
                         {!! $errors->first('kelurahan', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('kecamatan') ? 'has-error' : ''}}">
                     {!! Form::label('kecamatan', 'Kecamatan', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::text('alamat_sekarang[kecamatan]', isset($biodatas)?$biodatas->alamatSekarang()->kecamatan:'', ['id'=>'alamat_sekarang_kecamatan','class' => 'form-control']) !!}
+                        {!! Form::text('alamat_sekarang[kecamatan]', isset($biodatas->alamatSekarang()->kecamatan)?$biodatas->alamatSekarang()->kecamatan:'', ['id'=>'alamat_sekarang_kecamatan','class' => 'form-control']) !!}
                         {!! $errors->first('kecamatan', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('kabupaten') ? 'has-error' : ''}}">
                     {!! Form::label('kabupaten', 'Kota / Kabupaten', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::text('alamat_sekarang[kabupaten]',isset($biodatas)?$biodatas->alamatSekarang()->kabupaten:'', ['id'=>'alamat_sekarang_kabupaten','class' => 'form-control']) !!}
+                        {!! Form::text('alamat_sekarang[kabupaten]',isset($biodatas->alamatSekarang()->kabupaten)?$biodatas->alamatSekarang()->kabupaten:'', ['id'=>'alamat_sekarang_kabupaten','class' => 'form-control']) !!}
                         {!! $errors->first('kabupaten', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('provinsi') ? 'has-error' : ''}}">
                     {!! Form::label('provinsi', 'Provinsi', ['class' => 'col-md-4 control-label']) !!}
                     <div class="col-md-6">
-                        {!! Form::text('alamat_sekarang[provinsi]',isset($biodatas)?$biodatas->alamatSekarang()->provinsi:'', ['id'=>'alamat_sekarang_provinsi','class' => 'form-control']) !!}
+                        {!! Form::text('alamat_sekarang[provinsi]',isset($biodatas->alamatSekarang()->provinsi)?$biodatas->alamatSekarang()->provinsi:'', ['id'=>'alamat_sekarang_provinsi','class' => 'form-control']) !!}
                         {!! $errors->first('provinsi', '<p class="help-block">:message</p>') !!}
                     </div>
                 </div>

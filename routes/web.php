@@ -45,7 +45,7 @@ Route::group(['middleware' => ['auth']], function () {
 //zizaco entrust
     Route::resource('roles', 'RoleController');
 
-    Route::resource('user_role', 'UserRoleController', ['except' => [
+        Route::resource('user_role', 'UserRoleController', ['except' => [
         'create', 'store', 'show', 'destroy',
     ]]);
 
