@@ -16,16 +16,37 @@
     {!! Form::text('ukuran_reklame', null, ['class' => 'form-control']) !!}
 </div>
 
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( "#lama_pemasangan_from" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  } );
+  </script>
+  <script>
+  $( function() {
+    $( "#lama_pemasangan_to" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  } );
+  </script>
+
+
 <!-- Lama Pemasangan From Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('lama_pemasangan_from', 'Tanggal Mulai Pemasangan:') !!}
-    {!! Form::date('lama_pemasangan_from', null, ['class' => 'form-control']) !!}
+    {!! Form::text('lama_pemasangan_from', null, ['class' => 'form-control','placeholder'=>'Bulan/Tanggal/Tahun']) !!}
 </div>
 
 <!-- Lama Pemasangan To Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('lama_pemasangan_to', 'Tanggal Akhir Pemasangan:') !!}
-    {!! Form::date('lama_pemasangan_to', null, ['class' => 'form-control']) !!}
+    {!! Form::text('lama_pemasangan_to', null, ['class' => 'form-control','placeholder'=>'Bulan/Tanggal/Tahun']) !!}
 </div>
 
 <!-- Lokasi Pemasangan Field -->
