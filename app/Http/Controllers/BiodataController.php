@@ -74,22 +74,6 @@ class BiodataController extends AppBaseController
     {
         $requestData = $request->all();
 
-        $dataBiodata = $request->only([
-            'user_id',
-            'nik',
-            'npwp_pribadi',
-            'scan_ktp',
-            'scan_npwp',
-            'jenjang_pendidikan_id',
-            'tempat_lahir',
-            'tanggal_lahir',
-            'jenis_kelamin',
-            'kewarganegaraan',
-            'status_perkawinan',
-            'agama_id',
-            'website',
-            'foto'
-        ]);
         $requestAlamatAsal=$request->get('alamat_asal');
         $requestAlamatSekarang=$request->get('alamat_sekarang');
 
@@ -97,7 +81,7 @@ class BiodataController extends AppBaseController
             DB::beginTransaction();
 
             $biodatum = Biodata::updateOrCreate(['user_id'=> Auth::id()],
-                $dataBiodata);
+                $requestData);
             $path1=null;
             $path2=null;
             $path3=null;
@@ -217,30 +201,13 @@ class BiodataController extends AppBaseController
         $dataUsaha = $this->dataUsahaRepository->update($request->all(), $id);
         $requestData = $request->all();
 
-
-        $dataBiodata = $request->only([
-            'user_id',
-            'nik',
-            'npwp_pribadi',
-            'scan_ktp',
-            'scan_npwp',
-            'jenjang_pendidikan_id',
-            'tempat_lahir',
-            'tanggal_lahir',
-            'jenis_kelamin',
-            'kewarganegaraan',
-            'status_perkawinan',
-            'agama_id',
-            'website',
-            'foto'
-        ]);
         $requestAlamatAsal=$request->get('alamat_asal');
         $requestAlamatSekarang=$request->get('alamat_sekarang');
         try{
             DB::beginTransaction();
 
             $biodatum = Biodata::updateOrCreate(['user_id'=> Auth::id()],
-                $dataBiodata);
+                $requestData);
             $path1=null;
             $path2=null;
             $path3=null;

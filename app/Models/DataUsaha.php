@@ -63,7 +63,7 @@ class DataUsaha extends Model
      * @var array
      */
     public static $rules = [
-        
+        'scan_npwp' => 'required'
     ];
 
     /**
