@@ -36,7 +36,7 @@ class DataUsahaController extends AppBaseController
     public function index(Request $request)
     {
         $this->dataUsahaRepository->pushCriteria(new RequestCriteria($request));
-        $dataUsahas = $this->dataUsahaRepository->paginate(10);
+        $dataUsahas =$this->dataUsahaRepository->findWhere(['user_id'=>Auth::id()]);
 
         return view('data_usahas.index')
             ->with('dataUsahas', $dataUsahas);
