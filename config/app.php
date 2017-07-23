@@ -188,6 +188,8 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         //DOMPDF
         Barryvdh\DomPDF\ServiceProvider::class,
+        //pusher 
+        Vinkla\Pusher\PusherServiceProvider::class,
 
     ],
 
@@ -247,6 +249,8 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 
        'PDF' => Barryvdh\DomPDF\Facade::class,
+       //pusher
+       'LPusher' => Vinkla\Pusher\Facades\Pusher::class,
 
     ],
 

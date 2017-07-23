@@ -23,6 +23,9 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
+    <!-- Toastr -->
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     @yield('css')
 </head>
 
@@ -155,8 +158,43 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
 
+    <!-- Pusher -->
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+
     <!-- AdminLTE App -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/js/app.min.js"></script>
+
+    <!-- Toastr -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    @if (!Auth::guest())
+    <script>
+
+        Pusher.logToConsole = true;
+        var pusher = new Pusher("{{env('PUSHER_KEY')}}",{ cluster: 'ap1' })
+        var channel = pusher.subscribe('test-channel');
+        channel.bind('test-event', function(data) {
+        toastr.options = {
+          "closeButton": true,
+          "debug": false,
+          "newestOnTop": false,
+          "progressBar": false,
+          "positionClass": "toast-bottom-right",
+          "preventDuplicates": false,
+          "showDuration": "700",
+          "hideDuration": "1000",
+          "timeOut": "5000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut",
+          "onclick" :  window.location.href = "rekomendasiReklames/"+data.id,
+        }
+            toastr.info("Klik disini untuk melihat.", "Permintaan baru telah masuk");
+        });
+    </script>
+    @endif
+    
 
     @yield('scripts')
 </body>

@@ -12,6 +12,7 @@ use App\Repositories\RekomendasiReklameRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -49,7 +50,8 @@ class RekomendasiReklameController extends AppBaseController
      */
     public function create(Request $request)
     {
-        $rekomendasi = Rekomendasi::pluck('nama','id');
+        // $rekomendasi = Rekomendasi::pluck('nama','id');
+        $rekomendasi = 1;
         $data_usaha = DataUsaha::pluck('nama','id');
         $this->rekomendasiReklameRepository->pushCriteria(new RequestCriteria($request));
         $rekomendasiReklames = $this->rekomendasiReklameRepository->paginate(10);
@@ -77,6 +79,12 @@ class RekomendasiReklameController extends AppBaseController
                 'users_id'=>Auth::id()]);
             DB::commit();
             Flash::success('Rekomendasi Reklame saved successfully.');
+            
+            /*pusher notification*/
+            $pusher = App::make('pusher');
+            $pusher->trigger( 'test-channel', 'test-event', 
+                array('id' => $rekomendasiReklame->id));
+
         }catch (Exception $e){
             DB::rollback();
 
