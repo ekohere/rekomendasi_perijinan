@@ -1370,6 +1370,7 @@
                 "shell"
             ],
             "time": "2017-07-22T15:14:19+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "pusher/pusher-php-server",
@@ -1414,6 +1415,8 @@
                 "trigger"
             ],
             "time": "2017-06-06T16:41:17+00:00"
+=======
+>>>>>>> b332565c2da665fd5cee20d726c021b8ebf00144
         },
         {
             "name": "ramsey/uuid",
@@ -2525,7 +2528,7 @@
                 "permission",
                 "roles"
             ],
-            "time": "2016-12-29 06:25:06"
+            "time": "2016-12-29T06:25:06+00:00"
         }
     ],
     "packages-dev": [
@@ -2599,6 +2602,7 @@
         },
         {
             "name": "doctrine/cache",
+<<<<<<< HEAD
             "version": "v1.7.0",
             "source": {
                 "type": "git",
@@ -2609,6 +2613,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/doctrine/cache/zipball/53d9518ffeb019c51d542ff60cb578f076d3ff16",
                 "reference": "53d9518ffeb019c51d542ff60cb578f076d3ff16",
+=======
+            "version": "v1.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/cache.git",
+                "reference": "eb152c5100571c7a45470ff2a35095ab3f3b900b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/eb152c5100571c7a45470ff2a35095ab3f3b900b",
+                "reference": "eb152c5100571c7a45470ff2a35095ab3f3b900b",
+>>>>>>> b332565c2da665fd5cee20d726c021b8ebf00144
                 "shasum": ""
             },
             "require": {
@@ -2669,7 +2685,11 @@
                 "cache",
                 "caching"
             ],
+<<<<<<< HEAD
             "time": "2017-07-22T13:00:15+00:00"
+=======
+            "time": "2017-07-22T12:49:21+00:00"
+>>>>>>> b332565c2da665fd5cee20d726c021b8ebf00144
         },
         {
             "name": "doctrine/collections",
@@ -2740,6 +2760,7 @@
         },
         {
             "name": "doctrine/common",
+<<<<<<< HEAD
             "version": "v2.8.0",
             "source": {
                 "type": "git",
@@ -2750,6 +2771,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/doctrine/common/zipball/ed349f953d443963c590b008b37b864b8a3c4b21",
                 "reference": "ed349f953d443963c590b008b37b864b8a3c4b21",
+=======
+            "version": "v2.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/common.git",
+                "reference": "4acb8f89626baafede6ee5475bc5844096eba8a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/common/zipball/4acb8f89626baafede6ee5475bc5844096eba8a9",
+                "reference": "4acb8f89626baafede6ee5475bc5844096eba8a9",
+>>>>>>> b332565c2da665fd5cee20d726c021b8ebf00144
                 "shasum": ""
             },
             "require": {
@@ -2809,7 +2842,11 @@
                 "persistence",
                 "spl"
             ],
+<<<<<<< HEAD
             "time": "2017-07-22T09:01:43+00:00"
+=======
+            "time": "2017-07-22T08:35:12+00:00"
+>>>>>>> b332565c2da665fd5cee20d726c021b8ebf00144
         },
         {
             "name": "doctrine/dbal",
@@ -3268,7 +3305,7 @@
                 "swagger",
                 "templates"
             ],
-            "time": "2016-02-14 10:41:03"
+            "time": "2016-02-14T10:41:03+00:00"
         },
         {
             "name": "jlapp/swaggervel",
@@ -3313,7 +3350,7 @@
                 "laravel",
                 "swagger"
             ],
-            "time": "2016-01-25 15:38:17"
+            "time": "2016-01-25T15:38:17+00:00"
         },
         {
             "name": "laracasts/flash",

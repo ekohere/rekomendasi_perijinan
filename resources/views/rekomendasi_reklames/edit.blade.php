@@ -11,7 +11,7 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($rekomendasiReklame, ['route' => ['rekomendasiReklames.update', $rekomendasiReklame->id], 'method' => 'patch']) !!}
+                   {!! Form::model($rekomendasiReklame, ['route' => ['rekomendasiReklames.update','class' => 'form-horizontal', $rekomendasiReklame->id], 'method' => 'patch','files'=>true]) !!}
 
                         @include('rekomendasi_reklames.fields')
 

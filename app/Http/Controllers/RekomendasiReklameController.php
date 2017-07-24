@@ -50,11 +50,13 @@ class RekomendasiReklameController extends AppBaseController
      */
     public function create(Request $request)
     {
-        // $rekomendasi = Rekomendasi::pluck('nama','id');
-        $rekomendasi = 1;
-        $data_usaha = DataUsaha::pluck('nama','id');
+
+        $rekomendasi = Rekomendasi::pluck('nama','id');
+        $data_usaha = DataUsaha::where('user_id',Auth::id())->pluck('nama','id');
         $this->rekomendasiReklameRepository->pushCriteria(new RequestCriteria($request));
-        $rekomendasiReklames = $this->rekomendasiReklameRepository->paginate(10);
+        $rekomendasiReklames = $this->rekomendasiReklameRepository->whereHas('dataUsaha',function ($query){
+            $query->where('user_id',Auth::id());
+        })->paginate(10);
 
         return view('rekomendasi_reklames.create', compact('rekomendasi', 'data_usaha', 'rekomendasiReklames'));
     }
@@ -90,6 +92,7 @@ class RekomendasiReklameController extends AppBaseController
 
             Flash::error('Rekomendasi Reklame Gagal '.$e->getMessage());
         }
+
         return redirect(route('home'));
         return redirect(route('rekomendasiReklames.index'));
     }

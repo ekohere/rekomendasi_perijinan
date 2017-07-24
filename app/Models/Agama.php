@@ -43,7 +43,7 @@ class Agama extends Model
      * @var array
      */
     public static $rules = [
-        
+        'nama' => 'require'
     ];
 
     /**

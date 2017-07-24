@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\Biodata;
+use App\Role;
 use App\User;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -90,15 +92,21 @@ class RegisterController extends Controller
             $array_response=json_decode((string) $response->getBody(), true);
 
             if($array_response['sukses']){
-                $response = $http->get('https://api-smartcity-samarinda.cf/api/penduduk/by-nik/?NIK='.$data['nik'], [
-                    'headers' => [
-                        'Authorization' => 'Bearer '.$array_response['token'],
-                        'Accept'     => 'application/json'
-                    ],
-                    'verify' => false,
-                ]);
+                try{
+                    $response = $http->get('https://api-smartcity-samarinda.cf/api/penduduk/by-nik/?NIK='.$data['nik'], [
+                        'headers' => [
+                            'Authorization' => 'Bearer '.$array_response['token'],
+                            'Accept'     => 'application/json'
+                        ],
+                        'verify' => false,
+                    ]);
 
-                $array_response=json_decode((string) $response->getBody(), true);
+                    $array_response=json_decode((string) $response->getBody(), true);
+
+
+                }catch (ClientException $e){
+                    $array_response = json_decode($e->getResponse()->getBody(true),true);
+                }
 
                 if($array_response['sukses']){
                     Biodata::create([
@@ -112,9 +120,13 @@ class RegisterController extends Controller
                 }else{
                     Biodata::create([
                         'user_id'=>$user->id,
-                        'nik'=>$array_response['data_penduduk']['NIK']
+                        'nik'=>$data['nik']
                     ]);
                 }
+
+                $role=Role::where('name','warga')->firstOrFail();
+                $user->attachRole($role);
+
             }
             DB::commit();
             return $user;
