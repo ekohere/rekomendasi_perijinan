@@ -28,6 +28,7 @@
 
     <!-- Toastr -->
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="{{asset('assets/plugins/datepicker/datepicker3.css')}}">
 
     @yield('css')
 </head>
@@ -202,5 +203,16 @@
     
 
     @yield('scripts')
+<script src="{{asset('assets/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+
+<script type="application/javascript">
+    //Date picker
+    $('#datepicker').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd'
+    });
+</script>
+
+@yield('scripts')
 </body>
 </html>

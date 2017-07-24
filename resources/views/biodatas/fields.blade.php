@@ -61,20 +61,20 @@
             <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-  <script>
+{{--  <script>
   $( function() {
     $( "#tanggal_lahir" ).datepicker({
       changeMonth: true,
       changeYear: true
     });
   } );
-  </script>
+  </script>--}}
 
 
-<div class="form-group {{ $errors->has('tanggal_lahir') ? 'has-error' : ''}}">
+    <div class="form-group {{ $errors->has('tanggal_lahir') ? 'has-error' : ''}}">
     {!! Form::label('tanggal_lahir', 'Tanggal Lahir', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('tanggal_lahir',isset($biodatas->tanggal_lahir)?\Carbon\Carbon::parse($biodatas->tanggal_lahir):null, ['class' => 'form-control','required'=>'required','placeholder' => 'Bulan/Tanggal/Tahun']) !!}
+        {!! Form::text('tanggal_lahir',isset($biodatas->tanggal_lahir)?\Carbon\Carbon::parse($biodatas->tanggal_lahir)->format('Y-m-d'):null, ['class' => 'form-control','required'=>'required','id'=>'datepicker','placeholder' => 'Tanggal/Bulan/Tahun']) !!}
                     {!! $errors->first('tanggal_lahir', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
