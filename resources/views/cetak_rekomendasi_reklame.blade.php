@@ -88,7 +88,7 @@
     <br> 
 </div>
 
-<p>Menunjuk surat permohonan atas nama Sdr, Junjun Kurnia Nomor : 011/CSJ-CGCS/V/2017 tanggal 2 Mei 2017, perihal permohonan rekomendasi izin reklame tidak tetap.</p>
+<p>Menunjuk surat permohonan atas nama Sdr. {{$rekomendasi->dataUsaha->user->name or ''}}, Nomor : 011/CSJ-CGCS/V/2017 tanggal 2 Mei 2017, perihal permohonan rekomendasi izin reklame tidak tetap.</p>
 
 <table id="table" border="0" cellpadding="0" cellspacing="0">
 
@@ -121,6 +121,7 @@
     </tr>  
 </table>
 <br>
+
 <table id="table" border="0" cellpadding="0" cellspacing="0">
     <tr>
         <b>Untuk Memasang Reklame :</b>
