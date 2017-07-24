@@ -11,7 +11,7 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($dataUsaha, ['route' => ['dataUsahas.update','class' => 'form-horizontal', $dataUsaha->id], 'method' => 'patch']) !!}
+                   {!! Form::model($dataUsaha, ['route' => ['dataUsahas.update','class' => 'form-horizontal', $dataUsaha->id], 'method' => 'patch', 'files'=>true]) !!}
 
                         @include('data_usahas.fields')
 

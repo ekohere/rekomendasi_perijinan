@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Session;
 
 class DataUsahaController extends AppBaseController
 {
@@ -56,44 +61,41 @@ class DataUsahaController extends AppBaseController
      */
     public function store(CreateDataUsahaRequest $request)
     {
-        $input = $request->all();
-
-        $dataUsaha = $this->dataUsahaRepository->create($input);
-
         $requestData = $request->all();
 
         try{
             DB::beginTransaction();
 
-            $dataUsahas = DataUsaha::create($requestData);
+            $dataUsahas=DataUsaha::create($requestData);
+
             $path1=null;
             $path2=null;
             $path3=null;
 
-            if( $request->hasFile('scan_npwp')) {
-                $ext=File::extension($request->file('scan_npwp')->getClientOriginalName());
-                $filename='npwp'.$dataUsahas->id.'.'.$ext;
-                $path1 = $request->scan_npwp->storeAs('data_scan_npwp', $filename,'local_public');
-                chmod(public_path().'/'.$path1, 0777);
-            }
-            if($path1!=null){
-                $dataUsahas->scan_npwp=$path1;
-                $dataUsahas->save();
-            }
             if( $request->hasFile('scan_siup')) {
                 $ext=File::extension($request->file('scan_siup')->getClientOriginalName());
                 $filename='siup'.$dataUsahas->id.'.'.$ext;
-                $path2 = $request->scan_siup->storeAs('data_scan_siup', $filename,'local_public');
+                $path1 = $request->scan_siup->storeAs('data_scan_siup', $filename,'local_public');
+                chmod(public_path().'/'.$path1, 0777);
+            }
+            if($path1!=null){
+                $dataUsahas->scan_siup=$path1;
+                $dataUsahas->save();
+            }
+            if( $request->hasFile('scan_npwp')) {
+                $ext=File::extension($request->file('scan_npwp')->getClientOriginalName());
+                $filename='npwp'.$dataUsahas->id.'.'.$ext;
+                $path2 = $request->scan_npwp->storeAs('data_scan_npwp', $filename,'local_public');
                 chmod(public_path().'/'.$path2, 0777);
             }
             if($path2!=null){
-                $dataUsahas->scan_siup=$path2;
+                $dataUsahas->scan_npwp=$path2;
                 $dataUsahas->save();
             }
             if( $request->hasFile('scan_situ')) {
                 $ext=File::extension($request->file('scan_situ')->getClientOriginalName());
                 $filename='situ'.$dataUsahas->id.'.'.$ext;
-                $path3 = $request->scan_situ->storeAs('data_scan_situ', $filename,'local_public');
+                $path3 = $request->scan_situ->storeAs('scan_situ', $filename,'local_public');
                 chmod(public_path().'/'.$path3, 0777);
             }
             if($path3!=null){
@@ -103,11 +105,10 @@ class DataUsahaController extends AppBaseController
 
             DB::commit();
 
-            Session::flash('flash_message', 'Biodata added!');
         }catch(Exception $e){
             DB::rollback();
         }
-
+        Flash::success('Data Usaha created successfully.');
         return redirect(route('dataUsahas.index'));
     }
 
@@ -141,6 +142,8 @@ class DataUsahaController extends AppBaseController
     public function edit($id)
     {
         $dataUsaha = $this->dataUsahaRepository->findWithoutFail($id);
+        $dataUsahas = DataUsaha::where('id',$id)
+            ->where('user_id',Auth::id())->firstOrFail();
 
         if (empty($dataUsaha)) {
             Flash::error('Data Usaha not found');
@@ -148,7 +151,7 @@ class DataUsahaController extends AppBaseController
             return redirect(route('dataUsahas.index'));
         }
 
-        return view('data_usahas.edit')->with('dataUsaha', $dataUsaha);
+        return view('data_usahas.edit',compact('dataUsaha', 'dataUsahas'));
     }
 
     /**
@@ -176,36 +179,37 @@ class DataUsahaController extends AppBaseController
         try{
             DB::beginTransaction();
 
-            $dataUsahas = DataUsaha::where('id',$id)->where('user_id',Auth::id())->firstOrFail();
+            $dataUsahas=DataUsaha::where('id',$id)->where('user_id',Auth::id())->firstOrFail();
             $dataUsahas->update($requestData);
+
             $path1=null;
             $path2=null;
             $path3=null;
 
-            if( $request->hasFile('scan_npwp')) {
-                $ext=File::extension($request->file('scan_npwp')->getClientOriginalName());
-                $filename='npwp'.$dataUsahas->id.'.'.$ext;
-                $path1 = $request->scan_npwp->storeAs('data_scan_npwp', $filename,'local_public');
-                chmod(public_path().'/'.$path1, 0777);
-            }
-            if($path1!=null){
-                $dataUsahas->scan_npwp=$path1;
-                $dataUsahas->save();
-            }
             if( $request->hasFile('scan_siup')) {
                 $ext=File::extension($request->file('scan_siup')->getClientOriginalName());
                 $filename='siup'.$dataUsahas->id.'.'.$ext;
-                $path2 = $request->scan_siup->storeAs('data_scan_siup', $filename,'local_public');
+                $path1 = $request->scan_siup->storeAs('data_scan_siup', $filename,'local_public');
+                chmod(public_path().'/'.$path1, 0777);
+            }
+            if($path1!=null){
+                $dataUsahas->scan_siup=$path1;
+                $dataUsahas->save();
+            }
+            if( $request->hasFile('scan_npwp')) {
+                $ext=File::extension($request->file('scan_npwp')->getClientOriginalName());
+                $filename='npwp'.$dataUsahas->id.'.'.$ext;
+                $path2 = $request->scan_npwp->storeAs('data_scan_npwp', $filename,'local_public');
                 chmod(public_path().'/'.$path2, 0777);
             }
             if($path2!=null){
-                $dataUsahas->scan_siup=$path2;
+                $dataUsahas->scan_npwp=$path2;
                 $dataUsahas->save();
             }
             if( $request->hasFile('scan_situ')) {
                 $ext=File::extension($request->file('scan_situ')->getClientOriginalName());
                 $filename='situ'.$dataUsahas->id.'.'.$ext;
-                $path3 = $request->scan_situ->storeAs('data_scan_situ', $filename,'local_public');
+                $path3 = $request->scan_situ->storeAs('scan_situ', $filename,'local_public');
                 chmod(public_path().'/'.$path3, 0777);
             }
             if($path3!=null){
@@ -215,10 +219,11 @@ class DataUsahaController extends AppBaseController
 
             DB::commit();
 
-            Session::flash('flash_message', 'Biodata added!');
         }catch(Exception $e){
             DB::rollback();
         }
+
+        Flash::success('Data Usaha updated successfully.');
 
         return redirect(route('dataUsahas.index'));
     }
