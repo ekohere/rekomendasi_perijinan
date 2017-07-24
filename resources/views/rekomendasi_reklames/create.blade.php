@@ -12,7 +12,7 @@
 
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'rekomendasiReklames.store']) !!}
+                    {!! Form::open(['route' => 'rekomendasiReklames.store','class' => 'form-horizontal','files'=>true]) !!}
 
                         @include('rekomendasi_reklames.fields')
 

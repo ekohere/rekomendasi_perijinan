@@ -75,6 +75,19 @@ class RekomendasiReklameController extends AppBaseController
                 'rekomendasi_reklame_id'=>$rekomendasiReklame->id,
                 'status_rekomendasi_id'=>'1',
                 'users_id'=>Auth::id()]);
+
+            $path=null;
+
+            if( $request->hasFile('scan_desain_reklame')) {
+                $ext=File::extension($request->file('scan_desain_reklame')->getClientOriginalName());
+                $filename='reklame'.$rekomendasiReklame->id.'.'.$ext;
+                $path = $request->scan_desain_reklame->storeAs('scan_desain_reklame', $filename,'local_public');
+                chmod(public_path().'/'.$path, 0777);
+            }
+            if($path!=null){
+                $rekomendasiReklame->scan_desain_reklame=$path;
+                $rekomendasiReklame->save();
+            }
             DB::commit();
             Flash::success('Rekomendasi Reklame saved successfully.');
         }catch (Exception $e){
@@ -82,6 +95,7 @@ class RekomendasiReklameController extends AppBaseController
 
             Flash::error('Rekomendasi Reklame Gagal '.$e->getMessage());
         }
+
         return redirect(route('home'));
         return redirect(route('rekomendasiReklames.index'));
     }
