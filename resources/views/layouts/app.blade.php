@@ -25,6 +25,8 @@
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
+    <link rel="stylesheet" href="{{asset('assets/plugins/datepicker/datepicker3.css')}}">
+
     @yield('css')
 </head>
 
@@ -161,6 +163,16 @@
 
 <!-- AdminLTE App -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/js/app.min.js"></script>
+
+<script src="{{asset('assets/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+
+<script type="application/javascript">
+    //Date picker
+    $('#datepicker').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd'
+    });
+</script>
 
 @yield('scripts')
 </body>

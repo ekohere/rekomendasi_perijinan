@@ -99,25 +99,25 @@
         <td width="5%">1. </td>
         <td>Jenis Reklame</td>
         <td>:</td>
-        <td></td>
+        <td>{{$rekomendasi->jenis_reklame or ''}}</td>
     </tr>
     <tr>
         <td>2. </td>
         <td>Nama Penangung Jawab</td>
         <td>:</td>
-        <td>sad</td>
+        <td>{{$rekomendasi->dataUsaha->user->name or ''}}</td>
     </tr>
     <tr>
         <td>3. </td>
         <td>Alamat</td>
         <td>:</td>
-        <td>{{$user->biodata1()->alamats()}}</td>
+        <td>{{$rekomendasi->dataUsaha->user->biodata->alamatSekarang()}}</td>
     </tr>
     <tr>
         <td>4. </td>
         <td>Telp/Hp</td>
         <td>:</td>
-        <td>asd</td>
+        <td>{{$rekomendasi->dataUsaha->user->biodata->kontak}}</td>
     </tr>  
 </table>
 <br>
@@ -129,25 +129,25 @@
         <td>1. </td>
         <td>Jenis Reklame</td>
         <td>:</td>
-        <td>asd</td>
+        <td>{{$rekomendasi->jenis_reklame or ''}}</td>
     </tr>
     <tr>
         <td>2. </td>
         <td>Ukuran & Jumlah</td>
         <td>:</td>
-        <td>asd</td>
+        <td>{{$rekomendasi->ukuran_reklame or ''}}</td>
     </tr>
     <tr>
         <td>3. </td>
         <td>Teks Reklame</td>
         <td>:</td>
-        <td>asd</td>
+        <td>{{$rekomendasi->teks_reklame or ''}}</td>
     </tr>
     <tr>
         <td>4. </td>
         <td>Tempat Pemasangan</td>
         <td>:</td>
-        <td>asd</td>
+        <td>{{$rekomendasi->lokasi_pemasangan or ''}}</td>
     </tr>
     <tr>
         <td>5. </td>

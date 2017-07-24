@@ -99,7 +99,7 @@ class RekomendasiReklameController extends AppBaseController
         }
 
         return redirect(route('home'));
-        return redirect(route('rekomendasiReklames.index'));
+        /*return redirect(route('rekomendasiReklames.index'));*/
     }
 
     /**
