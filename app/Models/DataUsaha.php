@@ -63,9 +63,10 @@ class DataUsaha extends Model
      * @var array
      */
     public static $rules = [
-        'scan_npwp' => 'require',
-        'scan_siup' => 'require',
-        'scan_situ' => 'require',
+        'nama' => 'required',
+        'jenis' => 'required',
+        'npwp_usaha' => 'required',
+        'scan_npwp' => 'required'
     ];
 
     /**
@@ -73,7 +74,7 @@ class DataUsaha extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo(\App\User::class);
     }
 
     /**

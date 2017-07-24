@@ -1,5 +1,3 @@
-    <!-- iCheck -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/square/_all.css">
 
 {!! Form::hidden('id', null, ['class' => 'form-control']) !!}
 

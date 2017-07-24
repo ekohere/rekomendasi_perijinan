@@ -111,7 +111,7 @@
         <td>3. </td>
         <td>Alamat</td>
         <td>:</td>
-        <td>{{$rekomendasi->dataUsaha->user->biodata->alamatSekarang()}}</td>
+        <td>{{--{{$rekomendasi->dataUsaha->user->biodata->alamatSekarang->alamatLengkap}}--}}</td>
     </tr>
     <tr>
         <td>4. </td>

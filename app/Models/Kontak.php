@@ -19,6 +19,10 @@ class Kontak extends Model
         'biodata_id'
     ];
 
+    protected static $rule=[
+        'nomor' => 'required'
+    ];
+
     public function biodata()
     {
         return $this->belongsTo('App\Models\Biodata');
