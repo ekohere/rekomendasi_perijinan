@@ -56,7 +56,7 @@
 
         <br \>
 
-        <img id="cropnpwp" src="{{isset($dataUsahas->scan_npwp)?file_exists( public_path() . '/' . $dataUsahas->scan_npwp)?asset($dataUsahas->scan_npwp):asset('assets/images/no-image.png'):asset('assets/images/no-image.png')}}" alt="your image"  width="337" height="213"  />
+        <img id="cropnpwp" src="{{isset($dataUsahas->scan_npwp)?file_exists( public_path() . '/' . $dataUsahas->scan_npwp)?asset($dataUsahas->scan_npwp):asset('assets/images/id_card.png'):asset('assets/images/id_card.png')}}" alt="your image"  width="350" height="221"  />
         {{ Form::hidden('scan_npwp', isset($dataUsahas->scan_npwp)?file_exists( public_path() . '/' . $dataUsahas->scan_npwp)?$dataUsahas->scan_npwp:'':'') }}
 
         <script type="text/javascript">
@@ -96,7 +96,7 @@
 
         <br \>
 
-        <img id="cropsiup" src="{{isset($dataUsahas->scan_siup)?file_exists( public_path() . '/' . $dataUsahas->scan_siup)?asset($dataUsahas->scan_siup):asset('assets/images/no-image.png'):asset('assets/images/no-image.png')}}" alt="your image"  width="337" height="213"  />
+        <img id="cropsiup" src="{{isset($dataUsahas->scan_siup)?file_exists( public_path() . '/' . $dataUsahas->scan_siup)?asset($dataUsahas->scan_siup):asset('assets/images/surat.png'):asset('assets/images/surat.png')}}" alt="your image"  width="221" height="350"  />
         {{ Form::hidden('scan_siup', isset($dataUsahas->scan_siup)?file_exists( public_path() . '/' . $dataUsahas->scan_siup)?$dataUsahas->scan_siup:'':'') }}
 
         <script type="text/javascript">
@@ -136,7 +136,7 @@
 
         <br \>
 
-        <img id="cropsitu" src="{{isset($dataUsahas->scan_situ)?file_exists( public_path() . '/' . $dataUsahas->scan_situ)?asset($dataUsahas->scan_situ):asset('assets/images/no-image.png'):asset('assets/images/no-image.png')}}" alt="your image"  width="337" height="213"  />
+        <img id="cropsitu" src="{{isset($dataUsahas->scan_situ)?file_exists( public_path() . '/' . $dataUsahas->scan_situ)?asset($dataUsahas->scan_situ):asset('assets/images/surat.png'):asset('assets/images/surat.png')}}" alt="your image"  width="221" height="350"  />
         {{ Form::hidden('scan_situ', isset($dataUsahas->scan_situ)?file_exists( public_path() . '/' . $dataUsahas->scan_situ)?$dataUsahas->scan_situ:'':'') }}
 
         <script type="text/javascript">

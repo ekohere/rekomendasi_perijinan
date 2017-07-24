@@ -140,7 +140,7 @@
                     {!! Form::file('scan_ktp',null, ['class' => 'form-control']) !!}
 
                     <br \>
-                    <img id="cropktp" src="{{isset($biodatas->scan_ktp)?file_exists( public_path() . '/' . $biodatas->scan_ktp)?asset($biodatas->scan_ktp):asset('assets/images/no-image.png'):asset('assets/images/no-image.png')}}" alt="your image"  width="337" height="213"  />
+                    <img id="cropktp" src="{{isset($biodatas->scan_ktp)?file_exists( public_path() . '/' . $biodatas->scan_ktp)?asset($biodatas->scan_ktp):asset('assets/images/id_card.png'):asset('assets/images/id_card.png')}}" alt="your image"  width="337" height="213"  />
                     {{ Form::hidden('scan_ktp', isset($biodatas->scan_ktp)?file_exists( public_path() . '/' . $biodatas->scan_ktp)?$biodatas->scan_ktp:'':'') }}
 
                     <script type="text/javascript">
@@ -170,7 +170,7 @@
 
                     <br \>
 
-                    <img id="cropnpwp" src="{{isset($biodatas->scan_npwp)?file_exists( public_path() . '/' . $biodatas->scan_npwp)?asset($biodatas->scan_npwp):asset('assets/images/no-image.png'):asset('assets/images/no-image.png')}}" alt="your image"  width="337" height="213"  />
+                    <img id="cropnpwp" src="{{isset($biodatas->scan_npwp)?file_exists( public_path() . '/' . $biodatas->scan_npwp)?asset($biodatas->scan_npwp):asset('assets/images/id_card.png'):asset('assets/images/id_card.png')}}" alt="your image"  width="337" height="213"  />
                     {{ Form::hidden('scan_npwp', isset($biodatas->scan_npwp)?file_exists( public_path() . '/' . $biodatas->scan_npwp)?$biodatas->scan_npwp:'':'') }}
 
                     <script type="text/javascript">
@@ -200,7 +200,7 @@
                 <div class="col-md-6">
                     {!! Form::file('foto',  ['class' => 'form-control']) !!}
                     <br \>
-                    <img id="cropfoto" src="{{isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):asset('assets/images/no-image.png'):asset('assets/images/no-image.png')}}" alt="your image"  width="200" height="267"  />
+                    <img id="cropfoto" src="{{isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):asset('assets/images/surat.png'):asset('assets/images/surat.png')}}" alt="your image"  width="200" height="267"  />
                     {{ Form::hidden('foto', isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?$biodatas->foto:'':'') }}
 
                     <script type="text/javascript">

@@ -25,32 +25,11 @@
     </div>
 </div>
 
-
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-  $( function() {
-    $( "#lama_pemasangan_from" ).datepicker({
-      changeMonth: true,
-      changeYear: true
-    });
-  } );
-  </script>
-  <script>
-  $( function() {
-    $( "#lama_pemasangan_to" ).datepicker({
-      changeMonth: true,
-      changeYear: true
-    });
-  } );
-  </script>
-
-
 <!-- Lama Pemasangan From Field -->
 <div class="form-group {{ $errors->has('lama_pemasangan_from') ? 'has-error' : ''}}">
     {!! Form::label('lama_pemasangan_from', 'Tanggal Mulai Pemasangan', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('lama_pemasangan_from',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! Form::text('lama_pemasangan_from',isset($rekomendasiReklames->lama_pemasangan_from)?\Carbon\Carbon::parse($rekomendasiReklames->lama_pemasangan_from)->format('Y-m-d'):null, ['class' => 'form-control','required'=>'required','id'=>'datepicker','placeholder' => 'Tanggal/Bulan/Tahun']) !!}
         {!! $errors->first('lama_pemasangan_from', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -59,7 +38,7 @@
 <div class="form-group {{ $errors->has('lama_pemasangan_to') ? 'has-error' : ''}}">
     {!! Form::label('lama_pemasangan_to', 'Tanggal Akhir Pemasangan', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('lama_pemasangan_to',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! Form::text('lama_pemasangan_to',isset($rekomendasiReklames->lama_pemasangan_to)?\Carbon\Carbon::parse($rekomendasiReklames->lama_pemasangan_to)->format('Y-m-d'):null, ['class' => 'form-control','required'=>'required','id'=>'datepicker1','placeholder' => 'Tanggal/Bulan/Tahun']) !!}
         {!! $errors->first('lama_pemasangan_to', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -79,7 +58,7 @@
     <div class="col-md-6">
         {!! Form::file('scan_desain_reklame',null, ['class' => 'form-control','required'=>'required']) !!}
         <br \>
-        <img id="cropreklame" src="{{isset($biodatas->scan_desain_reklame)?file_exists( public_path() . '/' . $biodatas->scan_desain_reklame)?asset($biodatas->scan_desain_reklame):asset('assets/images/no-image.png'):asset('assets/images/no-image.png')}}" alt="your image"  width="337" height="213"  />
+        <img id="cropreklame" src="{{isset($biodatas->scan_desain_reklame)?file_exists( public_path() . '/' . $biodatas->scan_desain_reklame)?asset($biodatas->scan_desain_reklame):asset('assets/images/no-image.png'):asset('assets/images/no-image.png')}}" alt="your image"  width="300" height="300"  />
         {{ Form::hidden('scan_desain_reklame', isset($biodatas->scan_desain_reklame)?file_exists( public_path() . '/' . $biodatas->scan_desain_reklame)?$biodatas->scan_desain_reklame:'':'') }}
 
         <script type="text/javascript">
