@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -49,7 +50,7 @@ class RekomendasiReklameController extends AppBaseController
      */
     public function create(Request $request)
     {
-        $rekomendasi = Rekomendasi::pluck('nama','id');
+        $rekomendasi = Rekomendasi::where('nama','Rekomendasi Reklame')->first()->id;
         $data_usaha = DataUsaha::where('user_id',Auth::id())->pluck('nama','id');
         $this->rekomendasiReklameRepository->pushCriteria(new RequestCriteria($request));
         $rekomendasiReklames = $this->rekomendasiReklameRepository->whereHas('dataUsaha',function ($query){
