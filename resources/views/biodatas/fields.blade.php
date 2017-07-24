@@ -73,11 +73,11 @@
 
     <div class="form-group {{ $errors->has('tanggal_lahir') ? 'has-error' : ''}}">
     {!! Form::label('tanggal_lahir', 'Tanggal Lahir', ['class' => 'col-md-4 control-label']) !!}
-    <div class="col-md-6">
+        <div class="col-md-6">
         {!! Form::text('tanggal_lahir',isset($biodatas->tanggal_lahir)?\Carbon\Carbon::parse($biodatas->tanggal_lahir)->format('Y-m-d'):null, ['class' => 'form-control','required'=>'required','id'=>'datepicker','placeholder' => 'Tanggal/Bulan/Tahun']) !!}
                     {!! $errors->first('tanggal_lahir', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
+         </div>
+    </div>
             <!-- Jenis Kelamin Field -->
 
 
@@ -223,8 +223,8 @@
                     {!! $errors->first('foto', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-
-            <div class="row">
+{{count($biodatas->alamats)>0}}
+            {{--<div class="row">
                 <div class="col-md-6">
                     <section class="panel-primary">
                         <header class="panel-heading">
@@ -370,7 +370,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div>--}}
         </section>
     </div>
 </div>
