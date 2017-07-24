@@ -37,7 +37,8 @@ class Biodata extends Model
         'status_perkawinan',
         'agama_id',
         'website',
-        'foto'
+        'foto',
+        'kontak'
     ];
 
     /**
@@ -60,7 +61,8 @@ class Biodata extends Model
         'status_perkawinan' => 'string',
         'agama_id' => 'integer',
         'website' => 'string',
-        'foto' => 'string'
+        'foto' => 'string',
+        'kontak'=>'string'
     ];
 
     /**

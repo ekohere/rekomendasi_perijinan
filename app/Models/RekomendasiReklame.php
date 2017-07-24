@@ -59,7 +59,7 @@ class RekomendasiReklame extends Model
      * @var array
      */
     public static $rules = [
-        'scan_desain_reklame' => 'require'
+        'scan_desain_reklame' => 'required'
     ];
 
     /**
