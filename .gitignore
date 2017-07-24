@@ -2,6 +2,13 @@
 /public/hot
 /public/storage
 /storage/*.key
+/public/data_scan_npwp
+/public/data_scan_siup
+/public/foto
+/public/scan_ktp
+/public/scan_desain_reklame
+/public/scan_npwp
+/public/scan_situ
 /vendor
 /.idea
 /.vagrant
