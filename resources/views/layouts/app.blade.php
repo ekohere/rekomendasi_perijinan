@@ -210,6 +210,10 @@
         autoclose: true,
         format: 'yyyy-mm-dd'
     });
+    $('#datepicker1').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd'
+    });
 </script>
 
 @yield('scripts')
