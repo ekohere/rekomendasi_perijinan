@@ -172,9 +172,8 @@
 
     <!-- Toastr -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    @if (!Auth::guest())
+    @role((['tim_teknis_opd','pimpinan_opd']))
     <script>
-
         Pusher.logToConsole = true;
         var pusher = new Pusher("{{env('PUSHER_KEY')}}",{ cluster: 'ap1' })
         var channel = pusher.subscribe('test-channel');
@@ -199,7 +198,7 @@
             toastr.info("Klik disini untuk melihat.", "Permintaan baru telah masuk");
         });
     </script>
-    @endif
+    @endrole
     
 
     @yield('scripts')
