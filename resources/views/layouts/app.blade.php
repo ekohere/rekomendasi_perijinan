@@ -194,9 +194,8 @@
           "hideEasing": "linear",
           "showMethod": "fadeIn",
           "hideMethod": "fadeOut",
-          "onclick" :  window.location.href = "rekomendasiReklames/"+data.id,
         }
-            toastr.info("Klik disini untuk melihat.", "Permintaan baru telah masuk");
+            toastr.info("<a href='/rekomendasiReklames/"+ data.id + "' class='btn clear'>Klik disini untuk melihat</a>", "Permintaan baru telah masuk.");
         });
     </script>
     @endrole
