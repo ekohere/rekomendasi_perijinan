@@ -74,7 +74,7 @@ class DataUsaha extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo(\App\User::class);
     }
 
     /**
