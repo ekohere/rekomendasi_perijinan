@@ -276,14 +276,14 @@
                             <div class="form-group {{ $errors->has('kabupaten') ? 'has-error' : ''}}">
                                 {!! Form::label('kabupaten', 'Kota / Kabupaten', ['class' => 'col-md-4 control-label']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::text('alamat_asal[kabupaten]',  count($biodatas->alamats)>0?$biodatas->alamatAsal()->kabupaten:'', ['id'=>'alamat_asal_kabupaten','class' => 'form-control']) !!}
+                                    {!! Form::text('alamat_asal[kabupaten]',  count($biodatas->alamats)>0?$biodatas->alamatAsal()->kabupaten:'', ['id'=>'alamat_asal_kabupaten','class' => 'form-control','required'=>'required']) !!}
                                     {!! $errors->first('kabupaten', '<p class="help-block">:message</p>') !!}
                                 </div>
                             </div>
                             <div class="form-group {{ $errors->has('provinsi') ? 'has-error' : ''}}">
                                 {!! Form::label('provinsi', 'Provinsi', ['class' => 'col-md-4 control-label']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::text('alamat_asal[provinsi]',  count($biodatas->alamats)>0?$biodatas->alamatAsal()->provinsi:'', ['id'=>'alamat_asal_provinsi','class' => 'form-control']) !!}
+                                    {!! Form::text('alamat_asal[provinsi]',  count($biodatas->alamats)>0?$biodatas->alamatAsal()->provinsi:'', ['id'=>'alamat_asal_provinsi','class' => 'form-control','required'=>'required']) !!}
                                     {!! $errors->first('provinsi', '<p class="help-block">:message</p>') !!}
                                 </div>
                             </div>
@@ -348,14 +348,14 @@
                             <div class="form-group {{ $errors->has('kabupaten') ? 'has-error' : ''}}">
                                 {!! Form::label('kabupaten', 'Kota / Kabupaten', ['class' => 'col-md-4 control-label']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::text('alamat_sekarang[kabupaten]',count($biodatas->alamats)>0?$biodatas->alamatSekarang()->kabupaten:'', ['id'=>'alamat_sekarang_kabupaten','class' => 'form-control']) !!}
+                                    {!! Form::text('alamat_sekarang[kabupaten]',count($biodatas->alamats)>0?$biodatas->alamatSekarang()->kabupaten:'', ['id'=>'alamat_sekarang_kabupaten','class' => 'form-control','required'=>'required']) !!}
                                     {!! $errors->first('kabupaten', '<p class="help-block">:message</p>') !!}
                                 </div>
                             </div>
                             <div class="form-group {{ $errors->has('provinsi') ? 'has-error' : ''}}">
                                 {!! Form::label('provinsi', 'Provinsi', ['class' => 'col-md-4 control-label']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::text('alamat_sekarang[provinsi]',count($biodatas->alamats)>0?$biodatas->alamatSekarang()->provinsi:'', ['id'=>'alamat_sekarang_provinsi','class' => 'form-control']) !!}
+                                    {!! Form::text('alamat_sekarang[provinsi]',count($biodatas->alamats)>0?$biodatas->alamatSekarang()->provinsi:'', ['id'=>'alamat_sekarang_provinsi','class' => 'form-control','required'=>'required']) !!}
                                     {!! $errors->first('provinsi', '<p class="help-block">:message</p>') !!}
                                 </div>
                             </div>

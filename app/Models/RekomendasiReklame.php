@@ -59,7 +59,15 @@ class RekomendasiReklame extends Model
      * @var array
      */
     public static $rules = [
-        'scan_desain_reklame' => 'required'
+        'jenis_reklame' => 'required',
+        'teks_reklame' => 'required',
+        'ukuran_reklame' => 'required',
+        'lama_pemasangan_from' => 'required',
+        'lama_pemasangan_to' => 'required',
+        'lokasi_pemasangan' => 'required',
+        'scan_desain_reklame' => 'required',
+        'rekomendasi_id' => 'required',
+        'data_usaha_id' => 'required'
     ];
 
     /**

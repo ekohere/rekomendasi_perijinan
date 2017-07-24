@@ -71,6 +71,8 @@ class Biodata extends Model
      * @var array
      */
     public static $rules = [
+        'nik' => 'required',
+        'scan_npwp' => 'required'
     ];
 
     /**

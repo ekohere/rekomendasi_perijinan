@@ -27,6 +27,12 @@ class Alamat extends Model
         'biodata_id'
     ];
 
+    public static $rules = [
+        'kabupaten' => 'required',
+        'provinsi' => 'required',
+        'status' => 'required'
+    ];
+
     public function alamatLengkap(){
         return (isset($this->jalan)?'Jalan '.$this->jalan.',':'').
         (isset($this->rt)?'RT '.$this->rt.',':'').

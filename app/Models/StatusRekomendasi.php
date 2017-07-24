@@ -49,7 +49,7 @@ class StatusRekomendasi extends Model
      * @var array
      */
     public static $rules = [
-        
+        'nama' => 'required'
     ];
 
     /**

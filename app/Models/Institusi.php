@@ -55,7 +55,8 @@ class Institusi extends Model
      * @var array
      */
     public static $rules = [
-        
+        'kode' => 'required',
+        'nama' => 'required'
     ];
 
     /**

@@ -47,7 +47,7 @@ class Pegawai extends Model
      * @var array
      */
     public static $rules = [
-        
+        'nip' => 'required'
     ];
 
     /**
