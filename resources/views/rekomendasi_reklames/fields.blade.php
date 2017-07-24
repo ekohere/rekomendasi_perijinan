@@ -111,7 +111,7 @@
 <div class="form-group {{ $errors->has('data_usaha_id') ? 'has-error' : ''}}">
     {!! Form::label('data_usaha_id', 'Data Usaha', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('data_usaha_id',null, ['class' => 'form-control','required'=>'required']) !!}
+        {!! Form::select('data_usaha_id',$data_usaha,null, ['class' => 'form-control','required'=>'required']) !!}
         {!! $errors->first('data_usaha_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>

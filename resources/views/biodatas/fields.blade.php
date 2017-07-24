@@ -89,6 +89,14 @@
                 </div>
             </div>
 
+            <div class="form-group {{ $errors->has('kontak') ? 'has-error' : ''}}">
+                {!! Form::label('kontak', 'Kontak', ['class' => 'col-md-4 control-label']) !!}
+                <div class="col-md-6">
+                    {!! Form::text('kontak', null, ['class' => 'form-control','required'=>'required']) !!}
+                    {!! $errors->first('kontak', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
             <!-- Kewarganegaraan Field -->
             <div class="form-group {{ $errors->has('kewarganegaraan') ? 'has-error' : ''}}">
                 {!! Form::label('kewarganegaraan', 'Kewarganegaraan', ['class' => 'col-md-4 control-label']) !!}
