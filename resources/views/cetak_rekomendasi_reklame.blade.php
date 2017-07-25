@@ -22,7 +22,7 @@
             border-collapse: collapse;
             width: 100%;
         }
-        }
+
         table td {
             border: 0px solid #ccc;
         }
@@ -31,51 +31,53 @@
 </head>
 
 <body>
-<table  border="0" cellpadding="0" cellspacing="0">
+<table cellpadding="0" cellspacing="0">
     <tr>
         <td width="110px" valign="middle" align="right"><img src="{{public_path().'/assets/images/logo.png'}}" width="70" height="70" /></td>
-        <td colspan="2" class="title"><div><strong>PEMERINTAH KOTA SAMARINDA<br />
+        <td colspan="6" class="title"><div><strong>PEMERINTAH KOTA SAMARINDA<br />
                     DINAS KOMUNIKASI DAN INFORMATIKA <br />
                     Jalan Kesuma Bangsa No. 84 Kode Pos 75123 </br>
                     SAMARINDA</strong></div></td>
     </tr>
     <tr>
-        <td></td><td><a href="#">http://diskominfo.samarindakota.go.id</a></td>
-        <td ><a href="#">info@diskominfo.samarindakota.go.id</a></td>
+        <td></td>
+        <td colspan="3"><a href="#">http://diskominfo.samarindakota.go.id</a></td>
+        <td colspan="3" ><a href="#">info@diskominfo.samarindakota.go.id</a></td>
     </tr>
   
-    <tr >
-        <td style="border-top: thick double #000000;"></td>
-        <td style="border-top: thick double #000000;"></td>
-        <td style="border-top: thick double #000000; text-align: right;"></td>
+    <tr>
+        <td colspan="7" style="border-top: thick double #000000;"></td>
     </tr>
-    
+    <tr>
+        <td width="10px">Nomor</td>
+        <td width="2px">:</td>
+        <td width="10px">486.1/       /100.21/       /</td>
+        <td></td>
+        <td colspan="3" rowspan="3">
+            Kepada <br> Yth. Walikota Samarinda <br>
+            Cq. Kepala Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Di-<br>
+            <b>Samarinda</b>
+        </td>
+    </tr>
+    <tr>
+        <td>Lampiran</td>
+        <td>:</td>
+        <td>-</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Perihal</td>
+        <td>:</td>
+        <td><b>Rekomendasi Izin Reklame Tidak Tetap</b></td>
+        <td></td>
+    </tr>
 </table>
 <br>
 
-<div id="kiri">
-    <table width="100%" border="0" cellpadding="0" cellspacing="0">
-        <tr>
-            <td>Nomor</td>
-            <td>:</td>
-            <td>486.1/       /100.21/       /</td>
-        </tr>
-        <tr>
-            <td>Lampiran</td>
-            <td>:</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>Perihal</td>
-            <td>:</td>
-            <td><b>Rekomendasi Izin Reklame Tidak Tetap</b></td>
-        </tr>
-    </table>
-    <br><br><br>
-</div>
+
 
    
-<div id="kanan">
+{{--<div id="kanan">
      <table border="0" cellpadding="0" cellspacing="0">
     <tr>
         <td>
@@ -86,11 +88,11 @@
     </tr>
     </table>
     <br> 
-</div>
+</div>--}}
 
-<p>Menunjuk surat permohonan atas nama Sdr. {{$rekomendasi->dataUsaha->user->name or ''}}, Nomor : 011/CSJ-CGCS/V/2017 tanggal 2 Mei 2017, perihal permohonan rekomendasi izin reklame tidak tetap.</p>
+{{--<p>Menunjuk surat permohonan atas nama Sdr. {{$rekomendasi->dataUsaha->user->name or ''}}, Nomor : 011/CSJ-CGCS/V/2017 tanggal 2 Mei 2017, perihal permohonan rekomendasi izin reklame tidak tetap.</p>
 
-<table id="table" border="0" cellpadding="0" cellspacing="0">
+<table  border="0" cellpadding="0" cellspacing="0">
 
     <tr>
         <b>Memberikan Rekomendasi Kepada :</b>
@@ -111,7 +113,7 @@
         <td>3. </td>
         <td>Alamat</td>
         <td>:</td>
-        <td>{{--{{$rekomendasi->dataUsaha->user->biodata->alamatSekarang->alamatLengkap}}--}}</td>
+        <td>--}}{{--{{$rekomendasi->dataUsaha->user->biodata->alamatSekarang->alamatLengkap}}--}}{{--</td>
     </tr>
     <tr>
         <td>4. </td>
@@ -122,7 +124,7 @@
 </table>
 <br>
 
-<table id="table" border="0" cellpadding="0" cellspacing="0">
+<table border="0" cellpadding="0" cellspacing="0">
     <tr>
         <b>Untuk Memasang Reklame :</b>
     </tr>
@@ -164,7 +166,7 @@
     </tr>
 </table>
 <br>
-<table id="table" border="0" cellpadding="0" cellspacing="0">
+<table border="0" cellpadding="0" cellspacing="0">
     <tr><b> Dengan ketentuan sbb :</b></tr>
     <tr>
         <td>
@@ -231,6 +233,6 @@
         NIP. 197001027 1999003 1 004</b>
 
     </p>
-</div>
+</div>--}}
 </body>
 </html>

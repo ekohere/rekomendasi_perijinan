@@ -32,6 +32,7 @@
                 <th>Update Terakhir</th>
                 <th>User</th>
                 <th>Detail</th>
+                <th>Download</th>
                 </thead>
                 <tbody>
                 @foreach($rekomendasi_reklames as $rekomendasi_reklame)
@@ -42,6 +43,11 @@
                             <td>{!! \Carbon\Carbon::parse($rekomendasi_reklame->lastStatusRekomendasi()['created_at'])->format('d/M/Y H:i:s') !!}</td>
                             <td>{!! $rekomendasi_reklame->lastStatusRekomendasi()->user->name or ''!!}</td>
                             <td><a href="{!! route('rekomendasiReklames.show', [$rekomendasi_reklame->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a></td>
+                            <td>
+                                @if($rekomendasi_reklame->lastStatusRekomendasi()->statusRekomendasi->nama=="Disetujui")
+                                <a href="{!! url('/pdf/'.$rekomendasi_reklame->id) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-download"></i></a>
+                                    @endif
+                            </td>
                         </tr>
                 @endforeach
                 </tbody>

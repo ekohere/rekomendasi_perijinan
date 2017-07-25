@@ -14,9 +14,9 @@ class CetakController extends Controller
     public function pdfRekomendasiReklame($rekomendasi_reklame_id)
     {
     	$rekomendasi=RekomendasiReklame::where('id',$rekomendasi_reklame_id)->first();
-        $pdf = PDF::loadView('cetak_rekomendasi_reklame',compact('rekomendasi'))->setPaper('a4', 'portrait');
+        $pdf = PDF::loadView('cetak_rekomendasi_reklame_new',compact('rekomendasi'))->setPaper('f4', 'portrait');
 
-        return $pdf->download('bukti_pendaftaran.pdf');
+        return $pdf->download('Rekomendasi '.$rekomendasi->dataUsaha->nama.'.pdf');
     }
  
 }
