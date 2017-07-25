@@ -223,8 +223,9 @@
                     {!! $errors->first('foto', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-{{count($biodatas->alamats)>0}}
-            {{--<div class="row">
+
+
+            <div class="row">
                 <div class="col-md-6">
                     <section class="panel-primary">
                         <header class="panel-heading">
@@ -370,7 +371,7 @@
                     </div>
                 </div>
 
-            </div>--}}
+            </div>
         </section>
     </div>
 </div>
